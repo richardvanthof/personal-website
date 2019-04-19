@@ -20,7 +20,7 @@ yarn install
 
 **npm**
 ```javascript
-npm install install
+npm install
 ```
 3. Run the following command to start the server
 ```javascript
