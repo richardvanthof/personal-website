@@ -21,12 +21,13 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
+    "react-loading-screen": "0.0.17",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
-    "gatsby-plugin-eslint": "^2.0.4",
+    "gatsby-plugin-eslint": "^2.0.5",
     "prettier": "^1.17.0"
   },
   "keywords": [
@@ -35,7 +36,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",

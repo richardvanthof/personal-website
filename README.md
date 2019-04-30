@@ -1,5 +1,6 @@
-![](src/images/github-banner.png)
-# **The Rich Art Space**
+<img src="src/images/trademarks/logo.svg" alt="therichart.space temporary logo" style="width: 10rem"/>
+
+# **Personal website**
 Personal portfolio website and online space of Richard van 't Hof built to show my work and experiments built using [React](https://reactjs.org/) and the [Gatsby static site generator](https://www.gatsbyjs.org/).
 -------------
 

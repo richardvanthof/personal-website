@@ -1,23 +1,31 @@
 import React from "react";
 import { Link } from "gatsby";
+import styled from "styled-components";
+import theme from "../styles/theme";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Image from "../components/image"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Image from "../components/image";
 
-const Typography = () => (
+const Article = styled.article`
+    max-width: ${theme.width[3]}px;
+    margin: 0 auto;
+`
+
+const About = () => (
   <Layout>
     <SEO title="Typography" />
-    <article>
+    <Article>
         <h1>heading 1</h1>
         <Image />
-
-        <p>
-            With 1.2 billion <a href="https://www.google.com" target="_blanc">
+        <p><big>With 1.2 billion <a href="https://www.google.com" target="_blanc">
             Google</a> results, innovation is the omnipresent buzzword that encapsulates
             the processes by which cultures, materialities, and economies interact
             and produce evolutions, constraints, and alternatives that rearticulate
-            societies. The human capacity to redesign and effectively intervene in
+            societies.</big></p>
+        <p>
+
+            The human capacity to redesign and effectively intervene in
             environments, technologies, kinships, bodies, and networks is often highly
             delegated to a single term: innovation. However, with such momentous
             prerogatives in the making of the societal, the use of the term innovation
@@ -89,17 +97,19 @@ const Typography = () => (
         and produce evolutions, constraints, and alternatives that rearticulate
         societies. The human capacity to redesign and effectively intervene in
         environments, technologies, kinships, bodies, and networks is often highly
-        delegated to a single term: innovation.</p>
-
+        delegated to a single term: innovation.
         <code>
-        // Place some code here!
+         alert("hello world")
 
         </code>
+        </p>
+
+
 
         <p>However, with such momentous
         prerogatives in the making of the societal, the use of the term innovation
-        remains kidnapped by simplified, corporate <acronym title="Promotion">PR</acronym>
-        rhetoric. Schumpeter’s
+        remains kidnapped by simplified, corporate <acronym title="Promotion">PR </acronym>
+         rhetoric. Schumpeter’s
         notion of the entrepreneur as the solo agent that brings invention to
         markets through linear innovation still feeds the naive generalized notion
         of individual designers and entrepreneurs as the sole agents of innovation.
@@ -141,9 +151,9 @@ const Typography = () => (
         cases, mobilizes societies at large. It is a process in which non-human
         entities greatly participate, and one in which its players are affected by
         unintended, accidental, and inscrutable interactions.</p>
-    </article>
+    </Article>
 
   </Layout>
 )
 
-export default Typography
+export default About
