@@ -7,9 +7,11 @@ const logo = require('../images/trademarks/logo.svg');
 
 const Nav = styled.nav`
   display: flex;
-  padding: 2em;
+  padding: 1em 2em;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  width: 100%;
 }
 `
 
@@ -19,6 +21,7 @@ text-decoration: none;
   ul {
     list-style: none;
     display: flex;
+    margin: 0;
     li {
       a {
         text-decoration: none;
@@ -29,7 +32,8 @@ text-decoration: none;
 `
 
 const Logo = styled.img`
-  width: 7.5rem;
+  width: 5rem;
+  margin: 0;
 `
 
 const Navbar = ({ siteTitle }) => (
