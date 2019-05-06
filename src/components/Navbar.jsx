@@ -26,6 +26,13 @@ text-decoration: none;
       a {
         text-decoration: none;
         padding: 1em;
+        transition: .5s ease;
+        &:before {
+          content: "";
+          background: red;
+          width: 100%;
+          height: 1em;
+        }
       }
     }
   }

@@ -1,6 +1,8 @@
 import React from 'react';
 import {createGlobalStyle} from 'styled-components';
 
+import theme from './theme';
+
 const GlobalStyle = createGlobalStyle`
   html, body {
     font-size: 18px;
@@ -67,10 +69,10 @@ const GlobalStyle = createGlobalStyle`
   dfn {
     font-style: italic;
   }
-  h1 {
+  /* h1 {
     font-size: 2em;
     margin: 0.67em 0;
-  }
+  } */
   mark {
     background-color: #ff0;
     color: #000;
@@ -207,7 +209,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     color: hsla(0, 0%, 0%, 0.8);
-    font-family: georgia, serif;
+    /* font-family: georgia, serif; */
     font-weight: normal;
     word-wrap: break-word;
     font-kerning: normal;
@@ -218,23 +220,13 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
     margin-bottom: 1.45rem;
   }
-  h1 {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+  /* h1 {
+    margin: 0;
+    padding: 0;
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -245,12 +237,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.1;
   }
   h2 {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
+    margin: 0;
+    padding: 0;
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
@@ -262,13 +250,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.1;
   }
   h3 {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -279,13 +262,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.1;
   }
   h4 {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -296,13 +274,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.1;
   }
   h5 {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -313,13 +286,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.1;
   }
   h6 {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -328,7 +296,7 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     font-size: 0.78405rem;
     line-height: 1.1;
-  }
+  } */
   hgroup {
     margin-left: 0;
     margin-right: 0;

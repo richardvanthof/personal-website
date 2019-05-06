@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `./src/images`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -39,6 +39,13 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         implementation: require("node-sass"),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utilities/typography`,
+        omitGoogleFont: false,
       },
     },
     {
