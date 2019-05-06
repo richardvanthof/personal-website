@@ -7,8 +7,10 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Image from "../components/image";
 
+const img = require('../images/test-img.jpg');
+
 const Article = styled.article`
-    max-width: ${theme.width[3]}px;
+    max-width: ${theme.width[1]}px;
     margin: 0 auto;
 `
 
@@ -17,7 +19,7 @@ const About = () => (
     <SEO title="Typography" />
     <Article>
         <h1>heading 1</h1>
-        <Image />
+        <img src={img} alt="test" />
         <p><big>With 1.2 billion <a href="https://www.google.com" target="_blanc">
             Google</a> results, innovation is the omnipresent buzzword that encapsulates
             the processes by which cultures, materialities, and economies interact

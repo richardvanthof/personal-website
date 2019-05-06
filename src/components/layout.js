@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import GlobalStyle from "../styles/GlobalStyle";
+import NoScript from "./NoScript";
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 
@@ -27,9 +28,8 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Navbar siteTitle={data.site.siteMetadata.title} />
-        <div>
-          <main>{children}</main>
-        </div>
+        <NoScript />
+        <main>{children}</main>
         <Footer />
         <GlobalStyle />
       </>
