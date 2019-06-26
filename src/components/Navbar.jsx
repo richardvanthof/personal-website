@@ -41,6 +41,7 @@ text-decoration: none;
 const Logo = styled.img`
   width: 5rem;
   margin: 0;
+  mix-blend-mode: luminosity;
 `
 
 const Navbar = ({ siteTitle }) => (

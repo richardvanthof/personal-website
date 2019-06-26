@@ -2,9 +2,8 @@ import Typography from "typography"
 
 const typography = new Typography({
     title: "Rich Art One",
-    baseFontSize: "40px",
     baseLineHeight: 1.666,
-    scaleRatio: 3,
+    scaleRatio: 5,
     includeNormalize: true,
     headerFontFamily: [
         "Avenir Next",
@@ -32,6 +31,9 @@ const typography = new Typography({
         'blockquote > :last-child': {
           marginBottom: 0,
         },
+        'figcaption':{
+          fontSize: '0.95rem',
+        }
       }),
 
 })
