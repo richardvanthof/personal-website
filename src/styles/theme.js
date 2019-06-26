@@ -11,13 +11,20 @@ theme.breakpoints = {
 };
 
 theme.mediaQueries = {
-        xs: `(min-width: ${theme.breakpoints.xs})`,
-        sm: `(min-width: ${theme.breakpoints.sm})`,
-        md: `(min-width: ${theme.breakpoints.md})`,
-        lg: `(min-width: ${theme.breakpoints.lg})`,
-        xl: `(min-width: ${theme.breakpoints.xl})`,
-        xxl: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)",
+    xs: `(min-width: ${theme.breakpoints.xs})`,
+    sm: `(min-width: ${theme.breakpoints.sm})`,
+    md: `(min-width: ${theme.breakpoints.md})`,
+    lg: `(min-width: ${theme.breakpoints.lg})`,
+    xl: `(min-width: ${theme.breakpoints.xl})`,
+    xxl: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)",
 };
+
+theme.container = {
+    sm: '4%',
+    md: '8%',
+    lg: '12%',
+    xl: '18%',
+}
 
 theme.typography = {
     base: {

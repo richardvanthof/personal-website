@@ -1,32 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.section`
-    /*Font-Size*/
-    /*Line-Height*/
-    $base-line-height: 1.5;
-    $header-line-height: 1.25;
+import theme from '../styles/theme';
+const breakpoint = theme.mediaQueries;
+const sizeRef = theme.container;
 
-    body {
-    font-size: basefontsize;
+const ContainerBase = styled.section`
+    padding: 0 ${sizeRef.sm};
 
-
-    @media (min-width: 64em) {
-        font-size: 1em *1.2;
-
+    @media ${breakpoint.md} {
+        padding: 0 ${sizeRef.md};
     }
 
-    @media (min-width: 85.375em) {
-        font-size: 1em *1.3;
+    @media ${breakpoint.lg} {
+        padding: 0 ${sizeRef.lg};
     }
 
-    @media (min-width: 120em) {
-        font-size: 1em *1.4;
-    }
-
-    @media (min-width: 160em) {
-        font-size:  1em *1.6;
-    }
+    @media ${breakpoint.xl} {
+        padding: 0 ${sizeRef.xl};
     }
 `
+
+const Container = (props) =>{
+    return (
+        <ContainerBase>
+            {props.children}
+        </ContainerBase>
+    )
+}
 export default Container;

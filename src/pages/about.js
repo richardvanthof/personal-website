@@ -17,10 +17,13 @@ const Article = styled.article`
 const About = () => (
   <Layout>
     <SEO title="Typography" />
-    <Container>
+
         <Article>
+            <Container>
             <h1>Castello di Rivoli Museum of Contemporary Art / Fondazione Sandretto Re Rebaudengo</h1>
+            </Container>
             <img src={img} alt="test" />
+            <Container>
             <p><big>With 1.2 billion <a href="https://www.google.com" target="_blanc">
                 Google</a> results, innovation is the omnipresent buzzword that encapsulates
                 the processes by which cultures, materialities, and economies interact
@@ -154,9 +157,8 @@ const About = () => (
             cases, mobilizes societies at large. It is a process in which non-human
             entities greatly participate, and one in which its players are affected by
             unintended, accidental, and inscrutable interactions.</p>
+            </Container>
         </Article>
-    </Container>
-
   </Layout>
 )
 
