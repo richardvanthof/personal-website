@@ -43,7 +43,7 @@ const NavLink = (props) => {
   const { title, to} = props;
   return (
     <NavLinkBase>
-      <AniLink paintDrip to={to}>
+      <AniLink paintDrip duration={0.5} to={to}>
         {title}
       </AniLink>
     </NavLinkBase>
