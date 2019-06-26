@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-transition-link`,
     'gatsby-image',
     {
       resolve: `gatsby-plugin-manifest`,

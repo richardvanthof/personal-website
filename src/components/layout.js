@@ -18,20 +18,7 @@ import Footer from "./Footer"
 import theme from "../styles/theme";
 
 const Main = styled.main `
-  animation: fadeIn 4s ease;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-
-    60% {
-      opacity: 0;
-    }
-    100%{
-      opacity: 1;
-    }
-  }
+  
 `
 
 const Layout = ({ children }) => (
@@ -51,7 +38,7 @@ const Layout = ({ children }) => (
       <div className="wrapper">
         <Navbar siteTitle={data.site.siteMetadata.title} />
         <NoScript />
-        <main>{children}</main>
+        <Main>{children}</Main>
         <Footer />
         <GlobalStyle />
       </div>
