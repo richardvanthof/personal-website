@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-transition-link`,
     'gatsby-image',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -41,13 +42,13 @@ module.exports = {
         implementation: require("node-sass"),
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utilities/typography`,
-    //     omitGoogleFont: false,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utilities/typography`,
+        omitGoogleFont: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

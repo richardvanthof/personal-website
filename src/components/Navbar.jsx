@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 const logo = require('../images/trademarks/logo.svg');
 
@@ -22,58 +23,53 @@ text-decoration: none;
     list-style: none;
     display: flex;
     margin: 0;
-    li {
-      a {
-        text-decoration: none;
-        padding: 1em;
-        transition: .5s ease;
-        &:before {
-          content: "";
-          background: red;
-          width: 100%;
-          height: 1em;
-        }
-      }
-    }
+
   }
 `
+
+const NavLinkBase = styled.li`
+  text-decoration: none;
+  padding: 1em;
+  transition: .5s ease;
+  &:before {
+    content: "";
+    background: red;
+    width: 100%;
+    height: 1em;
+  }
+`
+
+const NavLink = (props) => {
+  const { title, to} = props;
+  return (
+    <NavLinkBase>
+      <AniLink paintDrip duration={0.5} to={to}>
+        {title}
+      </AniLink>
+    </NavLinkBase>
+  )
+}
 
 const Logo = styled.img`
   width: 5rem;
   margin: 0;
+  mix-blend-mode: luminosity;
 `
 
 const Navbar = ({ siteTitle }) => (
   <Nav>
     <div>
-      <Link to="/">
+      <AniLink paintDrip to="/">
         <Logo src={logo} alt={siteTitle} />
-      </Link>
+      </AniLink>
 
     </div>
     <NavLinks>
       <ul>
-      <li>
-          <Link to="/">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/work">
-            Work
-          </Link>
-        </li>
-        <li></li>
-        <li>
-          <Link to="/about">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact">
-            Contact
-          </Link>
-        </li>
+        <NavLink title="Home" to="/"/>
+        <NavLink title="Work" to="/work"/>
+        <NavLink title="About" to="/about"/>
+        <NavLink title="Contact" to="/contact"/>
       </ul>
     </NavLinks>
   </Nav>
