@@ -2,7 +2,7 @@ import Typography from "typography"
 
 const typography = new Typography({
     title: "Rich Art One",
-    baseFontSize: "18px",
+    baseFontSize: "40px",
     baseLineHeight: 1.666,
     scaleRatio: 3,
     includeNormalize: true,
@@ -36,5 +36,6 @@ const typography = new Typography({
 
 })
 console.log(typography);
+
 
 export default typography

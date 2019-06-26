@@ -1,22 +1,43 @@
 import React from 'react';
-import {createGlobalStyle} from 'styled-components';
+import {createGlobalStyle, ThemeConsumer} from 'styled-components';
 
-import theme from './theme';
+import theme from './theme.js';
+
+const baseFontSize = theme.typography.base.size;
+const baseLineHeight = theme.typography.base.lineheight;
 
 const GlobalStyle = createGlobalStyle`
-  html, body {
-    font-size: 18px;
-  }
   html {
-    font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
   }
+
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: ${baseFontSize};
+    line-height: ${baseLineHeight};
+
+    @media ${props => props.theme.mediaQueries.md} {
+      font-size: calc(${baseFontSize}*1.2);
+      line-height: calc(${baseLineHeight}*1.2);
+    }
+
+    @media ${props => props.theme.mediaQueries.lg} {
+      font-size: calc(${baseFontSize}*1.3);
+    }
+
+    @media ${props => props.theme.mediaQueries.xl} {
+      font-size: calc(${baseFontSize}*1.4);
+    }
+
+    @media ${props => props.theme.mediaQueries.xxl} {
+      font-size: calc(${baseFontSize}*1.6);
+    }
   }
+
   article,
   aside,
   details,
@@ -104,10 +125,6 @@ const GlobalStyle = createGlobalStyle`
   pre,
   samp {
     font-family: monospace, monospace;
-    font-size: 1em;
-  }
-  figure {
-    margin: 1em 40px;
   }
   hr {
     box-sizing: content-box;
@@ -150,11 +167,11 @@ const GlobalStyle = createGlobalStyle`
   [type="reset"]:-moz-focusring,
   [type="submit"]:-moz-focusring,
   button:-moz-focusring {
-    outline: 1px dotted ButtonText;
+    outline: 0.01em dotted ButtonText;
   }
   fieldset {
-    border: 1px solid silver;
-    margin: 0 2px;
+    border: 0.01emsolid silver;
+    margin: 0 1em;
     padding: 0.35em 0.625em 0.75em;
   }
   legend {
@@ -179,7 +196,7 @@ const GlobalStyle = createGlobalStyle`
   }
   [type="search"] {
     -webkit-appearance: textfield;
-    outline-offset: -2px;
+    outline-offset: -0.01em;
   }
   [type="search"]::-webkit-search-cancel-button,
   [type="search"]::-webkit-search-decoration {
@@ -194,7 +211,6 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
   }
   html {
-    font: 112.5%/1.45em georgia, serif;
     box-sizing: border-box;
     overflow-y: scroll;
   }
@@ -206,17 +222,6 @@ const GlobalStyle = createGlobalStyle`
   }
   *:after {
     box-sizing: inherit;
-  }
-  body {
-    color: hsla(0, 0%, 0%, 0.8);
-    /* font-family: georgia, serif; */
-    font-weight: normal;
-    word-wrap: break-word;
-    font-kerning: normal;
-    -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-    -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-    font-feature-settings: "kern", "liga", "clig", "calt";
   }
   img {
     max-width: 100%;

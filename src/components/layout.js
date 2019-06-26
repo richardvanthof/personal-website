@@ -8,12 +8,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from "../styles/GlobalStyle";
 import NoScript from "./NoScript";
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+
+import theme from "../styles/theme";
 
 const Main = styled.main `
   animation: fadeIn 4s ease;
@@ -44,13 +46,17 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+
+    <ThemeProvider theme={theme}>
+      <div className="wrapper">
         <Navbar siteTitle={data.site.siteMetadata.title} />
         <NoScript />
         <main>{children}</main>
         <Footer />
         <GlobalStyle />
-      </>
+      </div>
+    </ThemeProvider>
+
     )}
   />
 )
