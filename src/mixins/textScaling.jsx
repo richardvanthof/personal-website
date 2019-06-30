@@ -27,7 +27,7 @@ const textScaling = css`
     }
 
     @media ${mediaQuery.xxl} {
-      font-size: calc(${baseFontSize}*1.6);
+      font-size: calc(${baseFontSize}*1.5);
     }
   }
 `

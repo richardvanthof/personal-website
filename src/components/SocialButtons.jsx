@@ -12,12 +12,12 @@ const SocialButtonsBase = styled.ul`
     li {
 
         a {
-            padding: 1em;
+            padding: 0.5em;
             transition: 0.1s ease;
             background: none;
             img {
                 height: 1rem;
-
+                width: 1em;
             }
             &:active {
                 background: green;

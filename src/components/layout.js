@@ -18,7 +18,7 @@ import Footer from "./Footer"
 import theme from "../styles/theme";
 
 const Main = styled.main `
-  
+  min-height: 100vh;
 `
 
 const Layout = ({ children }) => (

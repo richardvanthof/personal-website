@@ -31,6 +31,10 @@ const NavLinkBase = styled.li`
   text-decoration: none;
   padding: 1em;
   transition: .5s ease;
+  text-decoration: none;
+  a {
+    text-decoration: none;
+  }
   &:before {
     content: "";
     background: red;
@@ -43,7 +47,7 @@ const NavLink = (props) => {
   const { title, to} = props;
   return (
     <NavLinkBase>
-      <AniLink paintDrip duration={0.5} to={to}>
+      <AniLink paintDrip duration={1} to={to}>
         {title}
       </AniLink>
     </NavLinkBase>
