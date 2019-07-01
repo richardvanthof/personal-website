@@ -10,7 +10,7 @@ const SocialButtonsBase = styled.ul`
     padding: 1em;
     margin: 0;
     li {
-
+        margin: 0;
         a {
             padding: 0.5em;
             transition: 0.1s ease;

@@ -7,10 +7,10 @@ import theme from '../styles/theme';
 const breakpoint = theme.mediaQueries;
 const sizeRef = theme.container;
 
-const paddingBottom = '0.1em';
+const paddingBottom = '1em';
 
 const HeaderBase = styled.header`
-    padding: 7em ${sizeRef.sm} ${paddingBottom}  ${sizeRef.sm};
+    padding: 7em ${sizeRef.sm} 2em  ${sizeRef.sm};
     margin-bottom: 1em;
     background: whitesmoke;
 

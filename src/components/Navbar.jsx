@@ -13,6 +13,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   position: absolute;
   width: 100%;
+  z-index: 100;
 }
 `
 

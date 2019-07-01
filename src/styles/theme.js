@@ -22,18 +22,18 @@ theme.mediaQueries = {
 };
 
 theme.container = {
-    sm: '4%',
-    md: '8%',
-    lg: '12%',
-    xl: '18%',
+    sm: '4vw',
+    md: '8vw',
+    lg: '12vw',
+    xl: '18vw',
 }
 
 theme.typography = {
     base: {
         size: '1em',
         lineHeight: '1em',
-        font: ["Times", "avenir", "sans-serif"],
-        },
+        font: ["avenir", "sans-serif"],
+    },
     heading: {
         lineHeight: '1.11em',
         font:[
