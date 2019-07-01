@@ -5,14 +5,19 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 
+import Container from "../components/Container";
+import Header from "../components/Header";
+
 const Work = () => (
   <Layout>
     <SEO title="Work" />
-    <section>
-        <h1>Work</h1>
-        <p>richard@therichart.space</p>
-     </section>
+    <Header>
+      <h1>Work</h1>
 
+    </Header>
+    <Container>
+    <p>Work of Richard van 't Hofe</p>
+    </Container>
   </Layout>
 )
 

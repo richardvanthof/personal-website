@@ -21,8 +21,9 @@ const Footer = () => {
     return (
         <FooterBase>
             <hr/>
-            <p>Copyright Richard van 't Hof 2019</p>
+
             <SocialButtons/>
+            <h5>Copyright Richard van 't Hof 2019</h5>
         </FooterBase>
     )
 }

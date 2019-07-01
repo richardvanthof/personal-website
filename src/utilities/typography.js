@@ -1,23 +1,15 @@
 import Typography from "typography"
+import theme from '../styles/theme';
+
+const base = theme.typography.base;
+const header = theme.typography.heading;
 
 const typography = new Typography({
     title: "Rich Art One",
-    baseLineHeight: 1.666,
-    scaleRatio: 5,
+    scaleRatio: 6,
     includeNormalize: true,
-    headerFontFamily: [
-        "Avenir Next",
-        "Helvetica Neue",
-        "Segoe UI",
-        "Helvetica",
-        "Arial",
-        "sans-serif",
-    ],
-    bodyFontFamily: ["avenir", "Georgia", "serif"],
-    headerGray: 0,
-    headerGrayHue: "warm",
-    bodyGray: 0,
-    bodyGrayHue: "warm",
+    headerFontFamily: header.font,
+    bodyFontFamily: base.font,
     headerWeight: 600,
     bodyWeight: 400,
     boldWeight: 700,
@@ -37,7 +29,6 @@ const typography = new Typography({
       }),
 
 })
-console.log(typography);
 
 
 export default typography
