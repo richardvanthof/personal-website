@@ -28,6 +28,7 @@
     "react-p5-wrapper": "0.0.4",
     "react-typography": "^0.16.19",
     "styled-components": "^4.2.0",
+    "surge": "^0.21.3",
     "typography": "^0.16.19"
   },
   "devDependencies": {
