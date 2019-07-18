@@ -7,15 +7,38 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Image from "../components/image";
 import Container from '../components/Container';
-import Header from "../components/Header";
+import Header from "../components/Header.jsx";
 import { Grid, Col } from "../components/Grid";
+
+let grid = {
+  cols: {
+      mobile: '1fr 1fr 1fr 1fr 1fr 1fr',
+      desktop: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+  },
+  rows: {
+      sm: 'auto auto',
+      md: '1fr 1fr',
+      lg: 'auto',
+      xl: 'auto',
+  },
+}
 
 const About = () => (
   <Layout>
     <SEO title="About" />
-    <Grid rows="3" cols="6">
-        <Col row="2" col="2/4" layer={1}>
-            <h1>Who is Richard anyways?</h1>
+    <Grid rows={grid.rows} cols={grid.cols}>
+        <Col
+          row={{xs: 2, sm: 2, md: '2', lg: '1', xl: '2/3' }}
+          col={{xs: '2/10', sm: '2/5', md: '2/6', lg: '2/6', xl: '2/6' }}
+        >
+            <Image/>
+        </Col>
+        <Col
+          row={{xs: 3, sm: 2, md: '2', lg: '2', xl: '2' }}
+          col={{xs: 2, sm: '6/10', md: '7/10', lg: '7/10', xl: '7/10' }}
+          layer={1}
+          >
+            <h1>It's like jay big</h1>
             <p>Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.
@@ -44,9 +67,7 @@ const About = () => (
                 Vestibulum sed arcu non odio euismod
                 lacinia at quis risus. </p>
         </Col>
-        <Col row="1/ 5" col="5 / 9" >
-            <Image/>
-        </Col>
+
     </Grid>
   </Layout>
 )
