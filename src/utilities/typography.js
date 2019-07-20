@@ -1,11 +1,11 @@
-import Typography from "typography"
-import theme from "../styles/theme"
+import Typography from 'typography';
+import theme from '../styles/theme';
 
-const base = theme.typography.base
-const header = theme.typography.heading
+const { base } = theme.typography;
+const header = theme.typography.heading;
 
 const typography = new Typography({
-  title: "Rich Art One",
+  title: 'Rich Art One',
   scaleRatio: 6,
   includeNormalize: true,
   headerFontFamily: header.font,
@@ -13,20 +13,20 @@ const typography = new Typography({
   headerWeight: 600,
   bodyWeight: 400,
   boldWeight: 700,
-  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+  overrideStyles: ({ adjustFontSizeTo, rhythm }) => ({
     blockquote: {
-      ...adjustFontSizeTo("135%"),
+      ...adjustFontSizeTo('135%'),
       paddingLeft: rhythm(13 / 16),
-      lineHeight: "1.22em",
+      lineHeight: '1.22em',
       marginLeft: rhythm(-1),
     },
-    "blockquote > :last-child": {
+    'blockquote > :last-child': {
       marginBottom: 0,
     },
     figcaption: {
-      fontSize: "0.95rem",
+      fontSize: '0.95rem',
     },
   }),
-})
+});
 
-export default typography
+export default typography;

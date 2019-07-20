@@ -1,17 +1,17 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Image from "../components/image"
+import Layout from '../components/layout';
+import SEO from '../components/Seo';
+import Image from '../components/image';
 
-import Container from "../components/Container"
-import Header from "../components/Header"
+import Container from '../components/Container';
+import Header from '../components/Header';
 
 const Grid = styled(Container)`
   display: flex;
-`
+`;
 
 const Typography = props => (
   <Layout>
@@ -28,7 +28,13 @@ const Typography = props => (
           richardvanthof@pm.me
         </p>
         <p>
-          Hoornklaver 25 <br /> 3069DE Rotterdam <br />
+          Hoornklaver 25
+          {' '}
+          <br />
+          {' '}
+3069DE Rotterdam
+          {' '}
+          <br />
           The Netherlands
         </p>
       </div>
@@ -46,6 +52,6 @@ const Typography = props => (
       <HeroImage/>
     </Grid> */}
   </Layout>
-)
+);
 
-export default Typography
+export default Typography;
