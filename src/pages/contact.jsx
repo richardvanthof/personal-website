@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Image from '../components/image';
 
 import Container from '../components/Container';

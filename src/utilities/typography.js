@@ -13,7 +13,7 @@ const typography = new Typography({
   headerWeight: 600,
   bodyWeight: 400,
   boldWeight: 700,
-  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+  overrideStyles: ({ adjustFontSizeTo, rhythm }) => ({
     blockquote: {
       ...adjustFontSizeTo('135%'),
       paddingLeft: rhythm(13 / 16),

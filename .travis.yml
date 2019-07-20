@@ -13,3 +13,8 @@ deploy:
   skip_cleanup: true
   domain: therichartspace.surge.sh
   on: master
+
+cache:
+  yarn: true
+  directories:
+    - node_modules

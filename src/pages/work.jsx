@@ -1,21 +1,23 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
+import Image from '../components/image';
 
 import Container from '../components/Container';
 import Header from '../components/Header';
 
-const NotFoundPage = () => (
+const Work = () => (
   <Layout>
-    <SEO title="404: Not found" />
+    <SEO title="Work" />
     <Header>
-      <h1>Not Found</h1>
+      <h1>Work</h1>
     </Header>
     <Container>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <p>Work of Richard van &apost Hofe</p>
     </Container>
   </Layout>
 );
 
-export default NotFoundPage;
+export default Work;
