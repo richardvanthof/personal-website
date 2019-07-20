@@ -1,8 +1,8 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components"
 
-import normalize from '../mixins/normalize';
-import textScaling from '../mixins/textScaling';
-import typography from '../utilities/typography';
+import normalize from "../mixins/normalize"
+import textScaling from "../mixins/textScaling"
+import typography from "../utilities/typography"
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -10,4 +10,4 @@ const GlobalStyle = createGlobalStyle`
   ${textScaling}
 `
 
-export default GlobalStyle;
+export default GlobalStyle
