@@ -7,5 +7,5 @@ deploy:
   provider: surge
   project: public/
   skip_cleanup: true
-  domain: therichartspace.surge.sh
+  domain: therichart.space
   on: master
