@@ -1,27 +1,27 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
+/* eslint-disable import/no-unresolved */
 import Layout from '../components/layout';
 import SEO from '../components/Seo';
-import Image from '../components/image';
 
 import Container from '../components/Container';
 import Header from '../components/Header';
+/* eslint-enable import/no-unresolved */
 
 const Grid = styled(Container)`
   display: flex;
 `;
 
-const Typography = props => (
+const Typography = (
   <Layout>
     <SEO title="Contact" />
     <Header>
-      <h1>Let's Talk</h1>
+      <h1>Let&apos;s Talk</h1>
     </Header>
     <Grid>
       <div>
-        <h3>Richard van 't Hof</h3>
+        <h3>Richard van &apos;t Hof</h3>
         <p>
           +31 6 41 21 95 54
           <br />

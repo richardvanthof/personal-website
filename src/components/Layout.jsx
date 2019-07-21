@@ -34,13 +34,13 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <ThemeProvider theme={theme}>
-        <div className="wrapper">
+        <>
           <Navbar siteTitle={data.site.siteMetadata.title} />
           <NoScript />
           <Main>{children}</Main>
           <Footer />
           <GlobalStyle />
-        </div>
+        </>
       </ThemeProvider>
     )}
   />

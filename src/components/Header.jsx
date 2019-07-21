@@ -1,13 +1,13 @@
-import React from "react"
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import styled from "styled-components"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import theme from "../styles/theme"
-const breakpoint = theme.mediaQueries
-const sizeRef = theme.container
+import theme from '../styles/theme';
 
-const paddingBottom = "1em"
+const breakpoint = theme.mediaQueries;
+const sizeRef = theme.container;
+
+const paddingBottom = '1em';
 
 const HeaderBase = styled.header`
   padding: 7em ${sizeRef.sm} 2em ${sizeRef.sm};
@@ -25,19 +25,21 @@ const HeaderBase = styled.header`
   @media ${breakpoint.xl} {
     padding: 10em ${sizeRef.xl} ${paddingBottom} ${sizeRef.xl};
   }
-`
+`;
 
-const Header = props => {
-  const { children } = props
-  return <HeaderBase>{children}</HeaderBase>
-}
+const Header = (props) => {
+  const { children } = props;
+  return (
+    <HeaderBase>{children}</HeaderBase>
+  );
+};
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+  children: PropTypes.node,
+};
 
 Header.defaultProps = {
-  siteTitle: ``,
-}
+  children: <h1>Page title here</h1>,
+};
 
-export default Header
+export default Header;

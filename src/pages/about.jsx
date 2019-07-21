@@ -1,14 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
-import theme from '../styles/theme';
 
 import Layout from '../components/layout';
 import SEO from '../components/Seo';
 import Image from '../components/image';
-import Container from '../components/Container';
-import Header from '../components/Header.jsx';
+
 import { Grid, Col } from '../components/Grid';
+
 
 const grid = {
   cols: {
@@ -46,7 +43,7 @@ const About = () => (
         }}
         layer={1}
       >
-        <h1>It's like jay big</h1>
+        <h1>It&apos;s like jay big</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt

@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from 'styled-components';
 
 const normalize = css`
   html {
@@ -564,6 +564,6 @@ const normalize = css`
   pre tt:after {
     content: "";
   }
-`
+`;
 
-export default normalize
+export default normalize;

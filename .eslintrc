@@ -4,5 +4,14 @@
         "react",
         "jsx-a11y",
         "import"
-    ]
+    ],
+    "settings": {
+        "import/extensions": [
+            ".js",
+            ".jsx"
+        ]
+    },
+    "rules": {
+        "import/no-unresolved": off
+    },
 }

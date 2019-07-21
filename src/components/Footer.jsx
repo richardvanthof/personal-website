@@ -1,9 +1,7 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import SocialButtons from "./SocialButtons"
+import SocialButtons from './SocialButtons';
 
 const FooterBase = styled.footer`
   padding: 1em;
@@ -15,17 +13,15 @@ const FooterBase = styled.footer`
   p {
     margin: 0;
   }
-`
+`;
 
-const Footer = () => {
-  return (
-    <FooterBase>
-      <hr />
+const Footer = () => (
+  <FooterBase>
+    <hr />
 
-      <SocialButtons />
-      <h5>Copyright Richard van 't Hof 2019</h5>
-    </FooterBase>
-  )
-}
+    <SocialButtons />
+    <h5>Copyright Richard van &apos;t Hof 2019</h5>
+  </FooterBase>
+);
 
-export default Footer
+export default Footer;

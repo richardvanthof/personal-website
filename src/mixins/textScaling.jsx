@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components"
-import theme from "../styles/theme"
+import { css } from 'styled-components';
+import theme from '../styles/theme';
 
-const baseFontSize = theme.typography.base.size
-const baseLineHeight = theme.typography.base.lineheight
-const mediaQuery = theme.mediaQueries
+const baseFontSize = theme.typography.base.size;
+const baseLineHeight = theme.typography.base.lineheight;
+const mediaQuery = theme.mediaQueries;
 
 const textScaling = css`
   h1,
@@ -40,6 +40,6 @@ const textScaling = css`
       font-size: calc(${baseFontSize}*1.5);
     }
   }
-`
+`;
 
-export default textScaling
+export default textScaling;

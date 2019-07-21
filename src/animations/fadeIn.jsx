@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components"
+import { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
     @keyframes fadeIn {
@@ -9,6 +9,6 @@ const fadeIn = keyframes`
       opacity: 1;
     }
   }
-`
+`;
 
-export default fadeIn
+export default fadeIn;

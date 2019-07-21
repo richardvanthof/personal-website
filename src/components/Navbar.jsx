@@ -1,10 +1,9 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
-const logo = require("../images/trademarks/logo.svg")
+const logo = require('../images/trademarks/logo.svg');
 
 const Nav = styled.nav`
   display: flex;
@@ -15,7 +14,7 @@ const Nav = styled.nav`
   width: 100%;
   z-index: 100;
 }
-`
+`;
 
 const NavLinks = styled.div`
   align-items: center;
@@ -25,7 +24,7 @@ const NavLinks = styled.div`
     display: flex;
     margin: 0;
   }
-`
+`;
 
 const NavLinkBase = styled.li`
   text-decoration: none;
@@ -41,24 +40,24 @@ const NavLinkBase = styled.li`
     width: 100%;
     height: 1em;
   }
-`
+`;
 
-const NavLink = props => {
-  const { title, to } = props
+const NavLink = (props) => {
+  const { title, to } = props;
   return (
     <NavLinkBase>
       <AniLink paintDrip duration={1} to={to}>
         {title}
       </AniLink>
     </NavLinkBase>
-  )
-}
+  );
+};
 
 const Logo = styled.img`
   width: 5rem;
   margin: 0;
   mix-blend-mode: luminosity;
-`
+`;
 
 const Navbar = ({ siteTitle }) => (
   <Nav>
@@ -76,14 +75,23 @@ const Navbar = ({ siteTitle }) => (
       </ul>
     </NavLinks>
   </Nav>
-)
+);
 
 Navbar.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Navbar.defaultProps = {
-  siteTitle: ``,
-}
+  siteTitle: '',
+};
 
-export default Navbar
+NavLink.propTypes = {
+  title: PropTypes.string.isRequired,
+  to: PropTypes.string,
+};
+
+NavLink.defaultProps = {
+  to: '#',
+};
+
+export default Navbar;
