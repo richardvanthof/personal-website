@@ -1,5 +1,6 @@
-<img src="https://i.imgur.com/3CaSPNj.png" style="width: 10rem"/>
-[![Build Status](https://travis-ci.com/RichART-Official/therichart.space.svg?branch=master)](https://travis-ci.com/RichART-Official/therichart.space)
+![logo](https://i.imgur.com/3CaSPNj.png)
+![Build Status](https://travis-ci.com/RichART-Official/therichart.space.svg?branch=master)
+
 # **Personal website**
 Personal portfolio website and online space of Richard van 't Hof built to show my work and experiments built using [React](https://reactjs.org/) and the [Gatsby static site generator](https://www.gatsbyjs.org/).
 -------------
