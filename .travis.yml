@@ -11,10 +11,16 @@ deploy:
   provider: surge
   project: public/
   skip_cleanup: true
-  domain: therichart.space
+  domain: therichartspace.surge.sh
   on: master
 
 cache:
   yarn: true
   directories:
     - node_modules
+
+notifications:
+  email:
+    - richardvanthof@pm.me
+  on_success: change # default: change
+  on_failure: always # default: always
