@@ -14,9 +14,9 @@ before_deploy:
 
 deploy:
   provider: surge
-  project: public
+  project: public/
   skip_cleanup: true
-  domain: therichartspace.surge.sh
+  domain: therichart.space
   on: master
 
 cache:
