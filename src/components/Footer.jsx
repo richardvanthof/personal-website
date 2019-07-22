@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SocialButtons from './SocialButtons';
+import SocialButtons from './socialButtons';
 
 const FooterBase = styled.footer`
   padding: 1em;

@@ -51,6 +51,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "lint": "eslint --ext .jsx,.js src --format stylish src",
     "start": "npm run develop",
+    "clean": "rm -rf .cache",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },

@@ -11,9 +11,9 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '../styles/GlobalStyle';
-import NoScript from './NoScript';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import NoScript from './noScript';
+import Navbar from './navbar';
+import Footer from './footer';
 
 import theme from '../styles/theme';
 

@@ -44,7 +44,7 @@ const ColBase = styled.div`
   /*eslint-disable*/
   grid-row: ${props => props.row.sm || '2'};
   grid-column: ${props => props.col.sm || '2/6'};
-  z-index: ${props => props.layer} @media ${breakpoint.sm} {
+  z-index: ${props => props.layer} ${breakpoint.sm} {
     grid-row: ${props => props.row.md || '2'};
     grid-column: ${props => props.col.md || '2/14'};
   }

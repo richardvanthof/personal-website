@@ -35,7 +35,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.element,
 };
 
 Header.defaultProps = {

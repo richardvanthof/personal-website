@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Layout from '../components/layout';
-import SEO from '../components/Seo';
+import SEO from '../components/seo';
 import Image from '../components/image';
 
-import { Grid, Col } from '../components/Grid';
+import { Grid, Col } from '../components/grid';
 
 
 const grid = {
