@@ -69,8 +69,7 @@ const Navbar = ({ siteTitle }) => (
     <NavLinks>
       <ul>
         <NavLink title="Home" to="/" />
-        <NavLink title="Work" to="/work" />
-        <NavLink title="About" to="/about" />
+        <NavLinkBase><a href="https://behance.net/therichartspace" target="_blanc">Work</a></NavLinkBase>
         <NavLink title="Contact" to="/contact" />
       </ul>
     </NavLinks>
