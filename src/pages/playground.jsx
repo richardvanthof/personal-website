@@ -68,8 +68,7 @@ const Post = (props) => {
           <Content onClick={toggleFullScreen}>
           <Flipped inverseFlipId="post">
               <Container>
-
-                      <h3>Richardhotline</h3>
+                      <h1>Richardhotline</h1>
                       <p>2018</p>
                       <img src={thumbnail} alt="richard hotline"/>
               </Container>
@@ -80,11 +79,11 @@ const Post = (props) => {
 
         <Flipped flipId="post">
         <Thumbnail onClick={toggleFullScreen}>
-        <Flipped inverseFlipId="post">
-            <>
-              <h3>Richardhotline</h3>
-              <p>2018</p>
-              <img src={thumbnail} alt="richard hotline"/>
+            <Flipped inverseFlipId="post">
+                <>
+                <h3>Richardhotline</h3>
+                <p>2018</p>
+                <img src={thumbnail} alt="richard hotline"/>
               </>
               </Flipped>
         </Thumbnail>

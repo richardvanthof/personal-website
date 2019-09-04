@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
-const logo = require('../images/trademarks/logo.svg');
+const logo = require('../static/trademarks/logo.svg');
 
 const Nav = styled.nav`
   display: flex;
@@ -69,8 +69,9 @@ const Navbar = ({ siteTitle }) => (
     <NavLinks>
       <ul>
         <NavLink title="Home" to="/" />
-        <NavLink title="Work" to="/work" />
         <NavLink title="About" to="/about" />
+        <NavLink title="Work" to="/work" />
+        <NavLink title="Lab" to="/playground" />
         <NavLink title="Contact" to="/contact" />
       </ul>
     </NavLinks>

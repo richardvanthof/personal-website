@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from '../styles/GlobalStyle';
+import GlobalStyle from '../styles/globalStyles';
 import NoScript from './noScript';
 import Navbar from './navbar';
 import Footer from './footer';

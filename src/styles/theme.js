@@ -6,7 +6,7 @@ theme.breakpoints = {
   md: '85.375em',
   lg: '120em',
   xl: '160em',
-  xxl: '192dpi',
+  xxl: '192em',
 };
 
 theme.mediaQueries = {
@@ -16,7 +16,7 @@ theme.mediaQueries = {
   lg: `(min-width: ${theme.breakpoints.lg})`,
   xl: `(min-width: ${theme.breakpoints.xl})`,
   // xxl: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 200dpi)",
-  xxl: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
+  xxl: '(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: ${theme.breakpoints.xxl})',
 };
 
 theme.container = {
@@ -29,7 +29,7 @@ theme.container = {
 theme.typography = {
   base: {
     size: '1em',
-    lineHeight: '1em',
+    lineHeight: '1.66em',
     font: ['avenir', 'sans-serif'],
   },
   heading: {

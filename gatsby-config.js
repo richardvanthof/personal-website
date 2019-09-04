@@ -10,8 +10,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: './src/images',
+        name: 'static',
+        path: './src',
       },
     },
     'gatsby-transformer-sharp',
@@ -28,7 +28,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/trademarks/favicon.svg', // This path is relative to the root of the site.
+        icon: 'src/static/trademarks/favicon.svg', // This path is relative to the root of the site.
       },
     },
     {
@@ -41,13 +41,6 @@ module.exports = {
       resolve: 'gatsby-plugin-sass',
       options: {
         implementation: require('node-sass'),
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utilities/typography',
-        omitGoogleFont: false,
       },
     },
     {

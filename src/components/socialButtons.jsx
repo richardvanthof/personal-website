@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {
+  Facebook,
+  Twitter,
+  Behance,
+  Linkedin,
+  Vimeo,
+  Youtube,
+} from './icons';
+
 const SocialButtonsBase = styled.ul`
   text-align: center;
   display: flex;
@@ -35,20 +44,59 @@ const profile = {
   youtube: 'https://youtube.com',
 };
 
-const icon = {
-  /* eslint-disable*/
-  facebook: require('../images/icons/facebook.svg'),
-  twitter: require('../images/icons/twitter.svg'),
-  behance: require('../images/icons/behance.svg'),
-  linkedin: require('../images/icons/linkedin.svg'),
-  vimeo: require('../images/icons/vimeo.svg'),
-  youtube: require('../images/icons/youtube.svg'),
-  /* eslint-enable */
+const SocialButtonBase = styled.li`
+
+    margin: 0;
+    a {
+      padding: 0.5em;
+      transition: 0.1s ease;
+      background: none;
+      img, svg {
+        height: 1rem;
+        width: 1em;
+      }
+      &:active {
+        background: green;
+      }
+      &:hover {
+        background: greenyellow;
+      }
+    }
+
+`;
+
+const SocialButton = (props) => {
+  const { platform, children } = props;
+  const target = platform.toLowerCase();
+  if (profile[target]) {
+    return (
+      <SocialButtonBase>
+        <a href={profile.facebook}>
+          {children}
+        </a>
+      </SocialButtonBase>
+    );
+  }
 };
+
+// const getSocialButtons = (data) => {
+//   const profileData = data;
+//   const profileAmount = Object.keys(profileData).length;
+//   return (
+//     <>
+//       {
+//         for (let i = 0; i <= profileAmount; i++)(
+//         <p>i</p>
+//         )
+//       }
+//     </>
+//   )
+// }
 
 const SocialButtons = () => (
   <SocialButtonsBase>
-    <li>
+
+    {/* <li>
       <a href={profile.facebook}>
         <img src={icon.facebook} alt="Facebook" />
       </a>
@@ -77,7 +125,7 @@ const SocialButtons = () => (
       <a href={profile.youtube}>
         <img src={icon.youtube} alt="Youtube" />
       </a>
-    </li>
+    </li> */}
   </SocialButtonsBase>
 );
 
