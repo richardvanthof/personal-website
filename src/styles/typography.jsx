@@ -1,10 +1,17 @@
 import { css } from 'styled-components';
+import WebFont from 'webfontloader';
 import theme from '../styles/theme';
-
-// import scale from '../lib/textScale';
 
 const baseLineHeight = theme.typography.base.lineheight;
 const mediaQuery = theme.mediaQueries;
+const HeaderFonts = theme.typography.heading.font;
+const BaseFonts = theme.typography.base.font;
+
+WebFont.load({
+  google: {
+    families: ['Karla:300,400,700', 'sans-serif']
+  }
+});
 
 const generateTextScale = {
 
@@ -123,9 +130,18 @@ const scaleText = css`
 
 `;
 
+const setFont = css`
+  body {
+    font-family: ${BaseFonts.join(', ')};
+  };
+  h1, h2, h3, h4, h5, h6 {
+    font-family: ${HeaderFonts.join(', ')};
+  }
+`;
+
 const typography = css`
   ${scaleText}
-
+  ${setFont}
 `;
 
 export default typography;

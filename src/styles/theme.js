@@ -35,7 +35,7 @@ theme.typography = {
   heading: {
     lineHeight: '1.11em',
     font: [
-      'Karla',
+      'courir',
       'Avenir Next',
       'Helvetica Neue',
       'Segoe UI',
