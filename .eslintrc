@@ -11,4 +11,7 @@
             ".jsx"
         ]
     },
+    "rules": {
+        "no-plusplus": "off",
+    },
 }

@@ -10,7 +10,7 @@ const Contact = () => (
       <h1>Contact</h1>
     </Header>
     <Container>
-      <h3>Let's get in touch</h3>
+      <h3>Let&apos;s get in touch</h3>
       <p>richardvanthof@pm.me</p>
     </Container>
   </Layout>

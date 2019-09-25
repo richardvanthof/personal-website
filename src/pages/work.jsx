@@ -1,19 +1,26 @@
 import React from 'react';
-
+import styled from 'styled-components';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Container from '../components/container';
-import Header from '../components/header';
+import Thumbnail from '../components/thumbnail';
+
+const img = 'https://withberlinlove.com/wp-content/uploads/2012/07/c215-sleeping-on-the-street.jpg';
+
+const FlexContainer = styled(Container)`
+  display: flex !important;
+
+`;
 
 const Work = () => (
   <Layout>
     <SEO title="Work" />
-    <Header>
-      <h1>Work</h1>
-    </Header>
-    <Container>
-      <p>Work of Richard van &apos;t Hof</p>
-    </Container>
+    <FlexContainer>
+      <Thumbnail
+        title="Richard Hotline"
+        img={img}
+      />
+    </FlexContainer>
   </Layout>
 );
 

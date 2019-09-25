@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 import WebFont from 'webfontloader';
-import theme from '../styles/theme';
+import theme from './theme';
 
 const baseLineHeight = theme.typography.base.lineheight;
 const mediaQuery = theme.mediaQueries;
@@ -9,8 +9,8 @@ const BaseFonts = theme.typography.base.font;
 
 WebFont.load({
   google: {
-    families: ['Karla:300,400,700', 'sans-serif']
-  }
+    families: ['Karla:300,400,700', 'sans-serif'],
+  },
 });
 
 const generateTextScale = {
@@ -29,49 +29,40 @@ const generateTextScale = {
     this.base = input;
   },
   scale() {
-
-    const baseSizes = this.base.map((currentValue) => currentValue / this.defaultFontSize);
+    const baseSizes = this.base.map(currentValue => currentValue / this.defaultFontSize);
     // // Generate font sizes for a base size
     const generateTextSizes = (base) => {
-      const ratio = this.ratio;
-      let textSizes = [];
+      const { ratio } = this;
+      const textSizes = [];
       for (let i = 0; i < 10; i++) {
         const newSize = (base * (ratio ** i)).toFixed(3);
         textSizes.push(`${newSize}rem`);
       }
       return textSizes;
-    }
+    };
 
     // Generate font sizes for a base size
     if (baseSizes.length > 1) {
-      const allTextSizes = baseSizes.map((currentValue) => {
-        return generateTextSizes(currentValue);
-      });
+      const allTextSizes = baseSizes.map(currentValue => generateTextSizes(currentValue));
       return allTextSizes;
-    };
+    }
 
     return generateTextSizes(baseSizes);
   },
 };
 
-const configureTextScale = (base, ratio) => {
-  generateTextScale.setBase = base;
-  generateTextScale.setRatio = ratio;
-};
-
 // Shortcut 'ms'f (modular scale or 'generateTextSize'
 const size = generateTextScale.scale();
 
-console.log(size);
-
 const setHeadingSize = (scaleIndex) => {
   const scale = scaleIndex || 0;
-  let css = [];
-  const elements = ['p', 'h6', 'h5', 'h4', 'h3', 'h2', 'h1']
+  const RawCss = [];
+  const elements = ['p', 'h6', 'h5', 'h4', 'h3', 'h2', 'h1'];
   for (let i = 0; i < elements.length; i += 1) {
-    css.push(`${elements[i]} {font-size: ${size[scale, i]} };`);
+    // eslint-disable-next-line no-sequences
+    RawCss.push(`${elements[i]} {font-size: ${size[scale, i]} };`);
   }
-  return css.join('\n');
+  return RawCss.join('\n');
 };
 const baseFontSize = size[0];
 const scaleText = css`
@@ -85,22 +76,18 @@ const scaleText = css`
     line-height: ${baseLineHeight};
     @media ${mediaQuery.md} {
       font-size: calc(${baseFontSize}*1.2);
-      line-height: calc(${baseLineHeight}*1.2);
     }
 
     @media ${mediaQuery.lg} {
       font-size: calc(${baseFontSize}*1.3);
-      line-height: calc(${baseLineHeight}*1.3);
     }
 
     @media ${mediaQuery.xl} {
       font-size: calc(${baseFontSize}*1.35);
-      line-height: calc(${baseLineHeight}*1.4);
     }
 
     @media ${mediaQuery.xxl} {
       font-size: calc(${baseFontSize}*1.5);
-      font-size: calc(${baseLineHeight}*1.5);
     }
   }
   body {
@@ -113,8 +100,7 @@ const scaleText = css`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: 0.66em 0 0.22em;
-    line-height: 1.11em;
+    margin: 0em;
   }
 
   ${setHeadingSize()}
@@ -136,6 +122,7 @@ const setFont = css`
   };
   h1, h2, h3, h4, h5, h6 {
     font-family: ${HeaderFonts.join(', ')};
+    font-weight: normal;
   }
 `;
 
@@ -145,5 +132,3 @@ const typography = css`
 `;
 
 export default typography;
-
-

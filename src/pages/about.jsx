@@ -45,14 +45,16 @@ const About = () => (
       >
         <h1>It&apos;s like jay big</h1>
         <p>
-          <big>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          <big>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt
           lobortis feugiat vivamus at augue. Amet consectetur adipiscing elit ut
           aliquam purus. Aenean pharetra magna ac placerat vestibulum lectus
           mauris. Hendrerit gravida rutrum quisque non. Blandit libero volutpat
           sed cras ornare arcu dui vivamus arcu. Sagittis aliquam malesuada
           bibendum arcu vitae elementum curabitur vitae nunc. Vestibulum sed
-          arcu non odio euismod lacinia at quis risus.</big>
+          arcu non odio euismod lacinia at quis risus.
+          </big>
           {' '}
         </p>
         <h2>Resumé</h2>

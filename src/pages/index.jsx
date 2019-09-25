@@ -1,37 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
-// import P5Wrapper from 'react-p5-wrapper';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import Container from '../components/container';
 import Thumbnail from '../components/thumbnail';
-import Header from '../components/header';
+import Container from '../components/container';
 
-// import Sketch1 from "../components/sketch/Sketch.1";
-// import Sketch from "../components/sketch/Sketch";
-const img = require('../static/img/textImg.png');
+const testImg = require('../static/img/work/richardhotline/richardhotline-12.png');
 
-const Thumbnails = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 10vw;
+const Work = styled.section`
 `;
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-    {/* {window != undefined &&
-      <P5Wrapper sketch={Sketch1} />
-    } */}
-    <Container>
-      <h3>I want to manipulate everything</h3>
-    </Container>
-    <Container>
-      <Thumbnails>
-        <Thumbnail title="test" img={img} alt="test image" />
-        <Thumbnail title="test" img={img} alt="test image" />
-      </Thumbnails>
-    </Container>
+    <Work>
+      <Container>
+        <h1>Work</h1>
+      </Container>
+      <Thumbnail
+        title="Richard Hotline"
+        client="Personal Project"
+        img={testImg}
+        description="I tried to change the expectations how people should communucate with me"
+        medium="Digital Installation"
+        year="'19"
+        alt="The Printer"
+        url="/work/richard-hotline"
+      />
+
+      <Thumbnail
+        title="Richard Hotline"
+        client="Personal Project"
+        img={testImg}
+        description="I tried to change the expectations how people should communucate with me"
+        medium="Digital Installation"
+        year="'19"
+        alt="The Printer"
+        url="/work/richard-hotline"
+        right
+      />
+    </Work>
   </Layout>
 );
 

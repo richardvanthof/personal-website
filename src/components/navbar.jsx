@@ -54,7 +54,7 @@ const NavLink = (props) => {
 };
 
 const Logo = styled.img`
-  width: 5rem;
+  width: 3rem;
   margin: 0;
   mix-blend-mode: luminosity;
 `;
@@ -70,8 +70,6 @@ const Navbar = ({ siteTitle }) => (
       <ul>
         <NavLink title="Home" to="/" />
         <NavLink title="About" to="/about" />
-        <NavLink title="Work" to="/work" />
-        <NavLink title="Lab" to="/playground" />
         <NavLink title="Contact" to="/contact" />
       </ul>
     </NavLinks>

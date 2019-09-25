@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 // import P5Wrapper from 'react-p5-wrapper';
 import SEO from '../components/seo';
 import Container from '../components/container';
-import Footer from '../components/footer';
 
 const thumbnail = 'https://images.artnet.com/aoa_lot_images/SpecialSale/469/SaleBanner/BANNER-Brandt_Elephant%20Herd.jpg';
-const cover = '../images/img/work/richardhotline/richardhotline-6.jpg';
 
 const Main = styled.main`
     display: flex;
@@ -18,21 +16,7 @@ const Main = styled.main`
     transition: 0.3s ease-in-out;
 `;
 
-const SquareBase = styled.div`
-
-    transition: 0.25s ease-in-out;
-    ${props => (props.state ? `
-        width: 100vw;
-        height: 100vh;
-        background:  powderblue;
-    ` : `
-        width: 10em;
-        height: 10em;
-        background: purple;
-    `)}
-`;
-
-const Content  = styled.div`
+const Content = styled.div`
     width: 100vw;
     height: 100vh;
     background: white;
@@ -58,53 +42,46 @@ const Thumbnail = styled.div`
     } */
 `;
 
-const Post = (props) => {
+const Post = () => {
   const [fullScreen, setFullScreen] = useState(false);
   const toggleFullScreen = () => setFullScreen(prevState => !prevState);
   return (
     <Flipper flipKey={fullScreen}>
+      <SEO title="Playground" keywords={['gatsby', 'application', 'react']} />
       {fullScreen ? (
-          <Flipped flipId="post">
+        <Flipped flipId="post">
           <Content onClick={toggleFullScreen}>
-          <Flipped inverseFlipId="post">
+            <Flipped inverseFlipId="post">
               <Container>
-                      <h1>Richardhotline</h1>
-                      <p>2018</p>
-                      <img src={thumbnail} alt="richard hotline"/>
+                <h1>Richardhotline</h1>
+                <p>2018</p>
+                <img src={thumbnail} alt="richard hotline" />
               </Container>
-              </Flipped>
+            </Flipped>
           </Content>
-      </Flipped>
+        </Flipped>
       ) : (
 
         <Flipped flipId="post">
-        <Thumbnail onClick={toggleFullScreen}>
+          <Thumbnail onClick={toggleFullScreen}>
             <Flipped inverseFlipId="post">
-                <>
+              <>
                 <h3>Richardhotline</h3>
                 <p>2018</p>
-                <img src={thumbnail} alt="richard hotline"/>
+                <img src={thumbnail} alt="richard hotline" />
               </>
-              </Flipped>
-        </Thumbnail>
-    </Flipped>
+            </Flipped>
+          </Thumbnail>
+        </Flipped>
       )}
     </Flipper>
   );
-
 };
-
-const global = css`
-    .square {
-        width: 10em;
-        height: 10em;
-    }
-`;
 
 const Playground = () => (
 
   <Main>
-      <Post />
+    <Post />
   </Main>
 );
 
