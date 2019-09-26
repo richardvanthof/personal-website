@@ -9,11 +9,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
-
 import GlobalStyle from '../styles/globalStyles';
-import NoScript from './noScript';
-import Navbar from './navbar';
-import Footer from './footer';
+import NoScript from '../components/noScript';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 import theme from '../styles/theme';
 
@@ -22,7 +21,7 @@ const Main = styled.main`
   transition: 0.5 ease-in-out;
 `;
 
-const Layout = ({ children }) => (
+const DefaultLayout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -47,8 +46,8 @@ const Layout = ({ children }) => (
   />
 );
 
-Layout.propTypes = {
+DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+export default DefaultLayout;

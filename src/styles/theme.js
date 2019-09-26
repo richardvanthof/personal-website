@@ -1,7 +1,7 @@
 const theme = {};
 
 const white = '#FEFEFE';
-const black = '#212121';
+const black = '#141414';
 const lightGray = '#F2F2F2';
 const blue = '#1000FF';
 

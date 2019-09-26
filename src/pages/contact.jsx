@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import Container from '../components/container';
 import Header from '../components/header';
 
 const Contact = () => (
-  <Layout>
+  <DefaultLayout>
     <Header>
       <h1>Contact</h1>
     </Header>
@@ -13,7 +13,7 @@ const Contact = () => (
       <h3>Let&apos;s get in touch</h3>
       <p>richardvanthof@pm.me</p>
     </Container>
-  </Layout>
+  </DefaultLayout>
 );
 
 export default Contact;

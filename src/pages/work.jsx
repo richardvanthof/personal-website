@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import Container from '../components/container';
 import Thumbnail from '../components/thumbnail';
@@ -13,7 +13,7 @@ const FlexContainer = styled(Container)`
 `;
 
 const Work = () => (
-  <Layout>
+  <DefaultLayout>
     <SEO title="Work" />
     <FlexContainer>
       <Thumbnail
@@ -21,7 +21,7 @@ const Work = () => (
         img={img}
       />
     </FlexContainer>
-  </Layout>
+  </DefaultLayout>
 );
 
 export default Work;

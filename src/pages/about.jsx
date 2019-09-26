@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import Image from '../components/image';
 
@@ -21,7 +21,7 @@ const grid = {
 };
 
 const About = () => (
-  <Layout>
+  <DefaultLayout>
     <SEO title="About" />
     <Grid rows={grid.rows} cols={grid.cols}>
       <Col
@@ -71,7 +71,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         </p>
       </Col>
     </Grid>
-  </Layout>
+  </DefaultLayout>
 );
 
 export default About;

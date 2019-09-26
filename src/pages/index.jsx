@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/seo';
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import Thumbnail from '../components/thumbnail';
 import Container from '../components/container';
 
@@ -11,7 +11,7 @@ const Work = styled.section`
 `;
 
 const IndexPage = () => (
-  <Layout>
+  <DefaultLayout>
     <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
     <Work>
       <Container>
@@ -40,7 +40,7 @@ const IndexPage = () => (
         right
       />
     </Work>
-  </Layout>
+  </DefaultLayout>
 );
 
 export default IndexPage;

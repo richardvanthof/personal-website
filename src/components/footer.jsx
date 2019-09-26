@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Button from './button';
 import theme from '../styles/theme';
+
 
 const {
   colors, mediaQueries, repo, email, phone,
@@ -75,49 +77,50 @@ const FooterLink = styled.a`
 `;
 
 const Footer = () => (
-  <FooterBase>
-    <FoorterContent>
-      <h5>Richard van &apos;t Hof</h5>
-      <h3><FooterLink href={`mailto:${email}`}>richardvanthof@pm.me</FooterLink></h3>
-      <h3><FooterLink href={`tel:${phone}`}>+31 6 41 21 95 54</FooterLink></h3>
-    </FoorterContent>
-    <FooterLinks>
-      <FooterLinkColumn>
-        <FooterList>
-          <FooterLink target="_blanc" href="https://goo.gl/maps/hL9ojTqKzf5e6zan8">
-            <FooterLi>
+  <>
+    <FooterBase>
+      <FoorterContent>
+        <h5>Richard van &apos;t Hof</h5>
+        <h3><FooterLink href={`mailto:${email}`}>richardvanthof@pm.me</FooterLink></h3>
+        <h3><FooterLink href={`tel:${phone}`}>+31 6 41 21 95 54</FooterLink></h3>
+      </FoorterContent>
+      <FooterLinks>
+        <FooterLinkColumn>
+          <FooterList>
+            <FooterLink target="_blanc" href="https://goo.gl/maps/hL9ojTqKzf5e6zan8">
+              <FooterLi>
             Weg en Bos 9E
-            </FooterLi>
-            <FooterLi>
+              </FooterLi>
+              <FooterLi>
             2661DG Bergschenhoek
+              </FooterLi>
+              <FooterLi>
+            Netherlands
+              </FooterLi>
+            </FooterLink>
+          </FooterList>
+        </FooterLinkColumn>
+        <FooterLinkColumn>
+          <FooterList>
+            <FooterLi>
+            Terms of Service
             </FooterLi>
             <FooterLi>
-            Netherlands
-            </FooterLi>
-          </FooterLink>
-        </FooterList>
-      </FooterLinkColumn>
-      <FooterLinkColumn>
-        <FooterList>
-          <FooterLi>
-            Terms of Service
-          </FooterLi>
-          <FooterLi>
             Privacy Statement
-          </FooterLi>
-          <FooterLi>
-            <Link to="/sitemap.xml">Sitemap</Link>
-          </FooterLi>
-        </FooterList>
-      </FooterLinkColumn>
-      <FooterLinkColumn>
-        <p>This site is open source!</p>
-        <FooterLink target="_blanc" href={repo}>View source code</FooterLink>
-      </FooterLinkColumn>
-    </FooterLinks>
+            </FooterLi>
+            <FooterLi>
+              <Link to="/sitemap.xml">Sitemap</Link>
+            </FooterLi>
+          </FooterList>
+        </FooterLinkColumn>
+        <FooterLinkColumn>
+          <p>This site is open source!</p>
+          <Button title="View Source Code" light external to={repo} />
+        </FooterLinkColumn>
+      </FooterLinks>
+    </FooterBase>
 
-  </FooterBase>
-
+  </>
 );
 
 export default Footer;

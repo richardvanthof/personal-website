@@ -1,0 +1,47 @@
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import theme from '../styles/theme';
+
+const { container, mediaQueries } = theme;
+
+const GalleryBase = styled.section`
+    margin: 1em ${props => (props.fluid ? '2em' : container.sm)};
+    display: flex;
+    flex-direction: column;
+    @media ${mediaQueries.sm} {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    @media ${mediaQueries.md} {
+        margin: 1em ${props => (props.fluid ? '2em' : container.md)};
+        flex-basis: ${props => props.width}%;
+        * {
+            width: ${props => props.width}%;
+            padding: 0.5em;
+            margin: 0;
+        }
+    }
+    @media ${mediaQueries.lg} {
+        margin: 1em ${props => (props.fluid ? '2em' : container.lg)};
+    }
+`;
+
+const Gallery = ({ children, fluid, width }) => (
+  <GalleryBase width={width} fluid={fluid}>
+    {children}
+  </GalleryBase>
+);
+
+Gallery.propTypes = {
+  children: PropTypes.node.isRequired,
+  fluid: PropTypes.bool,
+  width: PropTypes.number,
+};
+
+Gallery.defaultProps = {
+  width: 100,
+  fluid: false,
+};
+
+export default Gallery;

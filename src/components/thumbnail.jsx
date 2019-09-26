@@ -21,7 +21,7 @@ const ThumbnailBase = styled(Link)`
       margin: 1em 0;
     }
     @media ${mediaQueries.md} {
-      margin-bottom: 10vh;
+      margin-bottom: 25vh;
       grid-template-columns: ${container.md} 1fr 1fr 1fr 1fr ${container.md};
     }
 `;
