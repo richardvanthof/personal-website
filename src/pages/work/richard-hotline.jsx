@@ -1,11 +1,14 @@
 import React from 'react';
-
 import PortfolioLayout from '../../layouts/portfolioLayout';
 import PortfolioHeader from '../../components/portfolioHeader';
 import Button from '../../components/button';
 import Gallery from '../../components/gallery';
-
-const headerImg = require('../../static/img/work/richardhotline/richardhotline-12.png');
+// TODO: Implement Gatsby Image for better image optimisation.
+import headerImg from '../../static/img/work/richardhotline/richardhotline-12.png';
+import image3 from '../../static/img/work/richardhotline/richardhotline-3.jpg';
+import start from '../../static/img/work/richardhotline/start-screen.png';
+import compose from '../../static/img/work/richardhotline/compose-window.png';
+import endScreen from '../../static/img/work/richardhotline/end-screen.png';
 
 const RichardHotline = () => (
   <PortfolioLayout>
@@ -16,13 +19,13 @@ const RichardHotline = () => (
     >
       <Button external to="https://richardhotline.nl" title="View Website">View Website</Button>
     </PortfolioHeader>
-    <Gallery width={33}>
-      <img src={headerImg} alt="Printer" />
-      <img src={headerImg} alt="Printer" />
-      <img src={headerImg} alt="Printer" />
+    <Gallery fluid width={50}>
+      <img src={compose} alt="Compose window" />
+      <img src={endScreen} alt="Livestream endscreen" />
     </Gallery>
     <Gallery width={100}>
-      <img src={headerImg} alt="Printer" />
+      <img src={start} alt="Printed message" />
+      <img src={image3} alt="Printed message" />
     </Gallery>
   </PortfolioLayout>
 );

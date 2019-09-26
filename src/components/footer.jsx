@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Button from './button';
+import { Subtitle } from './typography';
 import theme from '../styles/theme';
 
 
@@ -12,14 +13,14 @@ const {
 const FooterBase = styled.footer`
   display: flex;
   color: ${colors.white};
-  min-height: 66vh;
+  min-height: 75vh;
   margin-top: 1em;
   padding: 5vh 1em;
   display: flex;
   justify-content: center;
   flex-direction: column;
   background: ${colors.bgDark};
-  @media ${mediaQueries.sm} {
+  @media ${mediaQueries.xs} {
     justify-content: space-between;
     margin-left: 4vw;
     margin-top: 4vw;
@@ -27,12 +28,13 @@ const FooterBase = styled.footer`
   }
   p {
     margin: 0;
+    margin-bottom: 0.33em;
   }
 `;
 
 const FoorterContent = styled.div`
 padding: 2em 0;
-@media ${mediaQueries.sm} {
+@media ${mediaQueries.xs} {
     padding-top: 20vh;
   }
   @media ${mediaQueries.md} {
@@ -60,7 +62,7 @@ const FooterLinkColumn = styled.div`
 const FooterList = styled.ul`
   list-style: none;
   margin-left: 0;
-  @media ${mediaQueries.sm} {
+  @media ${mediaQueries.xs} {
     margin-left: 1em;
   }
 `;
@@ -80,7 +82,7 @@ const Footer = () => (
   <>
     <FooterBase>
       <FoorterContent>
-        <h5>Richard van &apos;t Hof</h5>
+        <Subtitle>Richard van &apos;t Hof</Subtitle>
         <h3><FooterLink href={`mailto:${email}`}>richardvanthof@pm.me</FooterLink></h3>
         <h3><FooterLink href={`tel:${phone}`}>+31 6 41 21 95 54</FooterLink></h3>
       </FoorterContent>

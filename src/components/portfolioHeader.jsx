@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Embed from './embed';
 import theme from '../styles/theme';
-
+// https://www.youtube.com/embed/0ItZhpv4pto
 const { colors, container, mediaQueries } = theme;
 const HeaderBase = styled.header`
     display: flex;
@@ -41,13 +41,26 @@ const HeaderFigure = styled.figure`
 `;
 
 const HeaderVideo = styled(Embed)`
-    border: red 1em solid;
+  width: 100%;
+`;
+
+const HeaderVideoWrapper = styled.div`
+  grid-column: 1/7;
+  width: 100%;
+  background: ${colors.bgLight};
+  margin-top: 5em;
+  @media ${mediaQueries.sm} {
+    margin-top: 0;
+    padding: 10vh;
+  }
 `;
 
 const HeaderVisual = ({ video, img }) => {
   if (video) {
     return (
-      <HeaderVideo src={video} />
+      <HeaderVideoWrapper>
+        <HeaderVideo style={{ gridColumn: '1/7' }} src={video} />
+      </HeaderVideoWrapper>
     );
   }
   return (
@@ -65,7 +78,7 @@ const HeaderTitleBase = styled.div`
 
 const HeaderTitle = ({ title, client, children }) => (
   <HeaderTitleBase>
-    <h2>{title}</h2>
+    <h3>{title}</h3>
     <p>{client}</p>
     {children}
   </HeaderTitleBase>

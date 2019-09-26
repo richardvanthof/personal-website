@@ -30,14 +30,15 @@ const EmbedWrapper = styled.div`
     }
 `;
 
-const Embed = ({ src }) => (
+const Embed = ({ src, children }) => (
   <EmbedWrapper>
-    <iframe title="video" src={src} />
+    <iframe title="video" src={src || children} />
   </EmbedWrapper>
 );
 
 Embed.propTypes = {
   src: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default Embed;

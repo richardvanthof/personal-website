@@ -13,6 +13,7 @@ const buttonStyling = css`
     text-decoration: none;
     margin-left: 0.1em;
     transition: 0.15s ease-in-out;
+    font-size: 0.8em;
     &:hover {
         transform: translateX(0.2em);
         svg, img {

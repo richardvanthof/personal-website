@@ -18,10 +18,10 @@ const ThumbnailBase = styled(Link)`
       display: grid;
       grid-template-columns: ${container.sm} 1fr 1fr 1fr 1fr ${container.sm};
       grid-template-rows: auto;
-      margin: 1em 0;
+      margin: 10vh 0;
     }
     @media ${mediaQueries.md} {
-      margin-bottom: 25vh;
+      margin-bottom: 15vh;
       grid-template-columns: ${container.md} 1fr 1fr 1fr 1fr ${container.md};
     }
 `;
@@ -31,6 +31,7 @@ const ThumbnailImage = styled.figure`
   max-height: 90vh;
   overflow: hidden;
   margin: 0;
+  border-radius: 1em;
   &:hover {
     img {
       transform: scale(1.03);
@@ -53,12 +54,15 @@ const ThumbnailInfo = styled.div`
 const ThumbnailMetaData = styled.div`
   display: none;
   @media ${mediaQueries.sm} {
+    transform: translateX(${props => (props.right ? '-0.5em' : '0.5em')});
+    justify-content: space-between;
     grid-column: ${props => (props.right ? 6 : 1)};
     grid-row: 1;
     text-align: right;
     margin: 1em;
     display: flex;
     flex-direction: column;
+    align-items: ${props => (props.right ? 'baseline' : 'end')};
   }
 `;
 
@@ -67,18 +71,46 @@ const Type = styled.p`
   text-orientation: sideways-right;
 `;
 
-const Thumbnail = (props) => {
-  const {
-    title,
-    client,
-    img,
-    alt,
-    medium,
-    year,
-    description,
-    url,
-    right,
-  } = props;
+const Year = styled.h6`
+  transform: translateX(${props => (props.right ? '-0.75em' : '0.66em')});
+`;
+
+const SmallThumbnailBase = styled(Link)`
+  padding: 2em;
+  padding-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const SmallThumbnailInfo = styled.div`
+  grid-column: ${props => (props.right ? 2 : 5)};
+  grid-row: 1;
+  margin: 1em 2em;
+`;
+
+const Thumbnail = ({
+  title, client, img, alt, medium, year, description, url, right, small,
+}) => {
+  if (small) {
+    return (
+      <SmallThumbnailBase to={url}>
+        <ThumbnailImage right={right}>
+          <img src={img} alt={alt || title} />
+        </ThumbnailImage>
+        <SmallThumbnailInfo right={right}>
+          <h5>{title}</h5>
+          {client && (
+            <p>{client}</p>
+          )}
+          <Button title="learn more" to={url} />
+        </SmallThumbnailInfo>
+        {/* <ThumbnailMetaData right={right}>
+          <Type>{medium}</Type>
+          <Year right={right}>{year}</Year>
+        </ThumbnailMetaData> */}
+      </SmallThumbnailBase>
+    );
+  }
   return (
     <ThumbnailBase to={url}>
       <ThumbnailImage right={right}>
@@ -92,7 +124,7 @@ const Thumbnail = (props) => {
       </ThumbnailInfo>
       <ThumbnailMetaData right={right}>
         <Type>{medium}</Type>
-        <h6>{year}</h6>
+        <Year right={right}>{year}</Year>
       </ThumbnailMetaData>
     </ThumbnailBase>
   );
@@ -108,9 +140,11 @@ Thumbnail.propTypes = {
   description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   right: PropTypes.bool,
+  small: PropTypes.bool,
 };
 
 Thumbnail.defaultProps = {
   right: false,
+  small: false,
 };
 export default Thumbnail;
