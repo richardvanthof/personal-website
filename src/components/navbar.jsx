@@ -15,8 +15,7 @@ const Nav = styled.nav`
   position: fixed;
   width: 100%;
   z-index: 100;
-}
-`;
+}`;
 
 const NavLinks = styled.div`
   align-items: center;

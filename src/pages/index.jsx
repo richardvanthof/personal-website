@@ -37,7 +37,7 @@ const IndexPage = () => (
         url="/work/voor-later"
         right
       />
-      <Gallery padded width={50}>
+      <Gallery padded fluid width={50}>
         <Thumbnail
           title="Voor Later"
           img={voorLater}

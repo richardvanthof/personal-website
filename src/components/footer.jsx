@@ -117,7 +117,7 @@ const Footer = () => (
           </FooterList>
         </FooterLinkColumn>
         <FooterLinkColumn>
-          <p>This site is open source!</p>
+          <p>Handmade in Roterdam</p>
           <Button title="View Source Code" light external to={repo} />
         </FooterLinkColumn>
       </FooterLinks>

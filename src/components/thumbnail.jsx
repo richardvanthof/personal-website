@@ -82,7 +82,6 @@ padding-bottom: 5vh;
   flex-direction: column;
   min-height:100vw;
   @media ${mediaQueries.md} {
-    padding: 2em;
     min-height: unset;
   }
 `;
@@ -90,15 +89,15 @@ padding-bottom: 5vh;
 const SmallThumbnailInfo = styled.div`
   grid-column: ${props => (props.right ? 2 : 5)};
   grid-row: 1;
-  margin: 1em 2em;
+  margin: 1em;
 `;
 
 const Thumbnail = ({
-  title, client, img, alt, medium, year, description, url, right, small,
+  title, client, img, alt, medium, year, description, url, to, right, small,
 }) => {
   if (small) {
     return (
-      <SmallThumbnailBase to={url}>
+      <SmallThumbnailBase to={to}>
         <ThumbnailImage right={right}>
           <img src={img} alt={alt || title} />
         </ThumbnailImage>
@@ -107,7 +106,7 @@ const Thumbnail = ({
           {client && (
             <p>{client}</p>
           )}
-          <Button title="learn more" to={url} />
+          <Button title="learn more" to={to} />
         </SmallThumbnailInfo>
         {/* <ThumbnailMetaData right={right}>
           <Type>{medium}</Type>
@@ -139,6 +138,7 @@ Thumbnail.propTypes = {
   title: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   medium: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,

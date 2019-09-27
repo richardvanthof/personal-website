@@ -7,14 +7,14 @@ import testHeader from '../static/img/test-img.png';
 const { colors } = theme;
 
 const HeroHeaderWrapper = styled.header`
-    height:90vh;
+    height:60vh;
     display: flex;
     &:before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
-        height:105vh;
+        height:75vh;
         width: 100vw;
         background: url(${testHeader}) ${colors.bgLight};
         background-size: cover;
