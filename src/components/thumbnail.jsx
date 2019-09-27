@@ -31,7 +31,7 @@ const ThumbnailImage = styled.figure`
   max-height: 90vh;
   overflow: hidden;
   margin: 0;
-  border-radius: 1em;
+  border-radius: 0.5em;
   &:hover {
     img {
       transform: scale(1.03);
@@ -76,10 +76,15 @@ const Year = styled.h6`
 `;
 
 const SmallThumbnailBase = styled(Link)`
-  padding: 2em;
-  padding-bottom: 5vh;
+padding-bottom: 5vh;
+  text-decoration: none;
   display: flex;
   flex-direction: column;
+  min-height:100vw;
+  @media ${mediaQueries.md} {
+    padding: 2em;
+    min-height: unset;
+  }
 `;
 
 const SmallThumbnailInfo = styled.div`

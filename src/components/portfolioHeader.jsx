@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Embed from './embed';
+import Button from './button';
 import theme from '../styles/theme';
 // https://www.youtube.com/embed/0ItZhpv4pto
 const { colors, container, mediaQueries } = theme;
@@ -76,11 +77,20 @@ const HeaderTitleBase = styled.div`
     padding: 2em 1em;
 `;
 
-const HeaderTitle = ({ title, client, children }) => (
+const HeaderTitle = ({
+  title, client, cta, url,
+}) => (
   <HeaderTitleBase>
-    <h3>{title}</h3>
-    <p>{client}</p>
-    {children}
+    {title
+      && <h3>{title}</h3>
+    }
+    {client
+      && <p>{client}</p>
+    }
+    {url
+      && <Button external to={url}>{cta || 'learn more'}</Button>
+    }
+
   </HeaderTitleBase>
 );
 
@@ -96,11 +106,11 @@ const HeaderDescription = styled.p`
 `;
 
 const PortfolioHeader = ({
-  image, alt, video, title, client, description, children,
+  image, alt, video, title, client, description, children, cta, url,
 }) => (
   <HeaderBase>
     <HeaderVisual video={video} img={image} alt={alt} />
-    <HeaderTitle title={title} client={client}>
+    <HeaderTitle title={title} client={client} cta={cta} url={url}>
       {children}
     </HeaderTitle>
     <HeaderDescription>
@@ -112,17 +122,20 @@ const PortfolioHeader = ({
 PortfolioHeader.propTypes = {
   image: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  video: PropTypes.string.isRequired,
+  video: PropTypes.string,
   title: PropTypes.string.isRequired,
-  client: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  client: PropTypes.string,
+  description: PropTypes.string,
+  children: PropTypes.node,
+  cta: PropTypes.string,
+  url: PropTypes.string,
 };
 
 HeaderTitle.propTypes = {
   title: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  cta: PropTypes.string,
+  url: PropTypes.string,
 };
 
 HeaderVisual.propTypes = {
@@ -130,4 +143,17 @@ HeaderVisual.propTypes = {
   img: PropTypes.string.isRequired,
 };
 
+PortfolioHeader.defaultProps = {
+  video: null,
+  client: null,
+  description: null,
+  children: null,
+  cta: null,
+  url: null,
+};
+
+HeaderTitle.defaultProps = {
+  cta: null,
+  url: null,
+};
 export default PortfolioHeader;

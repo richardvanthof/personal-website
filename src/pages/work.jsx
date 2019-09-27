@@ -10,7 +10,17 @@ const img = 'https://withberlinlove.com/wp-content/uploads/2012/07/c215-sleeping
 const Work = () => (
   <DefaultLayout>
     <SEO title="Work" />
-    <Gallery width={50}>
+    <Gallery padded width={50}>
+      <Thumbnail
+        title="Richard Hotline"
+        img={img}
+        small
+      />
+      <Thumbnail
+        title="Richard Hotline"
+        img={img}
+        small
+      />
       <Thumbnail
         title="Richard Hotline"
         img={img}

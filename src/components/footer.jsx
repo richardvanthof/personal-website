@@ -7,10 +7,11 @@ import theme from '../styles/theme';
 
 
 const {
-  colors, mediaQueries, repo, email, phone,
+  typography, colors, mediaQueries, repo, email, phone,
 } = theme;
 
 const FooterBase = styled.footer`
+  font-family: ${(typography.heading.font).join(',')};
   display: flex;
   color: ${colors.white};
   min-height: 75vh;

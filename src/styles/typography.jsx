@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import WebFont from 'webfontloader';
+// import WebFont from 'webfontloader';
 import theme from './theme';
 
 const baseLineHeight = theme.typography.base.lineheight;
@@ -7,11 +7,12 @@ const mediaQuery = theme.mediaQueries;
 const HeaderFonts = theme.typography.heading.font;
 const BaseFonts = theme.typography.base.font;
 
-WebFont.load({
-  google: {
-    families: ['Karla:300,400,700', 'sans-serif'],
-  },
-});
+
+// WebFont.load({
+//   google: {
+//     families: ['Karla:300,400,700', 'sans-serif'],
+//   },
+// });
 
 const generateTextScale = {
 

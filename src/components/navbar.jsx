@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import theme from '../styles/theme';
 
 const logo = require('../static/trademarks/logo.svg');
 
 const Nav = styled.nav`
+  font-family: ${(theme.typography.heading.font).join(',')};
   display: flex;
-  padding: 1em 2em;
+  padding: 0.4em 1em;
   align-items: center;
   justify-content: space-between;
   position: fixed;
@@ -70,6 +72,7 @@ const Navbar = ({ siteTitle }) => (
       <ul>
         <NavLink title="Home" to="/" />
         <NavLink title="About" to="/about" />
+        <NavLink title="Work" to="/work" />
         <NavLink title="Contact" to="/contact" />
       </ul>
     </NavLinks>

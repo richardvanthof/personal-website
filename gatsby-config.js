@@ -11,11 +11,37 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'img',
-        path: './src/static',
+        path: `${__dirname}/src/static/img`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'work',
+        path: `${__dirname}/src/pages/work`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-page-creator',
+      options: {
+        path: `${__dirname}/src/pages/work`,
       },
     },
     'gatsby-transformer-sharp',
+    'gatsby-transformer-remark',
     'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+      // Apply gatsby-mdx to both .mdx and .md files
+        extensions: ['.mdx', '.md'],
+        defaultLayouts: {
+          work: require.resolve('./src/layouts/portfolioLayout.jsx'),
+          default: require.resolve('./src/layouts/defaultLayout.jsx'),
+        },
+      },
+    },
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
     'gatsby-plugin-transition-link',
     'gatsby-image',

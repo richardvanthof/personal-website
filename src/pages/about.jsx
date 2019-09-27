@@ -2,7 +2,6 @@ import React from 'react';
 
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
-import Image from '../components/image';
 
 import { Grid, Col } from '../components/grid';
 
@@ -24,16 +23,7 @@ const About = () => (
   <DefaultLayout>
     <SEO title="About" />
     <Grid rows={grid.rows} cols={grid.cols}>
-      <Col
-        row={{
-          xs: 2, sm: 2, md: '2', lg: '1', xl: '2/3',
-        }}
-        col={{
-          xs: '2/10', sm: '2/5', md: '2/6', lg: '2/6', xl: '2/6',
-        }}
-      >
-        <Image />
-      </Col>
+
       <Col
         row={{
           xs: 3, sm: 2, md: '2', lg: '2', xl: '2',
