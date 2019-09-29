@@ -91,6 +91,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utilities/typography`,
+        omitGoogleFont: false,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$/,
