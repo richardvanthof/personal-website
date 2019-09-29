@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import BackgroundImage from 'gatsby-background-image'
+// import BackgroundImage from 'gatsby-background-image'; Surprise tool
 import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
@@ -32,7 +32,7 @@ const HeaderBase = styled.header`
  `;
 
 const HeaderFigure = styled.figure`
-  background: url('${props => props.src}');
+  /* background: url('${props => props.src}'); */
   background-size: cover;
   grid-column: 1/7;
   grid-row: 1;
@@ -89,7 +89,7 @@ const HeaderTitle = ({
       && <p>{client}</p>
     }
     {url
-      && <Button external title={cta || 'learn more'} to={url}/>
+      && <Button external title={cta || 'learn more'} to={url} />
     }
 
   </HeaderTitleBase>

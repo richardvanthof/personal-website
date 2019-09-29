@@ -93,6 +93,13 @@ const SmallThumbnailInfo = styled.div`
   margin: 1em;
 `;
 
+
+const getSlug = (absolutePath, parentFolder) => {
+  const startPos = absolutePath.search(`/${parentFolder}/`);
+  const url = absolutePath.substr(startPos).replace('.mdx', '');
+  return url;
+};
+
 const Thumbnail = ({
   title, client, img, alt, medium, year, description, url, to, right, small,
 }) => {
@@ -119,7 +126,7 @@ const Thumbnail = ({
   return (
     <ThumbnailBase to={url}>
       <ThumbnailImage right={right}>
-      <Img fluid={img} alt={alt || title} />
+        <Img fluid={img} alt={alt || title} />
       </ThumbnailImage>
       <ThumbnailInfo right={right}>
         <h3>{title}</h3>
@@ -154,7 +161,9 @@ Thumbnail.defaultProps = {
   small: false,
 };
 
-export const Blogpost = ({ right, small, data: post }, key) => (
+export const Blogpost = ({
+  parentFolderName, right, small, data: post,
+}, key) => (
   <Thumbnail
     key={key}
     title={post.frontmatter.title}
@@ -162,7 +171,22 @@ export const Blogpost = ({ right, small, data: post }, key) => (
     url={post.frontmatter.url}
     right={right}
     small={small}
+    to={getSlug(post.fileAbsolutePath, parentFolderName)}
   />
 );
 
+Blogpost.propTypes = {
+  parentFolderName: PropTypes.string.isRequired,
+  right: PropTypes.bool,
+  small: PropTypes.bool,
+  data: PropTypes.shape({
+    fileAbsolutePath: PropTypes.string,
+    frontmatter: PropTypes.object,
+  }).isRequired,
+};
+
+Blogpost.defaultProps = {
+  right: false,
+  small: false,
+};
 export default Thumbnail;

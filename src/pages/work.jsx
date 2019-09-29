@@ -15,7 +15,7 @@ const Work = ({ data }) => {
       <Gallery fluid width={33}>
         {
           posts.map(({ node: post }, _, key) => (
-            <Blogpost small data={post} key={key} />
+            <Blogpost small parentFolderName="work" data={post} key={key} />
           ))
         }
       </Gallery>
@@ -28,6 +28,7 @@ export const pageQuery = graphql`
     allMdx {
       edges {
         node {
+          fileAbsolutePath
           frontmatter{
             key
             title
@@ -35,6 +36,7 @@ export const pageQuery = graphql`
               childImageSharp {
                 fluid {
                   ...GatsbyImageSharpFluid
+
                 }
               }
             }
