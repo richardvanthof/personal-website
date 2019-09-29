@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
 import Button from './button';
@@ -99,7 +100,7 @@ const Thumbnail = ({
     return (
       <SmallThumbnailBase to={to}>
         <ThumbnailImage right={right}>
-          <img src={img} alt={alt || title} />
+          <Img fluid={img} alt={alt || title} />
         </ThumbnailImage>
         <SmallThumbnailInfo right={right}>
           <h5>{title}</h5>
@@ -118,7 +119,7 @@ const Thumbnail = ({
   return (
     <ThumbnailBase to={url}>
       <ThumbnailImage right={right}>
-        <img src={img} alt={alt || title} />
+      <Img fluid={img} alt={alt || title} />
       </ThumbnailImage>
       <ThumbnailInfo right={right}>
         <h3>{title}</h3>
@@ -152,4 +153,16 @@ Thumbnail.defaultProps = {
   right: false,
   small: false,
 };
+
+export const Blogpost = ({ right, small, data: post }, key) => (
+  <Thumbnail
+    key={key}
+    title={post.frontmatter.title}
+    img={post.frontmatter.image.childImageSharp.fluid}
+    url={post.frontmatter.url}
+    right={right}
+    small={small}
+  />
+);
+
 export default Thumbnail;

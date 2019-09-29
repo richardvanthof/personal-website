@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import BackgroundImage from 'gatsby-background-image'
 import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
-// https://www.youtube.com/embed/0ItZhpv4pto
+
 const { colors, container, mediaQueries } = theme;
 const HeaderBase = styled.header`
     display: flex;
@@ -31,7 +32,7 @@ const HeaderBase = styled.header`
  `;
 
 const HeaderFigure = styled.figure`
-  background-image: url(${props => props.src});
+  background: url('${props => props.src}');
   background-size: cover;
   grid-column: 1/7;
   grid-row: 1;
@@ -88,7 +89,7 @@ const HeaderTitle = ({
       && <p>{client}</p>
     }
     {url
-      && <Button external to={url}>{cta || 'learn more'}</Button>
+      && <Button external title={cta || 'learn more'} to={url}/>
     }
 
   </HeaderTitleBase>

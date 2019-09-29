@@ -70,8 +70,8 @@ const Navbar = ({ siteTitle }) => (
     <NavLinks>
       <ul>
         <NavLink title="Home" to="/" />
-        <NavLink title="About" to="/about" />
         <NavLink title="Work" to="/work" />
+        <NavLink title="About" to="/about" />
         <NavLink title="Contact" to="/contact" />
       </ul>
     </NavLinks>

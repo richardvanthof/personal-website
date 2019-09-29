@@ -3,30 +3,19 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
-import Thumbnail from '../components/thumbnail';
+import { Blogpost } from '../components/thumbnail';
 import Gallery from '../components/gallery';
-
-const Blogpost = ({ data: post }, key) => (
-  <Thumbnail
-    key={key}
-    title={post.frontmatter.title}
-    img={post.frontmatter.image}
-    url={post.frontmatter.url}
-    right
-    small
-
-  />
-);
 
 const Work = ({ data }) => {
   const { edges: posts } = data.allMdx;
   return (
     <DefaultLayout>
       <SEO title="Work" />
-      <Gallery padded fluid width={33}>
+      <Gallery fluid><h1>Work</h1></Gallery>
+      <Gallery fluid width={33}>
         {
           posts.map(({ node: post }, _, key) => (
-            <Blogpost data={post} key={key} />
+            <Blogpost small data={post} key={key} />
           ))
         }
       </Gallery>
@@ -42,8 +31,13 @@ export const pageQuery = graphql`
           frontmatter{
             key
             title
-            image
-            url
+            image {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

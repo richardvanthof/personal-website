@@ -11,7 +11,7 @@ import theme from '../styles/theme';
 const Main = styled.main`
   transition: 0.5 ease-in-out;
 `;
-const PortfolioLayout = ({ children, pageContext }) => {
+const PortfolioLayout = ({ children, pageContext}) => {
   const {
     title,
     client,
@@ -25,6 +25,7 @@ const PortfolioLayout = ({ children, pageContext }) => {
     cta,
     url,
   } = pageContext.frontmatter;
+  console.log(image);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -50,6 +51,7 @@ const PortfolioLayout = ({ children, pageContext }) => {
     </ThemeProvider>
   );
 };
+
 
 PortfolioLayout.propTypes = {
   children: PropTypes.node,
