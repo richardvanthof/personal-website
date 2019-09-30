@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import theme from '../styles/theme';
-import testHeader from '../static/img/test-img.png';
+import testHeader from '../static/img/headers/headshot.png';
 
 const { colors } = theme;
 
 const HeroHeaderWrapper = styled.header`
     height:60vh;
     display: flex;
+    justify-content:center;
+    align-content: center;
+    color: ${colors.bgLight};
     &:before {
         content: "";
         position: absolute;
