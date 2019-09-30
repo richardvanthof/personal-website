@@ -28,6 +28,9 @@ export const pageQuery = graphql`
     allMdx {
       edges {
         node {
+          fields {
+            slug
+          }
           fileAbsolutePath
           frontmatter{
             key

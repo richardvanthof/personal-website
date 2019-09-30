@@ -18,13 +18,13 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'work',
-        path: `${__dirname}/src/pages/work`,
+        path: `${__dirname}/src/content/projects`,
       },
     },
     {
       resolve: 'gatsby-plugin-page-creator',
       options: {
-        path: `${__dirname}/src/pages/work`,
+        path: `${__dirname}/src/content/projects`,
       },
     },
     'gatsby-transformer-sharp',

@@ -82,8 +82,9 @@ padding-bottom: 5vh;
   display: flex;
   flex-direction: column;
   min-height:100vw;
-  @media ${mediaQueries.md} {
+  @media ${mediaQueries.sm} {
     min-height: unset;
+    width:
   }
 `;
 
@@ -93,12 +94,9 @@ const SmallThumbnailInfo = styled.div`
   margin: 1em;
 `;
 
+const SmallThumbnailImage = styled(ThumbnailImage)`
 
-const getSlug = (absolutePath, parentFolder) => {
-  const startPos = absolutePath.search(`/${parentFolder}/`);
-  const url = absolutePath.substr(startPos).replace('.mdx', '');
-  return url;
-};
+`;
 
 const Thumbnail = ({
   title, client, img, alt, medium, year, description, url, to, right, small,
@@ -106,9 +104,9 @@ const Thumbnail = ({
   if (small) {
     return (
       <SmallThumbnailBase to={to}>
-        <ThumbnailImage right={right}>
+        <SmallThumbnailImage right={right}>
           <Img fluid={img} alt={alt || title} />
-        </ThumbnailImage>
+        </SmallThumbnailImage>
         <SmallThumbnailInfo right={right}>
           <h5>{title}</h5>
           {client && (
@@ -162,7 +160,7 @@ Thumbnail.defaultProps = {
 };
 
 export const Blogpost = ({
-  parentFolderName, right, small, data: post,
+  right, small, data: post,
 }, key) => (
   <Thumbnail
     key={key}
@@ -171,12 +169,11 @@ export const Blogpost = ({
     url={post.frontmatter.url}
     right={right}
     small={small}
-    to={getSlug(post.fileAbsolutePath, parentFolderName)}
+    to={post.fields.slug}
   />
 );
 
 Blogpost.propTypes = {
-  parentFolderName: PropTypes.string.isRequired,
   right: PropTypes.bool,
   small: PropTypes.bool,
   data: PropTypes.shape({
