@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
 import Button from './button';
@@ -81,33 +82,37 @@ padding-bottom: 5vh;
   display: flex;
   flex-direction: column;
   min-height:100vw;
-  @media ${mediaQueries.md} {
-    padding: 2em;
+  @media ${mediaQueries.sm} {
     min-height: unset;
+    width:
   }
 `;
 
 const SmallThumbnailInfo = styled.div`
   grid-column: ${props => (props.right ? 2 : 5)};
   grid-row: 1;
-  margin: 1em 2em;
+  margin: 1em;
+`;
+
+const SmallThumbnailImage = styled(ThumbnailImage)`
+
 `;
 
 const Thumbnail = ({
-  title, client, img, alt, medium, year, description, url, right, small,
+  title, client, img, alt, medium, year, description, url, to, right, small,
 }) => {
   if (small) {
     return (
-      <SmallThumbnailBase to={url}>
-        <ThumbnailImage right={right}>
-          <img src={img} alt={alt || title} />
-        </ThumbnailImage>
+      <SmallThumbnailBase to={to}>
+        <SmallThumbnailImage right={right}>
+          <Img fluid={img} alt={alt || title} />
+        </SmallThumbnailImage>
         <SmallThumbnailInfo right={right}>
           <h5>{title}</h5>
           {client && (
             <p>{client}</p>
           )}
-          <Button title="learn more" to={url} />
+          <Button title="learn more" to={to} />
         </SmallThumbnailInfo>
         {/* <ThumbnailMetaData right={right}>
           <Type>{medium}</Type>
@@ -119,7 +124,7 @@ const Thumbnail = ({
   return (
     <ThumbnailBase to={url}>
       <ThumbnailImage right={right}>
-        <img src={img} alt={alt || title} />
+        <Img fluid={img} alt={alt || title} />
       </ThumbnailImage>
       <ThumbnailInfo right={right}>
         <h3>{title}</h3>
@@ -139,6 +144,7 @@ Thumbnail.propTypes = {
   title: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   medium: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
@@ -149,6 +155,34 @@ Thumbnail.propTypes = {
 };
 
 Thumbnail.defaultProps = {
+  right: false,
+  small: false,
+};
+
+export const Blogpost = ({
+  right, small, data: post,
+}, key) => (
+  <Thumbnail
+    key={key}
+    title={post.frontmatter.title}
+    img={post.frontmatter.image.childImageSharp.fluid}
+    url={post.frontmatter.url}
+    right={right}
+    small={small}
+    to={post.fields.slug}
+  />
+);
+
+Blogpost.propTypes = {
+  right: PropTypes.bool,
+  small: PropTypes.bool,
+  data: PropTypes.shape({
+    fileAbsolutePath: PropTypes.string,
+    frontmatter: PropTypes.object,
+  }).isRequired,
+};
+
+Blogpost.defaultProps = {
   right: false,
   small: false,
 };

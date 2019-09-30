@@ -18,13 +18,13 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'work',
-        path: `${__dirname}/src/pages/work`,
+        path: `${__dirname}/src/content/projects`,
       },
     },
     {
       resolve: 'gatsby-plugin-page-creator',
       options: {
-        path: `${__dirname}/src/pages/work`,
+        path: `${__dirname}/src/content/projects`,
       },
     },
     'gatsby-transformer-sharp',
@@ -39,9 +39,22 @@ module.exports = {
           work: require.resolve('./src/layouts/portfolioLayout.jsx'),
           default: require.resolve('./src/layouts/defaultLayout.jsx'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1000,
+              wrapperStyle: fluidResult => `flex:${_.round(fluidResult.aspectRatio, 2)};`,
+              withWebp: true,
+              disableBgImageOnAlpha: true,
+            },
+          },
+        ],
       },
     },
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-background-image',
+    },
     'gatsby-plugin-offline',
     'gatsby-plugin-transition-link',
     'gatsby-image',

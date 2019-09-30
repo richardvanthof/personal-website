@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import BackgroundImage from 'gatsby-background-image';
 import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
-// https://www.youtube.com/embed/0ItZhpv4pto
+
 const { colors, container, mediaQueries } = theme;
 const HeaderBase = styled.header`
     display: flex;
@@ -31,7 +32,18 @@ const HeaderBase = styled.header`
  `;
 
 const HeaderFigure = styled.figure`
-  background-image: url(${props => props.src});
+  background: url('${props => props.src}');
+  background-size: cover;
+  grid-column: 1/7;
+  grid-row: 1;
+  width: 100%;
+  height: 90vh;
+  min-height: 30em;
+  background-position: center;
+`;
+
+
+const FluidHeaderFigure = styled(BackgroundImage)`
   background-size: cover;
   grid-column: 1/7;
   grid-row: 1;
@@ -43,6 +55,7 @@ const HeaderFigure = styled.figure`
 
 const HeaderVideo = styled(Embed)`
   width: 100%;
+  max-height: 75vh;
 `;
 
 const HeaderVideoWrapper = styled.div`
@@ -56,7 +69,7 @@ const HeaderVideoWrapper = styled.div`
   }
 `;
 
-const HeaderVisual = ({ video, img }) => {
+const HeaderVisual = ({ video, img, fluid }) => {
   if (video) {
     return (
       <HeaderVideoWrapper>
@@ -64,10 +77,13 @@ const HeaderVisual = ({ video, img }) => {
       </HeaderVideoWrapper>
     );
   }
+  if (fluid) {
+    return (
+      <FluidHeaderFigure fluid={fluid} />
+    );
+  }
   return (
-    <HeaderFigure src={img}>
-      {/* <img src={img} alt={alt} /> */}
-    </HeaderFigure>
+    <HeaderFigure src={img} />
   );
 };
 
@@ -88,7 +104,7 @@ const HeaderTitle = ({
       && <p>{client}</p>
     }
     {url
-      && <Button external to={url}>{cta || 'learn more'}</Button>
+      && <Button external title={cta || 'learn more'} to={url} />
     }
 
   </HeaderTitleBase>
@@ -106,10 +122,10 @@ const HeaderDescription = styled.p`
 `;
 
 const PortfolioHeader = ({
-  image, alt, video, title, client, description, children, cta, url,
+  image, fluid, alt, video, title, client, description, children, cta, url,
 }) => (
   <HeaderBase>
-    <HeaderVisual video={video} img={image} alt={alt} />
+    <HeaderVisual fluid={fluid} video={video} img={image} alt={alt} />
     <HeaderTitle title={title} client={client} cta={cta} url={url}>
       {children}
     </HeaderTitle>
@@ -129,6 +145,8 @@ PortfolioHeader.propTypes = {
   children: PropTypes.node,
   cta: PropTypes.string,
   url: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  fluid: PropTypes.object.isRequired,
 };
 
 HeaderTitle.propTypes = {
@@ -141,6 +159,8 @@ HeaderTitle.propTypes = {
 HeaderVisual.propTypes = {
   video: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  fluid: PropTypes.object.isRequired,
 };
 
 PortfolioHeader.defaultProps = {
@@ -150,6 +170,7 @@ PortfolioHeader.defaultProps = {
   children: null,
   cta: null,
   url: null,
+
 };
 
 HeaderTitle.defaultProps = {

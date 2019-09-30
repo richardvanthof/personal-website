@@ -17,7 +17,7 @@ import Footer from '../components/footer';
 import theme from '../styles/theme';
 
 const Main = styled.main`
-  min-height: 90vh;
+  min-height: 50vh;
   transition: 0.5 ease-in-out;
 `;
 

@@ -11,7 +11,7 @@ const buttonStyling = css`
     padding-top: 0.1em;
     display: flex;
     text-decoration: none;
-    margin-left: 0.1em;
+    margin-left: 0.2em;
     transition: 0.15s ease-in-out;
     font-size: 0.8em;
     &:hover {

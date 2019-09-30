@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import GlobalStyle from '../styles/globalStyles';
 import NoScript from '../components/noScript';
 import Navbar from '../components/navbar';
@@ -11,39 +13,35 @@ import theme from '../styles/theme';
 const Main = styled.main`
   transition: 0.5 ease-in-out;
 `;
-const PortfolioLayout = ({ children, pageContext }) => {
+
+const PortfolioLayout = ({ data: { mdx } }) => {
   const {
-    title,
-    client,
-    date,
-    type,
-    description,
     video,
-    image,
+    type,
+    title,
     alt,
-    duration,
-    cta,
-    url,
-  } = pageContext.frontmatter;
+    date,
+    description,
+  } = mdx.frontmatter;
+  const img = mdx.frontmatter.image.childImageSharp.fluid;
+
   return (
     <ThemeProvider theme={theme}>
       <>
-        <Navbar siteTitle="test" />
+        <Navbar />
         <NoScript />
         <PortfolioHeader
           title={title}
-          client={client}
-          date={date}
-          type={type}
-          description={description}
-          image={image}
-          alt={alt}
           video={video}
-          length={duration}
-          cta={cta}
-          url={url}
+          type={type}
+          alt={alt}
+          date={date}
+          description={description}
+          fluid={img}
         />
-        <Main>{children}</Main>
+        <Main>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </Main>
         <Footer />
         <GlobalStyle />
       </>
@@ -51,16 +49,43 @@ const PortfolioLayout = ({ children, pageContext }) => {
   );
 };
 
-PortfolioLayout.propTypes = {
-  children: PropTypes.node,
-  pageContext: PropTypes.shape({
-    frontmatter: PropTypes.object,
-  }),
-};
+export const pageQuery = graphql`
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+          video
+          type
+          title
+          alt
+          date
+          description
+          image {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+    }
+  }
+`;
 
-PortfolioLayout.defaultProps = {
-  children: null,
-  pageContext: null,
+PortfolioLayout.propTypes = {
+  data: PropTypes.shape({
+    mdx: PropTypes.shape({
+      body: PropTypes.node,
+      frontmatter: PropTypes.frontmatter({
+        video: PropTypes.string,
+        title: PropTypes.string,
+        alt: PropTypes.string,
+        date: PropTypes.string,
+        description: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 export default PortfolioLayout;
