@@ -81,7 +81,7 @@ padding-bottom: 5vh;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  min-height:100vw;
+  height: 40vw;
   @media ${mediaQueries.sm} {
     min-height: unset;
     width:

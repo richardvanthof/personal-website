@@ -14,19 +14,123 @@ const Main = styled.main`
   transition: 0.5 ease-in-out;
 `;
 
-const PortfolioLayout = ({ data: { mdx } }) => {
-  const {
-    video,
-    type,
-    title,
-    alt,
-    date,
-    description,
-  } = mdx.frontmatter;
-  const img = mdx.frontmatter.image.childImageSharp.fluid;
-
+export default function PortfolioLayout({ data: { mdx } }) {
   return (
     <ThemeProvider theme={theme}>
+       <>
+       <Navbar />
+         <PortfolioHeader
+          title={mdx.frontmatter.title}
+          video={mdx.frontmatter.video}
+          type={mdx.frontmatter.type}
+          alt={mdx.frontmatter.alt}
+          // date={date}
+          fluid={mdx.frontmatter.image.childImageSharp.fluid}
+          description={mdx.frontmatter.description}
+
+        />
+        <Main>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </Main>
+        <Footer />
+        <GlobalStyle />
+      </>
+    </ThemeProvider>
+  )
+}
+export const pageQuery = graphql`
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+        title
+        type
+        alt
+        video
+        description
+        image {
+            childImageSharp {
+              fluid(quality: 100) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+      }
+    }
+  }
+`
+
+// const PortfolioLayout = ({ data: { mdx } }) => {
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <>
+//       <Navbar />
+//         <PortfolioHeader
+//           title={mdx.frontmatter.title}
+//           // video={video}
+//           // type={type}
+//           // alt={alt}
+//           // date={date}
+//           // description={description}
+//           // fluid={image.childImageSharp.fluid}
+//         />
+//         <Main>
+//           <MDXRenderer>{mdx.body}</MDXRenderer>
+//         </Main>
+//         <Footer />
+//         <GlobalStyle />
+//       </>
+//     </ThemeProvider>
+//   );
+// };
+
+// export const pageQuery = graphql`
+//   query BlogPostQuery($id: String) {
+//     mdx(id: { eq: $id }) {
+//       id
+//       body
+//       frontmatter {
+//         video
+//         title
+//         type
+//         length
+//         key
+//         draft
+//         description
+//         date
+//         client
+//         alt
+//         image {
+//           childImageSharp {
+//               fluid(quality: 100) {
+//               ...GatsbyImageSharpFluid_withWebp
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
+
+// PortfolioLayout.propTypes = {
+//   data: PropTypes.shape({
+//     mdx: PropTypes.shape({
+//       body: PropTypes.node,
+//       frontmatter: PropTypes.frontmatter({
+//         video: PropTypes.string,
+//         title: PropTypes.string,
+//         alt: PropTypes.string,
+//         date: PropTypes.string,
+//         description: PropTypes.string,
+//       }),
+//     }),
+//   }).isRequired,
+// };
+
+
+{/*
+  <ThemeProvider theme={theme}>
       <>
         <Navbar />
         <NoScript />
@@ -46,46 +150,5 @@ const PortfolioLayout = ({ data: { mdx } }) => {
         <GlobalStyle />
       </>
     </ThemeProvider>
-  );
-};
 
-export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
-    mdx(id: { eq: $id }) {
-      id
-      body
-      frontmatter {
-          video
-          type
-          title
-          alt
-          date
-          description
-          image {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-    }
-  }
-`;
-
-PortfolioLayout.propTypes = {
-  data: PropTypes.shape({
-    mdx: PropTypes.shape({
-      body: PropTypes.node,
-      frontmatter: PropTypes.frontmatter({
-        video: PropTypes.string,
-        title: PropTypes.string,
-        alt: PropTypes.string,
-        date: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
-};
-
-export default PortfolioLayout;
+  */}
