@@ -9,7 +9,6 @@ notifications:
     - richardvanthof@pm.me
 
 before_deploy:
-  - yarn lint
   - yarn build
 
 deploy:
