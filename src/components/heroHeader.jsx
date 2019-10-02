@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import theme from '../styles/theme';
-import testHeader from '../static/img/headers/headshot.png';
+import testHeader from '../static/img/headers/face8.jpg';
 
 const { colors } = theme;
 
 const HeroHeaderWrapper = styled.header`
-    height:60vh;
+    height:80vh;
     display: flex;
     justify-content:center;
     align-content: center;
@@ -17,7 +17,7 @@ const HeroHeaderWrapper = styled.header`
         position: absolute;
         top: 0;
         left: 0;
-        height:75vh;
+        height:80vh;
         width: 100vw;
         background: url(${testHeader}) ${colors.bgLight};
         background-size: cover;

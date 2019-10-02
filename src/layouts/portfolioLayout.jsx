@@ -27,7 +27,7 @@ export default function PortfolioLayout({ data: { mdx } }) {
           // date={date}
           fluid={mdx.frontmatter.image.childImageSharp.fluid}
           description={mdx.frontmatter.description}
-
+          client={mdx.frontmatter.client}
         />
         <Main>
           <MDXRenderer>{mdx.body}</MDXRenderer>

@@ -11,7 +11,6 @@ const Work = ({ data }) => {
   return (
     <DefaultLayout>
       <SEO title="Work" />
-      <Gallery fluid><h1>Work</h1></Gallery>
       <Gallery fluid width={33}>
         {
           posts.map(({ node: post }, _, key) => (
@@ -38,7 +37,7 @@ export const pageQuery = graphql`
             image {
               childImageSharp {
                 fluid {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
 
                 }
               }

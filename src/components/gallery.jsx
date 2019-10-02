@@ -9,19 +9,21 @@ const GalleryBase = styled.section`
     margin: 1em ${props => (props.fluid ? '2em' : container.sm)};
     display: flex;
     flex-direction: column;
-    @media ${mediaQueries.sm} {
+    justify-content: center;
+    @media ${mediaQueries.xs} {
         flex-direction: row;
+        flex-basis: ${props => props.width}%;
         flex-wrap: wrap;
         padding: ${props => (props.padded ? '10vh' : '1em')} 0;
-    }
-    @media ${mediaQueries.md} {
-        margin: 1em ${props => (props.fluid ? '2em' : container.md)};
-        flex-basis: ${props => props.width}%;
         & > * {
             width: ${props => props.width}%;
             padding: 0.5em;
             margin: 0;
         }
+    }
+    @media ${mediaQueries.md} {
+        margin: 1em ${props => (props.fluid ? '2em' : container.md)};
+
     }
     @media ${mediaQueries.lg} {
         margin: 1em ${props => (props.fluid ? '2em' : container.lg)};

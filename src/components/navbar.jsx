@@ -4,17 +4,20 @@ import styled from 'styled-components';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import theme from '../styles/theme';
 
+const { colors } = theme;
+
 const logo = require('../static/trademarks/logo.svg');
 
 const Nav = styled.nav`
   font-family: ${(theme.typography.heading.font).join(',')};
   display: flex;
-  padding: 0.4em 1em;
+  padding: 0.1em 1em;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   width: 100%;
   z-index: 100;
+  background: ${colors.bgLight};
 }`;
 
 const NavLinks = styled.div`
@@ -32,6 +35,7 @@ const NavLinkBase = styled.li`
   padding: 1em;
   transition: 0.5s ease;
   text-decoration: none;
+  margin-bottom: 0;
   a {
     text-decoration: none;
   }

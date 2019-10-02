@@ -6,7 +6,10 @@ import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
 
+
 const { colors, container, mediaQueries } = theme;
+
+
 const HeaderBase = styled.header`
     display: flex;
     flex-direction: column;

@@ -81,8 +81,7 @@ padding-bottom: 5vh;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  height: 40vw;
-  @media ${mediaQueries.sm} {
+  @media ${mediaQueries.xs} {
     min-height: unset;
     width:
   }
@@ -95,22 +94,30 @@ const SmallThumbnailInfo = styled.div`
 `;
 
 const SmallThumbnailImage = styled(ThumbnailImage)`
+  height: 25vw;
+`;
 
+const SmallThumbnailImageContent = styled(Img)`
+  height: 100%;
+  width: auto;
 `;
 
 const Thumbnail = ({
-  title, client, img, alt, medium, year, description, url, to, right, small,
+  title, client, img, alt, medium, year, description, type, url, to, right, small,
 }) => {
   if (small) {
     return (
       <SmallThumbnailBase to={to}>
         <SmallThumbnailImage right={right}>
-          <Img fluid={img} alt={alt || title} />
+          <SmallThumbnailImageContent fluid={img} alt={alt || title} />
         </SmallThumbnailImage>
         <SmallThumbnailInfo right={right}>
           <h5>{title}</h5>
           {client && (
             <p>{client}</p>
+          )}
+          {type && (
+            <p>{type}</p>
           )}
           <Button title="learn more" to={to} />
         </SmallThumbnailInfo>
@@ -167,6 +174,8 @@ export const Blogpost = ({
     title={post.frontmatter.title}
     img={post.frontmatter.image.childImageSharp.fluid}
     url={post.frontmatter.url}
+    client={post.frontmatter.client}
+    type={post.frontmatter.type}
     right={right}
     small={small}
     to={post.fields.slug}

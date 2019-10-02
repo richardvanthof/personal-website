@@ -4,6 +4,7 @@ module.exports = {
     title: 'The Rich Art Space',
     description: 'Pesonal internet space Richard',
     author: 'Richard van t Hof',
+    siteUrl: `https://www.therichard.space`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -27,26 +28,26 @@ module.exports = {
         path: `${__dirname}/src/content/projects`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
       // Apply gatsby-mdx to both .mdx and .md files
         extensions: ['.mdx', '.md'],
-        defaultLayouts: {
-          work: require.resolve('./src/layouts/portfolioLayout.jsx'),
-          default: require.resolve('./src/layouts/defaultLayout.jsx'),
-        },
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 1000,
-              wrapperStyle: fluidResult => `flex:${_.round(fluidResult.aspectRatio, 2)};`,
-              withWebp: true,
-              disableBgImageOnAlpha: true,
+              maxWidth: 4000,
             },
           },
         ],

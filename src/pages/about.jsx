@@ -1,66 +1,27 @@
 import React from 'react';
-
+import { Img } from 'gatsby-image';
+import { graphql } from 'gatsby';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
+import Gallery from '../components/gallery';
+import { Subtitle } from '../components/typography';
 
-import { Grid, Col } from '../components/grid';
+import richard from '../static/img/richard.jpg';
 
-
-const grid = {
-  cols: {
-    mobile: '1fr 1fr 1fr 1fr 1fr 1fr',
-    desktop: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
-  },
-  rows: {
-    sm: 'auto auto',
-    md: '1fr 1fr',
-    lg: 'auto',
-    xl: 'auto',
-  },
-};
-
-const About = () => (
+const About = ({data}) => (
   <DefaultLayout>
     <SEO title="About" />
-    <Grid rows={grid.rows} cols={grid.cols}>
+  <Gallery width={40}>
+    <div>
+      <img src={richard} alt="Richard" />
+    </div>
+    <div>
+      <h1>Richard van &apos;t Hof</h1>
+      <Subtitle>Audiovisual Maker & Front-end Hacker</Subtitle>
+      <p>safdasdf</p>
+    </div>
+  </Gallery>
 
-      <Col
-        row={{
-          xs: 3, sm: 2, md: '2', lg: '2', xl: '2',
-        }}
-        col={{
-          xs: 2, sm: '6/10', md: '7/10', lg: '7/10', xl: '7/10',
-        }}
-        layer={1}
-      >
-        <h1>It&apos;s like jay big</h1>
-        <p>
-          <big>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt
-          lobortis feugiat vivamus at augue. Amet consectetur adipiscing elit ut
-          aliquam purus. Aenean pharetra magna ac placerat vestibulum lectus
-          mauris. Hendrerit gravida rutrum quisque non. Blandit libero volutpat
-          sed cras ornare arcu dui vivamus arcu. Sagittis aliquam malesuada
-          bibendum arcu vitae elementum curabitur vitae nunc. Vestibulum sed
-          arcu non odio euismod lacinia at quis risus.
-          </big>
-          {' '}
-        </p>
-        <h2>Resumé</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt
-          lobortis feugiat vivamus at augue. Amet consectetur adipiscing elit ut
-          aliquam purus. Aenean pharetra magna ac placerat vestibulum lectus
-          mauris. Hendrerit gravida rutrum quisque non. Blandit libero volutpat
-          sed cras ornare arcu dui vivamus arcu. Sagittis aliquam malesuada
-          bibendum arcu vitae elementum curabitur vitae nunc. Vestibulum sed
-          arcu non odio euismod lacinia at quis risus.
-          {' '}
-        </p>
-      </Col>
-    </Grid>
   </DefaultLayout>
 );
 
