@@ -19,7 +19,7 @@ import theme from '../styles/theme';
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
-  margin-top: 7vh
+  margin-top: 5vh
 `;
 
 const DefaultLayout = ({ children }) => (
