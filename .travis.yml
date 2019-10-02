@@ -16,7 +16,7 @@ deploy:
   provider: surge
   project: public/
   skip_cleanup: true
-  domain: therichart.space
+  domain: therichard.space
   on: master
 
 cache:
