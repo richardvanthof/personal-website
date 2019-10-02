@@ -4,18 +4,58 @@ module.exports = {
     title: 'The Rich Art Space',
     description: 'Pesonal internet space Richard',
     author: 'Richard van t Hof',
+    siteUrl: `https://www.therichard.space`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: './src/images',
+        name: 'img',
+        path: `${__dirname}/src/static/img`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'work',
+        path: `${__dirname}/src/content/projects`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-page-creator',
+      options: {
+        path: `${__dirname}/src/content/projects`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
       },
     },
     'gatsby-transformer-sharp',
+    'gatsby-transformer-remark',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+      // Apply gatsby-mdx to both .mdx and .md files
+        extensions: ['.mdx', '.md'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 4000,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-background-image',
+    },
     'gatsby-plugin-offline',
     'gatsby-plugin-transition-link',
     'gatsby-image',
@@ -28,7 +68,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/trademarks/favicon.svg', // This path is relative to the root of the site.
+        icon: 'src/static/trademarks/favicon.svg', // This path is relative to the root of the site.
       },
     },
     {
@@ -44,10 +84,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: 'gatsby-plugin-hotjar',
       options: {
-        pathToConfigModule: 'src/utilities/typography',
-        omitGoogleFont: false,
+        id: 1501492,
+        sv: 6
       },
     },
     {

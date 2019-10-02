@@ -1,20 +1,24 @@
 import React from 'react';
-
-// import P5Wrapper from 'react-p5-wrapper';
+import styled from 'styled-components';
 import SEO from '../components/seo';
-import Layout from '../components/layout';
-import Container from '../components/container';
+import DefaultLayout from '../layouts/defaultLayout';
+// import { Blogpost } from '../components/thumbnail'; This a surprise tool that will help us later.
+import Header from '../components/header';
+import Gallery from '../components/gallery';
+import HeroHeader from '../components/heroHeader';
 
-const img = require('../assets/img/wise.png');
+const Work = styled.section`
+`;
 
 const IndexPage = () => (
-  <Layout>
+  <DefaultLayout>
     <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-    <Container>
-      <img src={img} alt="A wise quote about why this site is so empty" />
-    </Container>
-
-  </Layout>
+    <HeroHeader />
+    <Work>
+      <Header><h1>Featured</h1></Header>
+    </Work>
+    <Gallery />
+  </DefaultLayout>
 );
 
 export default IndexPage;

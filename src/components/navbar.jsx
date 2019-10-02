@@ -2,19 +2,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import theme from '../styles/theme';
 
-const logo = require('../images/trademarks/logo.svg');
+const { colors } = theme;
+
+const logo = require('../static/trademarks/logo.svg');
 
 const Nav = styled.nav`
+  font-family: ${(theme.typography.heading.font).join(',')};
   display: flex;
-  padding: 1em 2em;
+  padding: 0.1em 1em;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   width: 100%;
   z-index: 100;
-}
-`;
+  background: ${colors.bgLight};
+}`;
 
 const NavLinks = styled.div`
   align-items: center;
@@ -31,6 +35,7 @@ const NavLinkBase = styled.li`
   padding: 1em;
   transition: 0.5s ease;
   text-decoration: none;
+  margin-bottom: 0;
   a {
     text-decoration: none;
   }
@@ -54,7 +59,7 @@ const NavLink = (props) => {
 };
 
 const Logo = styled.img`
-  width: 5rem;
+  width: 3rem;
   margin: 0;
   mix-blend-mode: luminosity;
 `;

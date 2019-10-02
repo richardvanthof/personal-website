@@ -10,10 +10,11 @@ const padding = theme.container;
 const tempRows = 'auto';
 
 const GridBase = styled.section`
-  display: grid;
+  display: flex;
   grid-template: 5vw ${tempRows} / ${padding.sm} ${props => props.cols.mobile} ${padding.sm};
 
   @media ${breakpoint.xs} {
+    display: grid;
     grid-template: 5vw ${tempRows} / ${padding.sm} ${props => props.cols.desktop} ${padding.sm};
   }
   @media ${breakpoint.sm} {

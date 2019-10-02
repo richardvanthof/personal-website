@@ -1,12 +1,29 @@
 const theme = {};
 
+const white = '#FEFEFE';
+const black = '#141414';
+const lightGray = '#F2F2F2';
+const blue = '#1000FF';
+
+// TODO: Move these to a more appropriate file.
+theme.repo = 'https://github.com/RichART-Official/therichart.space';
+theme.email = 'richardvanthof@pm.me';
+theme.phone = '+31641219554';
+
+theme.colors = {
+  primairy: blue,
+  white,
+  bgDark: black,
+  bgLight: lightGray,
+};
+
 theme.breakpoints = {
   xs: '48em',
   sm: '64em',
   md: '85.375em',
   lg: '120em',
   xl: '160em',
-  xxl: '192dpi',
+  xxl: '192em',
 };
 
 theme.mediaQueries = {
@@ -16,10 +33,11 @@ theme.mediaQueries = {
   lg: `(min-width: ${theme.breakpoints.lg})`,
   xl: `(min-width: ${theme.breakpoints.xl})`,
   // xxl: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 200dpi)",
-  xxl: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
+  xxl: `(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: ${theme.breakpoints.xxl})`,
 };
 
 theme.container = {
+
   sm: '4vw',
   md: '8vw',
   lg: '12vw',
@@ -29,18 +47,12 @@ theme.container = {
 theme.typography = {
   base: {
     size: '1em',
-    lineHeight: '1em',
-    font: ['avenir', 'sans-serif'],
+    lineHeight: '1.66em',
+    font: ['times', 'sans-serif'],
   },
   heading: {
     lineHeight: '1.11em',
     font: [
-      'Karla',
-      'Avenir Next',
-      'Helvetica Neue',
-      'Segoe UI',
-      'Helvetica',
-      'Arial',
       'sans-serif',
     ],
   },
