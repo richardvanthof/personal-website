@@ -48,7 +48,7 @@ theme.typography = {
   base: {
     size: '1em',
     lineHeight: '1.66em',
-    font: ['times', 'sans-serif'],
+    font: ['sans-serif'],
   },
   heading: {
     lineHeight: '1.11em',

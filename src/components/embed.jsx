@@ -10,6 +10,7 @@ const EmbedWrapper = styled.div`
     border: none;
     padding-top: 36%;
     margin-bottom: 1em;
+    width: 100%;
 }
     iframe {
         position: absolute;

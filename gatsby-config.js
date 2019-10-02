@@ -43,11 +43,14 @@ module.exports = {
       options: {
       // Apply gatsby-mdx to both .mdx and .md files
         extensions: ['.mdx', '.md'],
+        defaultQuality: 100,
+        maxWidth: 4000,
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 4000,
+              defaultQuality: 100,
             },
           },
         ],
