@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Button from './button';
 import { Subtitle } from './typography';
 import theme from '../styles/theme';
 
 
 const {
-  typography, colors, mediaQueries, repo, email, phone,
+  typography, colors, mediaQueries,
 } = theme;
 
 const FooterBase = styled.footer`
@@ -79,51 +79,71 @@ const FooterLink = styled.a`
   line-height: 1.11em;
 `;
 
-const Footer = () => (
-  <>
-    <FooterBase>
-      <FoorterContent>
-        <Subtitle>Richard van &apos;t Hof</Subtitle>
-        <h3><FooterLink href={`mailto:${email}`}>richardvanthof@pm.me</FooterLink></h3>
-        <h3><FooterLink href={`tel:${phone}`}>+31 6 41 21 95 54</FooterLink></h3>
-      </FoorterContent>
-      <FooterLinks>
-        <FooterLinkColumn>
-          <FooterList>
-            <FooterLink target="_blanc" href="https://goo.gl/maps/hL9ojTqKzf5e6zan8">
-              <FooterLi>
-            Weg en Bos 9E
-              </FooterLi>
-              <FooterLi>
-            2661DG Bergschenhoek
-              </FooterLi>
-              <FooterLi>
-            Netherlands
-              </FooterLi>
-            </FooterLink>
-          </FooterList>
-        </FooterLinkColumn>
-        <FooterLinkColumn>
-          <FooterList>
-            <FooterLi>
-            Terms of Service
-            </FooterLi>
-            <FooterLi>
-            Privacy Statement
-            </FooterLi>
-            <FooterLi>
-              <Link to="/sitemap.xml">Sitemap</Link>
-            </FooterLi>
-          </FooterList>
-        </FooterLinkColumn>
-        <FooterLinkColumn>
-          <p>Handmade in Roterdam</p>
-          <Button title="View Source Code" light external to={repo} />
-        </FooterLinkColumn>
-      </FooterLinks>
-    </FooterBase>
+const Footer = () => {
+  const data = useStaticQuery(graphql`
+    query footerMetaData {
+      site {
+        siteMetadata {
+          author
+          repo
+          phone
+          github
+          linkedin
+          email
+        }
+      }
+    }
+  `);
 
-  </>
-);
+  const {
+    author, repo, email, phone,
+  } = data.site.siteMetadata;
+  return (
+    <>
+      <FooterBase>
+        <FoorterContent>
+          <Subtitle>{author}</Subtitle>
+          <h3><FooterLink href={`mailto:${email}`}>{email}</FooterLink></h3>
+          <h3><FooterLink href={`tel:${phone}`}>{phone}</FooterLink></h3>
+        </FoorterContent>
+        <FooterLinks>
+          <FooterLinkColumn>
+            <FooterList>
+              <FooterLink target="_blanc" href="https://goo.gl/maps/hL9ojTqKzf5e6zan8">
+                <FooterLi>
+            Weg en Bos 9E
+                </FooterLi>
+                <FooterLi>
+            2661DG Bergschenhoek
+                </FooterLi>
+                <FooterLi>
+            Netherlands
+                </FooterLi>
+              </FooterLink>
+            </FooterList>
+          </FooterLinkColumn>
+          <FooterLinkColumn>
+            <FooterList>
+              <FooterLi>
+            Terms of Service
+              </FooterLi>
+              <FooterLi>
+            Privacy Statement
+              </FooterLi>
+              <FooterLi>
+                <a href="/sitemap.xml">Sitemap</a>
+              </FooterLi>
+            </FooterList>
+          </FooterLinkColumn>
+          <FooterLinkColumn>
+            <p>Handmade in Roterdam</p>
+            <Button title="View Source Code" light external to={repo} />
+          </FooterLinkColumn>
+        </FooterLinks>
+      </FooterBase>
+
+    </>
+  );
+};
 
 export default Footer;

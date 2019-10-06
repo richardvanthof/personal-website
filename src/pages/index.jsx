@@ -1,21 +1,54 @@
 import React from 'react';
-import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
 import SEO from '../components/seo';
 import DefaultLayout from '../layouts/defaultLayout';
-// import { Blogpost } from '../components/thumbnail'; This a surprise tool that will help us later.
-import Header from '../components/header';
-import Gallery from '../components/gallery';
+import { Blogpost } from '../components/thumbnail';
 import HeroHeader from '../components/heroHeader';
 
-const Work = styled.section`
-`;
-
-const IndexPage = () => (
-  <DefaultLayout>
-    <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-    <HeroHeader />
-    <Gallery />
-  </DefaultLayout>
-);
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allMdx (
+        filter: {fields: {slug: {eq: "/work/richard-hotline/"}}}
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              key
+              client
+              type
+              description
+              video
+              image {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+              alt
+              length
+              draft
+              url
+            }
+          }
+        }
+      }
+    }
+  `);
+  return (
+    <DefaultLayout>
+      <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+      <HeroHeader />
+      <Blogpost data={data.allMdx.edges[0].node} />
+      <Blogpost right data={data.allMdx.edges[0].node} />
+    </DefaultLayout>
+  );
+};
 
 export default IndexPage;

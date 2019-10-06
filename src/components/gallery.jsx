@@ -6,7 +6,7 @@ import theme from '../styles/theme';
 const { container, mediaQueries } = theme;
 
 const GalleryBase = styled.section`
-    margin: 1em ${props => (props.fluid ? '2em' : container.sm)};
+    margin: 1em ${props => (props.fluid ? '1em' : container.sm)};
     display: flex;
     flex-direction: column;
     justify-content: center;

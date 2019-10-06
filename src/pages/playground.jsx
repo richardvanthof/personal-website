@@ -75,7 +75,7 @@ const Post = () => {
           </Thumbnail>
         </Flipped>
       )}
-      <BlobAnimation/>
+      <BlobAnimation />
     </Flipper>
   );
 };

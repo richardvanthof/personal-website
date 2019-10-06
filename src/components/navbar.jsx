@@ -17,7 +17,7 @@ const Nav = styled.nav`
   position: fixed;
   width: 100%;
   z-index: 100;
-  background: ${colors.bgLight};
+  background: ${colors.white};
 }`;
 
 const NavLinks = styled.div`
@@ -61,7 +61,6 @@ const NavLink = (props) => {
 const Logo = styled.img`
   width: 3rem;
   margin: 0;
-  mix-blend-mode: luminosity;
 `;
 
 const Navbar = ({ siteTitle }) => (

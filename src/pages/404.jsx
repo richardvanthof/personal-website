@@ -1,21 +1,31 @@
 import React from 'react';
 
-import DefaultLayout from '../layouts/defaultLayout';
+import styled from 'styled-components';
+import MinimalLayout from '../layouts/minimalLayout';
 import SEO from '../components/seo';
 
-import Container from '../components/container';
-import Header from '../components/header';
+const MessageWrapper = styled.section`
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MessageContent = styled.section`
+
+`;
+
 
 const NotFoundPage = () => (
-  <DefaultLayout>
+  <MinimalLayout>
     <SEO title="404: Not found" />
-    <Header>
-      <h1>Not Found</h1>
-    </Header>
-    <Container>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </Container>
-  </DefaultLayout>
+    <MessageWrapper>
+      <MessageContent>
+        <h1>Page not Found</h1>
+      </MessageContent>
+    </MessageWrapper>
+  </MinimalLayout>
 );
 
 export default NotFoundPage;

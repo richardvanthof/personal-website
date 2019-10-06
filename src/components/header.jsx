@@ -7,8 +7,6 @@ import theme from '../styles/theme';
 const breakpoint = theme.mediaQueries;
 const sizeRef = theme.container;
 
-const paddingBottom = '1em';
-
 const HeaderBase = styled.header`
   padding: 5em ${sizeRef.sm} 2em ${sizeRef.sm};
   margin-bottom: 1em;
