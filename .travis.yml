@@ -14,7 +14,7 @@ deploy:
   provider: netlify
   project: public/
   skip_cleanup: true
-  domain: elegant-goodall-ebb0b7.netlify.com
+  domain: therichardspace.netlify.com
   edge: true # Using v2 prerelease build tools
   prod: true # Deploying to production server
   on: master
