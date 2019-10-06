@@ -5,11 +5,6 @@ const black = '#141414';
 const lightGray = '#F2F2F2';
 const blue = '#1000FF';
 
-// TODO: Move these to a more appropriate file.
-theme.repo = 'https://github.com/RichART-Official/therichart.space';
-theme.email = 'richardvanthof@pm.me';
-theme.phone = '+31641219554';
-
 theme.colors = {
   primairy: blue,
   white,

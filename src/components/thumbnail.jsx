@@ -22,7 +22,7 @@ const ThumbnailBase = styled(Link)`
       margin: 10vh 0;
     }
     @media ${mediaQueries.md} {
-      margin-bottom: 15vh;
+      margin-bottom: 25vh;
       grid-template-columns: ${container.md} 1fr 1fr 1fr 1fr ${container.md};
     }
 `;
@@ -32,7 +32,6 @@ const ThumbnailImage = styled.figure`
   max-height: 90vh;
   overflow: hidden;
   margin: 0;
-  border-radius: 0.5em;
   &:hover {
     img {
       transform: scale(1.03);
@@ -55,13 +54,13 @@ const ThumbnailInfo = styled.div`
 const ThumbnailMetaData = styled.div`
   display: none;
   @media ${mediaQueries.sm} {
+    display: flex;
     transform: translateX(${props => (props.right ? '-0.5em' : '0.5em')});
     justify-content: space-between;
     grid-column: ${props => (props.right ? 6 : 1)};
     grid-row: 1;
     text-align: right;
     margin: 1em;
-    display: flex;
     flex-direction: column;
     align-items: ${props => (props.right ? 'baseline' : 'end')};
   }
@@ -77,10 +76,10 @@ const Year = styled.h6`
 `;
 
 const SmallThumbnailBase = styled(Link)`
-padding-bottom: 5vh;
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  margin: 0;
   @media ${mediaQueries.xs} {
     min-height: unset;
     width:
@@ -88,13 +87,18 @@ padding-bottom: 5vh;
 `;
 
 const SmallThumbnailInfo = styled.div`
-  grid-column: ${props => (props.right ? 2 : 5)};
-  grid-row: 1;
   margin: 1em;
+  @media ${mediaQueries.md} {
+    margin: 1em
+  };
 `;
 
 const SmallThumbnailImage = styled(ThumbnailImage)`
-  height: 25vw;
+  height: 100vw;
+  @media ${mediaQueries.xs} {
+    height:30vw;
+  }
+
 `;
 
 const SmallThumbnailImageContent = styled(Img)`
@@ -129,12 +133,12 @@ const Thumbnail = ({
     );
   }
   return (
-    <ThumbnailBase to={url}>
+    <ThumbnailBase to={to}>
       <ThumbnailImage right={right}>
         <Img fluid={img} alt={alt || title} />
       </ThumbnailImage>
       <ThumbnailInfo right={right}>
-        <h3>{title}</h3>
+        <h6>{title}</h6>
         <p>{client}</p>
         <p>{description}</p>
         <Button title="learn more" to={url} />
@@ -154,6 +158,7 @@ Thumbnail.propTypes = {
   to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   medium: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,

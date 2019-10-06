@@ -4,27 +4,29 @@ import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import { Blogpost } from '../components/thumbnail';
-import Gallery from '../components/gallery';
 
 const Work = ({ data }) => {
   const { edges: posts } = data.allMdx;
   return (
     <DefaultLayout>
       <SEO title="Work" />
-      <Gallery fluid width={33}>
-        {
-          posts.map(({ node: post }, _, key) => (
-            <Blogpost small parentFolderName="work" data={post} key={key} />
-          ))
+      {
+          posts.map(({ node: post }, index, key) => {
+            const setRight = (index % 2 === 0);
+            return (
+              <Blogpost right={setRight} data={post} key={key} />
+            );
+          })
         }
-      </Gallery>
     </DefaultLayout>
   );
 };
 
 export const pageQuery = graphql`
   query getProjects {
-    allMdx {
+    allMdx (
+      filter: {frontmatter: {draft: {ne: true}}}
+    ){
       edges {
         node {
           fields {
@@ -32,16 +34,23 @@ export const pageQuery = graphql`
           }
           fileAbsolutePath
           frontmatter{
-            key
             title
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-
+              key
+              client
+              type
+              description
+              video
+              image {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
                 }
               }
-            }
+              alt
+              length
+              draft
+              url
           }
         }
       }

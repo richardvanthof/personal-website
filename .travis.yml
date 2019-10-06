@@ -3,21 +3,23 @@ language: node_js
 node_js:
   - '10'
 
-
 notifications:
   email:
-    - richardvanthof@pm.me
+    - hello@therichart.space
 
 before_deploy:
   - yarn lint
   - yarn build
 
 deploy:
-  provider: surge
+  provider: netlify
   project: public/
   skip_cleanup: true
-  domain: therichart.space
+  domain: elegant-goodall-ebb0b7.netlify.com
+  edge: true # Using v2 prerelease build tools
+  prod: true # Deploying to production server
   on: master
+
 
 cache:
   yarn: true

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Embed from '../components/embed';
 import theme from '../styles/theme';
+
 import testHeader from '../static/img/headers/face8.jpg';
 
 
@@ -13,7 +13,7 @@ const HeroHeaderWrapper = styled.header`
     justify-content:center;
     align-content: center;
     color: ${colors.bgLight};
-    /* &:before {
+    &:before {
         content: "";
         position: absolute;
         top: 0;
@@ -23,23 +23,7 @@ const HeroHeaderWrapper = styled.header`
         background: url(${testHeader}) ${colors.bgLight};
         background-size: cover;
         z-index: -1;
-    } */
-`;
-
-const HeaderVideo = styled(Embed)`
-  width: 100vw !important;
-  iframe {
-    width: 100%;
-  }
-  &:before {
-    content: "";
-    position: absolute;
-    width: 100vw;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,0.5);
-  }
+    }
 `;
 
 const HeaderContent = styled.div`
@@ -51,8 +35,8 @@ const HeaderContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10vh;
-  padding-bottom: 25vh;
-  justify-content: end;
+  padding-bottom: 15vh;
+  justify-content: flex-end;
   & > * {
     max-width: 20em;
   }
@@ -61,10 +45,9 @@ const HeaderContent = styled.div`
 const HeroHeader = () => (
   <HeroHeaderWrapper>
     <HeaderContent>
-      <h1>Richard van 't Hof</h1>
-      <h5>Audiovisual Maker & Front-end Hacker</h5>
+      <h3>Richard van &apos;t Hof</h3>
+      <h5>Audiovisual Maker & digital artist</h5>
     </HeaderContent>
-    <HeaderVideo src="https://www.youtube.com/embed/akvhyQMuQAs?controls=0&autoplay=1&loop=1&playlist=akvhyQMuQAs" />
   </HeroHeaderWrapper>
 );
 
