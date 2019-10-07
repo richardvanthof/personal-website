@@ -11,13 +11,14 @@ before_deploy:
   - yarn build
 
 deploy:
-  provider: netlify
-  project: public/
-  skip_cleanup: true
-  domain: therichardspace.netlify.com
-  edge: true # Using v2 prerelease build tools
-  prod: true # Deploying to production server
-  on: master
+  - provider: netlify
+    project: public/
+    skip_cleanup: true
+    site: therichard.space
+    prod: true # Deploying to production server
+    on: master  
+    edge: true # Using v2 prerelease build tools
+
 
 
 cache:
