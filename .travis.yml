@@ -11,15 +11,13 @@ before_deploy:
   - yarn build
 
 deploy:
-  - provider: netlify
-    project: public/
-    skip_cleanup: true
-    site: therichard.space
-    prod: true # Deploying to production server
-    on: master  
-    edge: true # Using v2 prerelease build tools
-
-
+  provider: netlify
+  message: deploying to Netlify...
+  site: therichard.space
+  dir: public/
+  prod: true
+  edge: true # opt in to dpl v2
+  on: master 
 
 cache:
   yarn: true
