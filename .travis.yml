@@ -13,7 +13,7 @@ before_deploy:
 deploy:
   provider: netlify
   message: deploying to Netlify...
-  site: therichardspace
+  site: 470989a8-7889-4012-8175-5a3d601a9a6d
   dir: public/
   prod: true
   edge: true # opt in to dpl v2
