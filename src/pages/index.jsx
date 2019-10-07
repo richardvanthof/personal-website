@@ -46,7 +46,6 @@ const IndexPage = () => {
       <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
       <HeroHeader />
       <Blogpost data={data.allMdx.edges[0].node} />
-      <Blogpost right data={data.allMdx.edges[0].node} />
     </DefaultLayout>
   );
 };
