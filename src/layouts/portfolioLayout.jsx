@@ -9,6 +9,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import PortfolioHeader from '../components/portfolioHeader';
 import theme from '../styles/theme';
+import removeLoader from '../lib/removeLoader';
 
 const Main = styled.main`
   transition: 0.5 ease-in-out;
@@ -19,6 +20,9 @@ const PortfolioLayout = ({ data: { mdx } }) => {
   const {
     title, video, type, alt, description, client,
   } = mdx.frontmatter;
+
+  removeLoader();
+
   return (
     <ThemeProvider theme={theme}>
       <>

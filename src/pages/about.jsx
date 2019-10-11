@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import theme from '../styles/theme';
-
 import richard from '../static/img/richard.jpg';
 
 const { mediaQueries, container } = theme;
@@ -82,13 +81,15 @@ van &apos;t Hof
         at the Willem de Kooning Academy in Rotterdam,
         the Netherlands. He has also been an art-director
         and front-end developer at
-          <a href="https://www.bytecode.nl">Bytecode Digital Agency</a>
+
+          <a href="https://www.bytecode.nl">
+        Bytecode Digital Agency
+          </a>
 
 where he mainly does projects with React.
         </p>
       </Content>
     </Grid>
-
   </DefaultLayout>
 );
 

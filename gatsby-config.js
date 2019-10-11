@@ -6,11 +6,11 @@ module.exports = {
     author: "Richard van 't Hof",
     phone: '+31 6 41219554',
     email: 'hello@therichard.space',
-    github: 'https://github.com/RichART-Official',
+    github: 'https://www.github.com/RichART-Official',
     linkedin: 'https://www.linkedin.com/in/richard-van-t-hof/',
     behance: 'https://www.behance.net/therichartspace',
     siteUrl: `https://www.therichard.space`,
-    repo: 'https://github.com/RichART-Official/therichart.space',
+    repo: 'https://www.github.com/RichART-Official/therichart.space',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

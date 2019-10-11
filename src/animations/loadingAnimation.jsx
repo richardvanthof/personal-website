@@ -1,9 +1,9 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 
-import animationData from '../static/animations/blob.json';
+import animationData from '../static/animations/loader.json';
 
-const BlobAnimation = () => {
+const LoadingAnimation = () => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -22,4 +22,4 @@ const BlobAnimation = () => {
   );
 };
 
-export default BlobAnimation;
+export default LoadingAnimation;

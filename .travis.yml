@@ -15,10 +15,10 @@ deploy:
   provider: netlify
   project: public/
   skip_cleanup: true
-  domain: therichardspace.netlify.com
-  edge: true # Using v2 prerelease build tools
+  site: therichard.space
   prod: true # Deploying to production server
   on: master
+  edge: true # Using v2 prerelease build tools
 
 
 cache:

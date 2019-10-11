@@ -22,14 +22,14 @@ const ThumbnailBase = styled(Link)`
       margin: 10vh 0;
     }
     @media ${mediaQueries.md} {
-      margin-bottom: 25vh;
+      margin-bottom: 15vh;
       grid-template-columns: ${container.md} 1fr 1fr 1fr 1fr ${container.md};
     }
 `;
 
 const ThumbnailImage = styled.figure`
   grid-column: ${props => (props.right ? '3/6' : '2/5')};
-  max-height: 90vh;
+  max-height: 65vh;
   overflow: hidden;
   margin: 0;
   &:hover {

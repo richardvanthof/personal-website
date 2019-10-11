@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globalStyles';
 import NoScript from '../components/noScript';
 import Navbar from '../components/navbar';
+import removeLoader from '../lib/removeLoader';
 
 import theme from '../styles/theme';
 
@@ -13,30 +14,32 @@ const Main = styled.main`
   transition: 0.5 ease-in-out;
   margin-top: 5vh
 `;
-
-const MinimalLayout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query MinimalLayoutQuery {
-        site {
-          siteMetadata {
-            title
+const MinimalLayout = ({ children }) => {
+  removeLoader();
+  return (
+    <StaticQuery
+      query={graphql`
+        query MinimalLayoutQuery {
+          site {
+            siteMetadata {
+              title
+            }
           }
         }
-      }
-    `}
-    render={data => (
-      <ThemeProvider theme={theme}>
-        <>
-          <Navbar siteTitle={data.site.siteMetadata.title} />
-          <NoScript />
-          <Main>{children}</Main>
-          <GlobalStyle />
-        </>
-      </ThemeProvider>
-    )}
-  />
-);
+      `}
+      render={data => (
+        <ThemeProvider theme={theme}>
+          <>
+            <Navbar siteTitle={data.site.siteMetadata.title} />
+            <NoScript />
+            <Main>{children}</Main>
+            <GlobalStyle />
+          </>
+        </ThemeProvider>
+      )}
+    />
+  );
+};
 
 MinimalLayout.propTypes = {
   children: PropTypes.node.isRequired,

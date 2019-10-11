@@ -4,7 +4,6 @@ import { Flipper, Flipped } from 'react-flip-toolkit';
 // import P5Wrapper from 'react-p5-wrapper';
 import SEO from '../components/seo';
 import Container from '../components/container';
-import BlobAnimation from '../animations/BlobAnimation';
 
 const thumbnail = 'https://images.artnet.com/aoa_lot_images/SpecialSale/469/SaleBanner/BANNER-Brandt_Elephant%20Herd.jpg';
 
@@ -75,7 +74,6 @@ const Post = () => {
           </Thumbnail>
         </Flipped>
       )}
-      <BlobAnimation />
     </Flipper>
   );
 };
