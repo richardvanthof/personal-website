@@ -4,20 +4,25 @@ import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import { Blogpost } from '../components/thumbnail';
+import Gallery from '../components/gallery';
 
 const Work = ({ data }) => {
   const { edges: posts } = data.allMdx;
   return (
     <DefaultLayout>
       <SEO title="Work" />
-      {
+      {/* <Header title="work" /> */}
+
+      <Gallery fluid width={33}>
+        {
           posts.map(({ node: post }, index, key) => {
             const setRight = (index % 2 === 0);
             return (
-              <Blogpost right={setRight} data={post} key={key} />
+              <Blogpost padded small right={setRight} data={post} key={key} />
             );
           })
         }
+      </Gallery>
     </DefaultLayout>
   );
 };

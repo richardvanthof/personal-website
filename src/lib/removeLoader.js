@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 const removeLoader = () => {
   useEffect(() => {
     // eslint-disable-next-line no-undef
-    const element = document.querySelector('.loadingScreen');
-    if (element) {
-      element.className += ' loaded';
+    const screen = document.querySelector('.loadingScreen');
+    if (screen) {
+      screen.className += ' loaded';
       setTimeout(() => {
-        element.remove();
+        screen.remove();
       }, 500);
     }
   });

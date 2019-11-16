@@ -17,7 +17,7 @@ const styles = {
       padding:0;
     }
     .loadingScreen {
-      background: blue;
+      background: #141414;
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -68,7 +68,7 @@ const styles = {
       content: '';
     }
     .loader:after {
-      background: blue;
+      background: #141414;
       width: 75%;
       height: 75%;
       border-radius: 50%;

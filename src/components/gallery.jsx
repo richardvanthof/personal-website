@@ -10,11 +10,12 @@ const GalleryBase = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: 0.5s ease-in-out;
     @media ${mediaQueries.xs} {
         flex-direction: row;
         flex-basis: ${props => props.width}%;
         flex-wrap: wrap;
-        padding: ${props => (props.padded ? '10vh' : '1em')} 0;
+        padding: ${props => (props.padded ? '10vh' : '2em')} 0;
         & > * {
             width: ${props => props.width}%;
             padding: 0.5em;
@@ -23,6 +24,11 @@ const GalleryBase = styled.section`
     }
     @media ${mediaQueries.md} {
         margin: 1em ${props => (props.fluid ? '2em' : container.md)};
+        & > * {
+            width: ${props => props.width}%;
+            padding: 2em;
+            margin: 0;
+        }
 
     }
     @media ${mediaQueries.lg} {

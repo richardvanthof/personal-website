@@ -32,10 +32,6 @@ const ThumbnailImage = styled.figure`
   max-height: 65vh;
   overflow: hidden;
   margin: 0;
-  &:hover {
-    img {
-      transform: scale(1.03);
-    }
   }
   img {
     transition: 0.3s ease-in-out;
@@ -79,31 +75,45 @@ const SmallThumbnailBase = styled(Link)`
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 1em 0;
+  justify-content: center;
+  align: center;
+  .information {
+      display: none;
+      transition: 0.2s ease-in-out;
+    }
   @media ${mediaQueries.xs} {
     min-height: unset;
-    width:
+
+    &:before {
+      content: '';
+      z-index: 6;
+      background: black;
+    }
+    &:hover {
+      .information {
+        display: block;
+      }
+    }
   }
 `;
 
 const SmallThumbnailInfo = styled.div`
-  margin: 1em;
-  @media ${mediaQueries.md} {
-    margin: 1em
-  };
+  position: absolute;
+  width: 33vw;
 `;
 
 const SmallThumbnailImage = styled(ThumbnailImage)`
-  height: 100vw;
+  /* height: 100vw;
   @media ${mediaQueries.xs} {
     height:30vw;
-  }
-
+  } */
 `;
 
 const SmallThumbnailImageContent = styled(Img)`
   height: 100%;
   width: auto;
+
 `;
 
 const Thumbnail = ({
@@ -111,25 +121,24 @@ const Thumbnail = ({
 }) => {
   if (small) {
     return (
-      <SmallThumbnailBase to={to}>
-        <SmallThumbnailImage right={right}>
-          <SmallThumbnailImageContent fluid={img} alt={alt || title} />
-        </SmallThumbnailImage>
-        <SmallThumbnailInfo right={right}>
-          <h5>{title}</h5>
-          {client && (
-            <p>{client}</p>
-          )}
-          {type && (
-            <p>{type}</p>
-          )}
-          <Button title="learn more" to={to} />
-        </SmallThumbnailInfo>
-        {/* <ThumbnailMetaData right={right}>
-          <Type>{medium}</Type>
-          <Year right={right}>{year}</Year>
-        </ThumbnailMetaData> */}
-      </SmallThumbnailBase>
+      <>
+        <SmallThumbnailBase to={to}>
+          <SmallThumbnailImage right={right}>
+            <SmallThumbnailImageContent fluid={img} alt={alt || title} />
+          </SmallThumbnailImage>
+          <SmallThumbnailInfo className="information" right={right}>
+            <h5>{title}</h5>
+            {client && (
+              <p>{client}</p>
+            )}
+            {type && (
+              <p>{type}</p>
+            )}
+            {medium}
+            {year}
+          </SmallThumbnailInfo>
+        </SmallThumbnailBase>
+      </>
     );
   }
   return (

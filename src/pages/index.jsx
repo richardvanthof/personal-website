@@ -1,9 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import SEO from '../components/seo';
 import DefaultLayout from '../layouts/defaultLayout';
-import { Blogpost } from '../components/thumbnail';
-import HeroHeader from '../components/heroHeader';
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -43,9 +42,10 @@ const IndexPage = () => {
   `);
   return (
     <DefaultLayout>
+      <h1>
+        Richard explores his creative chaos to gain new perspectives on the world
+      </h1>
       <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-      <HeroHeader />
-      <Blogpost data={data.allMdx.edges[0].node} />
     </DefaultLayout>
   );
 };

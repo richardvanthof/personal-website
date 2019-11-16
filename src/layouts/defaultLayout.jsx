@@ -7,13 +7,17 @@ import NoScript from '../components/noScript';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import removeLoader from '../lib/removeLoader';
-
 import theme from '../styles/theme';
+
+const { mediaQueries } = theme;
 
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
-  margin-top: 7vh
+  margin-top: 4.33em;
+  @media ${mediaQueries.sm} {
+    margin-top: 3em;
+  }
 `;
 const DefaultLayout = ({ children }) => (
   <StaticQuery
