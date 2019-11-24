@@ -6,14 +6,18 @@ import GlobalStyle from '../styles/globalStyles';
 import NoScript from '../components/noScript';
 import Navbar from '../components/navbar';
 import removeLoader from '../lib/removeLoader';
+import Copyright from '../components/copyright';
 
 import theme from '../styles/theme';
+
+const { colors } = theme;
 
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
-  margin-top: 5vh
+  /* background: ${colors.bgLight}; */
 `;
+
 const MinimalLayout = ({ children }) => {
   removeLoader();
   return (
@@ -23,6 +27,7 @@ const MinimalLayout = ({ children }) => {
           site {
             siteMetadata {
               title
+              author
             }
           }
         }
@@ -34,6 +39,7 @@ const MinimalLayout = ({ children }) => {
             <NoScript />
             <Main>{children}</Main>
             <GlobalStyle />
+            <Copyright/>
           </>
         </ThemeProvider>
       )}

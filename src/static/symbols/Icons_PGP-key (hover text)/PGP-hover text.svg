@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="168px" height="28px" viewBox="0 0 168 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60 (101010) - https://sketch.com -->
+    <title>EB03674E-ADBB-49AA-8B59-56F2A1935B38</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/PGP-key-(hover-text)" fill="#22263D">
+            <g id="PGP-hover-text">
+                <rect id="Rectangle" opacity="0.0779854911" x="0" y="0" width="168" height="28" rx="14"></rect>
+                <text id="PGP-key-availible" opacity="0.594308036" font-family="Karla-Regular, Karla" font-size="14" font-weight="normal" letter-spacing="0.346635587" fill-opacity="0.722055288">
+                    <tspan x="38" y="13">PGP-key availible</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

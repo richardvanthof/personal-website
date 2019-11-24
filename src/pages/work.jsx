@@ -10,7 +10,7 @@ const Work = ({ data }) => {
   const { edges: posts } = data.allMdx;
   return (
     <DefaultLayout>
-      <SEO title="Work" />
+      <SEO title="Home" />
       {/* <Header title="work" /> */}
 
       <Gallery fluid width={33}>
@@ -18,7 +18,7 @@ const Work = ({ data }) => {
           posts.map(({ node: post }, index, key) => {
             const setRight = (index % 2 === 0);
             return (
-              <Blogpost padded small right={setRight} data={post} key={key} />
+              <Blogpost small right={setRight} data={post} key={key} />
             );
           })
         }
@@ -28,7 +28,7 @@ const Work = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query getProjects {
+  query getWorkProjects {
     allMdx (
       filter: {frontmatter: {draft: {ne: true}}}
     ){
@@ -42,8 +42,8 @@ export const pageQuery = graphql`
             title
               key
               client
-              type
               description
+              type
               video
               image {
                 childImageSharp {

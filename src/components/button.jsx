@@ -6,10 +6,12 @@ import theme from '../styles/theme';
 
 const { colors } = theme;
 const arrow = require('../static/icons/arrow-link.svg');
-
+let reverseButton = false;
 const buttonStyling = css`
     padding-top: 0.1em;
+    margin-left: 0.2em;
     display: flex;
+    flex-direction: ${reverseButton ? 'row-reverse' : 'row'};
     text-decoration: none;
     margin-left: 0.2em;
     transition: 0.15s ease-in-out;
@@ -24,11 +26,12 @@ const buttonStyling = css`
 
 const ButtonBase = styled(Link)`
   ${buttonStyling}
-  color: ${props => (props.light ? colors.bgLight : colors.primairy)}
+  /* color: ${props => (props.light ? colors.bgLight : colors.primairy)} */
 `;
 
 const ExternalButtonBase = styled.a`
   ${buttonStyling}
+
 `;
 
 const Arrow = styled.img`
@@ -36,7 +39,8 @@ const Arrow = styled.img`
     width: 3em;
     margin: 0;
     padding-left: 0.5em;
-    padding-top: 0.1em;
+    padding-top: 0em;
+    transform: ${reverseButton ? 'rotate(180deg)' : 'none'};
 `;
 const Button = ({
   to,
@@ -44,7 +48,9 @@ const Button = ({
   external,
   light,
   children,
+  back,
 }) => {
+  reverseButton = back;
   if (!external) {
     return (
       <ButtonBase light={light} to={to}>
@@ -54,7 +60,7 @@ const Button = ({
     );
   }
   return (
-    <ExternalButtonBase light={light} target="_blanc" href={to}>
+    <ExternalButtonBase target="_blanc" light={light} target="_blanc" href={to}>
       {title}
       <Arrow src={arrow} alt=">" />
     </ExternalButtonBase>

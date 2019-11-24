@@ -1,15 +1,21 @@
 const theme = {};
 
 const white = '#FEFEFE';
-const black = '#141414';
-const lightGray = '#F2F2F2';
-const blue = '#1000FF';
+const black = '#202645';
+const lightBlue = '#EEFAFF';
+const lightGray = '#F6F6F6';
+const teal = '#969AB0';
+const blue = '#96E1F3';
 const transparentBlack = 'rgba(20,20,20,0.80)';
+const yellow = '#FFFB7B';
 
 theme.colors = {
   primairy: blue,
+  yellow,
   black,
   white,
+  textDark: black,
+  textLight: teal,
   bgDark: black,
   bgLight: lightGray,
   bgMenu: transparentBlack,
@@ -46,11 +52,12 @@ theme.typography = {
   base: {
     size: '1em',
     lineHeight: '1.66em',
-    font: ['sans-serif'],
+    font: ['Source Sans Pro', 'sans-serif'],
   },
   heading: {
     lineHeight: '1.11em',
     font: [
+      'Karla',
       'sans-serif',
     ],
   },

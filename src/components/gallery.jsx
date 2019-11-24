@@ -20,19 +20,20 @@ const GalleryBase = styled.section`
             width: ${props => props.width}%;
             padding: 0.5em;
             margin: 0;
+            padding: ${props => (props.padded ? '5vw' : '0.5em')} 0;
         }
     }
     @media ${mediaQueries.md} {
-        margin: 1em ${props => (props.fluid ? '2em' : container.md)};
+        margin: 0 ${props => (props.fluid ? '2em' : container.md)};
         & > * {
             width: ${props => props.width}%;
-            padding: 2em;
+            padding: 2vw;
             margin: 0;
         }
 
     }
     @media ${mediaQueries.lg} {
-        margin: 1em ${props => (props.fluid ? '2em' : container.lg)};
+        margin: 0 ${props => (props.fluid ? '2em' : container.lg)};
     }
 `;
 

@@ -9,17 +9,15 @@ import Footer from '../components/footer';
 import removeLoader from '../lib/removeLoader';
 import theme from '../styles/theme';
 
-const { mediaQueries } = theme;
+const { mediaQueries, colors } = theme;
 
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
-  margin-top: 4.33em;
-  @media ${mediaQueries.sm} {
-    margin-top: 3em;
-  }
+  background: ${props => props.grayBg ? colors.bgLight : 'none'} !important;
+  scroll-behavior: smooth;
 `;
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ children, gray }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -36,7 +34,7 @@ const DefaultLayout = ({ children }) => (
           <Navbar siteTitle={data.site.siteMetadata.title} />
           {removeLoader()}
           <NoScript />
-          <Main>{children}</Main>
+          <Main grayBg={gray}>{children}</Main>
           <Footer />
           <GlobalStyle />
         </>

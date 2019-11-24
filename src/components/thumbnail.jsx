@@ -5,8 +5,11 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
 import Button from './button';
+import {Small, Big} from '../components/typography';
 
 const { colors, container, mediaQueries } = theme;
+
+const arrowRight = require('../static/icons/UI/arrow_right.svg')
 
 const ThumbnailBase = styled(Link)`
     display: flex;
@@ -78,29 +81,37 @@ const SmallThumbnailBase = styled(Link)`
   margin: 1em 0;
   justify-content: center;
   align: center;
-  .information {
-      display: none;
-      transition: 0.2s ease-in-out;
+  transition: 0.15s ease-in-out;
+  .thumbnail-image {
+    transition: 0.15s ease-in-out;
+  }
+  .information-container {
+    * {
+       transition: 0.15s ease-in-out;
     }
-  @media ${mediaQueries.xs} {
-    min-height: unset;
-
-    &:before {
-      content: '';
-      z-index: 6;
-      background: black;
+  }
+  .arrow-icon {
+    transition: 0.15s ease-in-out;
+  }
+  &:hover {
+    .thumbnail-image {
+      box-shadow: 0 0 4em 0 rgba(0, 0, 0, 0.1);
     }
-    &:hover {
-      .information {
-        display: block;
+    .information-container {
+      * {
+        color: ${colors.textDark};
       }
+    }
+    .arrow-icon {
+      transform: translateX(0);
     }
   }
 `;
 
 const SmallThumbnailInfo = styled.div`
-  position: absolute;
-  width: 33vw;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const SmallThumbnailImage = styled(ThumbnailImage)`
@@ -116,6 +127,16 @@ const SmallThumbnailImageContent = styled(Img)`
 
 `;
 
+const Metadata = styled.div`
+  display: flex;
+  font-size: 66%;
+`;
+
+const CallToActionIcon = styled.img`
+  width: 1.33em;
+  transform: translateX(-0.33em);
+`;
+
 const Thumbnail = ({
   title, client, img, alt, medium, year, description, type, url, to, right, small,
 }) => {
@@ -123,19 +144,17 @@ const Thumbnail = ({
     return (
       <>
         <SmallThumbnailBase to={to}>
-          <SmallThumbnailImage right={right}>
+          <SmallThumbnailImage className="thumbnail-image" right={right}>
             <SmallThumbnailImageContent fluid={img} alt={alt || title} />
           </SmallThumbnailImage>
           <SmallThumbnailInfo className="information" right={right}>
-            <h5>{title}</h5>
-            {client && (
-              <p>{client}</p>
-            )}
-            {type && (
-              <p>{type}</p>
-            )}
-            {medium}
-            {year}
+            <div className="information-container">
+              <p className='light no-margin'>{title}</p>
+              <Metadata>
+              {client && (<p className='light'>{client }&nbsp;&middot;&nbsp;</p>)}{type && (<p className='light'>{type}</p>)}{year && (<p className='light'>{type}</p>)}
+              </Metadata>
+            </div>
+            <CallToActionIcon className="arrow-icon" src={arrowRight} alt=">"/>
           </SmallThumbnailInfo>
         </SmallThumbnailBase>
       </>
@@ -146,16 +165,12 @@ const Thumbnail = ({
       <ThumbnailImage right={right}>
         <Img fluid={img} alt={alt || title} />
       </ThumbnailImage>
-      <ThumbnailInfo right={right}>
+      <ThumbnailInfo className="thumbnailInfo" right={right}>
         <h6>{title}</h6>
-        <p>{client}</p>
-        <p>{description}</p>
+        <p>{client} &middot; {medium} &middot; {year} </p>
+        <p></p>
         <Button title="learn more" to={url} />
       </ThumbnailInfo>
-      <ThumbnailMetaData right={right}>
-        <Type>{medium}</Type>
-        <Year right={right}>{year}</Year>
-      </ThumbnailMetaData>
     </ThumbnailBase>
   );
 };

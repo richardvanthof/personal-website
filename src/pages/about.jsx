@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import DefaultLayout from '../layouts/defaultLayout';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import SEO from '../components/seo';
 import theme from '../styles/theme';
-import richard from '../static/img/richard.jpg';
+import HeroHeader from '../components/heroHeader';
+import Gallery from '../components/gallery';
+import { Big, Small } from '../components/typography';
 
 const { mediaQueries, container } = theme;
 
@@ -37,6 +41,7 @@ const Grid = styled.section`
 
 const Image = styled.figure`
   grid-column: 1/3;
+  display: block;
 `;
 
 
@@ -44,53 +49,61 @@ const Content = styled.figure`
   grid-column: 3;
 `;
 
-const About = () => (
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  align-items: center;
+  & > * {
+    max-width: 30em;
+  }
+`;
+
+const Header = styled.header`
+
+  overflow: hidden;
+  margin: 1em;
+  height: 30em;
+  @media ${mediaQueries.xs} {
+    margin: 2em;
+    height: 75vh;
+  }
+  &>*{
+    height: 100%;
+  }
+`;
+
+const About = ({ data }) => (
   <DefaultLayout>
     <SEO title="About" />
-    <Grid>
-      <Image>
-        <img src={richard} alt="Richard" />
-      </Image>
-      <Content>
-        <h1>
-Richard
-          <br />
+    <HeroHeader/>
+    {/* <Header>
+      <Img fluid={data.file.childImageSharp.fluid} />
+    </Header> */}
+    <TextContainer>
+      <h6>Audiovisual maker & digital artist</h6>
+      <h2>About Richard</h2>
 
-van &apos;t Hof
-        </h1>
-        <h6>Audiovisual Maker & digital artist</h6>
-        <p>
-          <br />
-          <br />
-        Richard van &apos;t Hof is an audiovisual
-        maker and front-end hacker. In his practice he
-        thinks a lot about how to manipulate the things
-        around him. That&apos;s why he really likes the
-        enveloping nature of film. Richard also has
-        a fascination for how software and digital
-        devices can be used as a canvas without having
-        to rely onto the framework of someone else. This
-        is because the digital world is now more part of
-        our real world than ever. This results in his
-        work being a mixture of graphic design, film
-        en programming.
-        </p>
-        <p>
-        Richard has been working with film since 2011.
-        Currently he is a student audiovisual design
-        at the Willem de Kooning Academy in Rotterdam,
-        the Netherlands. He has also been an art-director
-        and front-end developer at
+    <p>Richard van 't Hof is een 19-jarige Rotterdamse audiovisueel maker en digitaal artiest die op het snijvlak zit van film, design en code. Sinds hij op zijn 11e leerde dat je door twee bewegende beelden aan elkaar te plakken nieuwe betekenis kon creeëren was hij gefascineerd door absorberende waarde van film en kunst in het algemeen. Zijn werk richt zich ook vaak op de vraag van controle. Vooral in de zin van ‘hoeveel controle kan ik hebben op mijn omgeving/de ruimte om mij heen’ maar ook ‘hoeveel controle kan ik hebben op mijzelf.’</p>
 
-          <a href="https://www.bytecode.nl">
-        Bytecode Digital Agency
-          </a>
+<p>Hij werkt vaak vanut een autonome, theoretische houding waarbij hij het onderwerp oneindig uitpluist. In deze theoretische chaotiek maakt hij onverwachte verbanden. Met deze verbanden gaat hij dan visueel spelen. Vaak mixt hij hierbij analoog en digitaal, in zijn films werkt hij daarom vaak met collage en miniaturen. Door de onberekenbaarheid van analoog komen er onverwachtere resultaten uit.</p>
 
-where he mainly does projects with React.
-        </p>
-      </Content>
-    </Grid>
+<p>De laatste jaren richt Richard zich ook steeds meer op de development. De digitale wereld omringt ons immers steeds meer. Als je die beheerst heb je ook een magische kracht in de echte wereld. Zodat hij buiten de kaders van het browservenster kan denken, miljoenen mensen bij elkaar kan brengen door een balon of met zijn brein een auto kan besturen. Hij wil de digitale wereld als canvas gebruiken en daar zijn audiovisuele kennis in verwerken. Want als je de digitale wereld kan bespelen, heb je ook in de echte wereld een magische kracht.</p>
+    </TextContainer>
+
   </DefaultLayout>
 );
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "richard.jpg" }) {
+      childImageSharp {
+        fluid{
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`;
 
 export default About;

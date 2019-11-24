@@ -3,52 +3,141 @@ import styled from 'styled-components';
 import theme from '../styles/theme';
 
 import testHeader from '../static/img/headers/face8.jpg';
+import { Big, Small, Hero } from '../components/typography';
+import Button from './button';
 
+const img = require('../static/img/richard.jpg');
 
-const { colors } = theme;
+const { colors, mediaQueries } = theme;
+const eye = require('../static/icons/UI/watch.svg');
+const arrowDown = require('../static/icons/UI/arrow_down.svg');
 
 const HeroHeaderWrapper = styled.header`
-    height:100vh;
-    display: flex;
-    justify-content:center;
-    align-content: center;
-    color: ${colors.bgLight};
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height:100vh;
-        width: 100vw;
-        background: url(${testHeader}) ${colors.bgLight};
-        background-size: cover;
-        z-index: -1;
-    }
-`;
-
-const HeaderContent = styled.div`
-  position: absolute;
-  z-index: 1;
-  width: 100vw;
-  height: calc((100vw/16)*9);
-  background: transparent;
+  max-height: 50em;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 10vh;
-  padding-bottom: 15vh;
-  justify-content: flex-end;
+  align-items: center;
+  padding-top: 25vh;
+
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  @media ${mediaQueries.sm} {
+    max-height: 40em !important;
+  };
+
+  &:before {
+    content: '';
+    background: ${theme.colors.bgLight};
+    position: absolute;
+    top: 2.5vw;
+    left: 5vw;
+    width: 90vw;
+    height: 85vh;
+    z-index: -1;
+    max-height: 50em;
+    @media ${mediaQueries.sm} {
+      max-height: 40em !important;
+    };
+  }
+`;
+
+const Tag = styled.li`
+  padding: 1em;
+`;
+
+const CallToAction = styled.a`
+  position: absolute;
+  scroll-behavior: smooth;
+  top: 45em;
+  text-decoration: none;
+  @media ${mediaQueries.sm} {
+    top: 90vh;
+  };
+`;
+
+const ArrowDown = styled.img`
+  opacity: 0.5;
+  height: 10vh;
+  margin: 0;
+`;
+
+const EyeIcon = styled.img`
+  height:1em;
+  margin: 0;
+`;
+
+const ActionText = styled.p`
+  margin: 0;
+  margin-bottom: 1em;
+  opacity: 0.5;
+`;
+
+const Title = styled.h1`
+  max-width: 40em;
+`;
+
+const Subtitle = styled.p`
+  max-width: 35em;
+`;
+
+
+const CallToActionContent = styled.div`
+  animation: hover 2s infinite;
+  cursor: pointer;
+  @keyframes hover {
+    0% {
+      transform: translateY(0)
+    }
+    50% {
+      transform: translateY(0.3em)
+    }
+    100% {
+      transform: translateY(0)
+    }
+  }
+`;
+
+const HeroHeaderContent = styled.div`
+  z-index: 1;
+  position: absolute;
+  align-self: self-start;
+  padding: 2em;
+  max-width: 30em;
+  top: 40vh;
+  min-height: 50em;
+`;
+
+const HeroHeaderBackground = styled.div`
+  height: 100vh;
+  width: 50vw;
+  padding: 5vw;
+  overflow: hidden;
   & > * {
-    max-width: 20em;
+    /* max-height: 100%;
+    width: auto; */
   }
 `;
 
 const HeroHeader = () => (
   <HeroHeaderWrapper>
-    <HeaderContent>
-      <h3>Richard van &apos;t Hof</h3>
-      <h5>Audiovisual Maker & digital artist</h5>
-    </HeaderContent>
-  </HeroHeaderWrapper>
+        <HeroHeaderContent>
+            <Title>About Richard</Title>
+            <Subtitle className="light">I am Richard van ’t Hof. An audiovisual maker, programmer and everything in between who likes to control everything in his path. Until he can't. Which he strives for.</Subtitle>
+            {/* <Button title="Learn more" to="/about" /> */}
+        </HeroHeaderContent>
+        <HeroHeaderBackground>
+          <img src={img} />
+        </HeroHeaderBackground>
+        {/* <CallToAction onClick={handleClick}>
+          <CallToActionContent>
+            <EyeIcon className="eye" src={eye} alt='Watch!' />
+            <ActionText><Small>Watch my stuff</Small></ActionText>
+          </CallToActionContent>
+          <ArrowDown src={arrowDown} />
+        </CallToAction> */}
+    </HeroHeaderWrapper>
 );
 
 export default HeroHeader;
