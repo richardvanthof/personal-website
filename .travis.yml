@@ -7,20 +7,19 @@ node_js:
 
 notifications:
   email:
-    - hello@therichart.space
+    - hello@therichard.space
 
 before_deploy:
   - yarn build
 
 deploy:
   provider: netlify
-  project: public/
-  skip_cleanup: true
-  site: therichard.space
-  prod: true # Deploying to production server
+  message: deploying to Netlify...
+  site: 470989a8-7889-4012-8175-5a3d601a9a6d
+  dir: public/
+  prod: true
+  edge: true # opt in to dpl v2
   on: master
-  edge: true # Using v2 prerelease build tools
-
 
 cache:
   yarn: true
