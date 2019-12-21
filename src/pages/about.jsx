@@ -235,7 +235,7 @@ const About = ({ data }) => {
               branding, concepts, user expericences and does front-end development.
             </Big>
           </p>
-          <DownloadCV target="_blanc" href="/test-cv.pdf"><CV /></DownloadCV>
+          <DownloadCV target="_blanc" href="/cv.pdf"><CV /></DownloadCV>
           <Socials />
         </CVGrid>
       </Container>
