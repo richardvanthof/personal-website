@@ -1,10 +1,24 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'The Rich Art Space',
+    title: 'The Richard Space',
     description: 'Pesonal internet space Richard',
-    author: 'Richard van t Hof',
+    author: "Richard van 't Hof",
+    phone: '+31 6 41219554',
+    email: 'hello@therichard.space',
+    adress: {
+      street: 'Weg en Bos',
+      number: '9e',
+      zipCode: '2661DG',
+      city: 'Bergschenhoek',
+      country: 'Netherlands',
+    },
+    pgp: 'https://pgp.key-server.io/download/0x1817B960BB405C71',
+    github: 'https://www.github.com/RichART-Official',
+    linkedin: 'https://www.linkedin.com/in/richard-van-t-hof/',
+    behance: 'https://www.behance.net/therichartspace',
     siteUrl: `https://www.therichard.space`,
+    repo: 'https://www.github.com/RichART-Official/therichart.space',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -14,6 +28,14 @@ module.exports = {
         name: 'img',
         path: `${__dirname}/src/static/img`,
       },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: `${__dirname}/src/static/icons`,
+        }
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -29,7 +51,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages`,
       },
@@ -37,17 +59,30 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        quality: 100,
+        webpQuality: 90,
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
       // Apply gatsby-mdx to both .mdx and .md files
         extensions: ['.mdx', '.md'],
+        defaultQuality: 100,
+        maxWidth: 4000,
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 4000,
+              defaultQuality: 100,
+              withWebp: true,
+
             },
           },
         ],
@@ -87,7 +122,7 @@ module.exports = {
       resolve: 'gatsby-plugin-hotjar',
       options: {
         id: 1501492,
-        sv: 6
+        sv: 6,
       },
     },
     {

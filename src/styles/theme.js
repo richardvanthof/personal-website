@@ -1,19 +1,24 @@
 const theme = {};
 
-const white = '#FEFEFE';
-const black = '#141414';
-const lightGray = '#F2F2F2';
-const blue = '#1000FF';
-
-// TODO: Move these to a more appropriate file.
-theme.repo = 'https://github.com/RichART-Official/therichart.space';
-theme.email = 'richardvanthof@pm.me';
-theme.phone = '+31641219554';
+const white = '#FFFFFF';
+const black = '#000E41';
+const darkGray = '#787878';
+const lightGray = '#F6F6F6';
+const teal = '#7985B0';
+const blue = '#414C74';
+const yellow = '#FFFB7B';
 
 theme.colors = {
   primairy: blue,
+  secundairy: yellow,
+  yellow,
+  black,
   white,
-  bgDark: black,
+  blue,
+  teal,
+  textDark: black,
+  textLight: blue,
+  bgDark: darkGray,
   bgLight: lightGray,
 };
 
@@ -48,11 +53,12 @@ theme.typography = {
   base: {
     size: '1em',
     lineHeight: '1.66em',
-    font: ['times', 'sans-serif'],
+    font: ['Source Sans Pro', 'sans-serif'],
   },
   heading: {
     lineHeight: '1.11em',
     font: [
+      'Karla',
       'sans-serif',
     ],
   },

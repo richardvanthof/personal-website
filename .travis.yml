@@ -1,22 +1,26 @@
+# ESLINT HAS BEEN DISABLED :/
+
 language: node_js
 
 node_js:
   - '10'
 
-
 notifications:
   email:
-    - richardvanthof@pm.me
+    - hello@therichart.space
 
 before_deploy:
   - yarn build
 
 deploy:
-  provider: surge
+  provider: netlify
   project: public/
   skip_cleanup: true
-  domain: therichart.space
+  site: therichard.space
+  prod: true # Deploying to production server
   on: master
+  edge: true # Using v2 prerelease build tools
+
 
 cache:
   yarn: true

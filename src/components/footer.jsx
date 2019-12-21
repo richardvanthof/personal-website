@@ -1,129 +1,106 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Button from './button';
-import { Subtitle } from './typography';
+import { Subtitle, Big, Small } from './typography';
+
 import theme from '../styles/theme';
+import Socials from './socials';
+import Copyright from './copyright';
 
+const { colors, container, mediaQueries } = theme;
 
-const {
-  typography, colors, mediaQueries, repo, email, phone,
-} = theme;
+const Logo = require('../static/trademarks/logo.svg');
 
 const FooterBase = styled.footer`
-  font-family: ${(typography.heading.font).join(',')};
-  display: flex;
-  color: ${colors.white};
-  min-height: 75vh;
-  margin-top: 1em;
-  padding: 5vh 1em;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background: ${colors.bgDark};
-  @media ${mediaQueries.xs} {
-    justify-content: space-between;
-    margin-left: 4vw;
-    margin-top: 4vw;
-    padding: 3vh 5vw;
-  }
-  p {
-    margin: 0;
-    margin-bottom: 0.33em;
-  }
-`;
-
-const FoorterContent = styled.div`
-padding: 2em 0;
-@media ${mediaQueries.xs} {
-    padding-top: 20vh;
-  }
-  @media ${mediaQueries.md} {
-    width: 75%;
-  }
-`;
-
-const FooterLinks = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media ${mediaQueries.xs} {
-    flex-direction: row;
-  }
-  @media ${mediaQueries.md} {
-    width: 75%;
-  }
-`;
-
-const FooterLinkColumn = styled.div`
-  @media ${mediaQueries.sm} {
-    flex-basis: 33%;
-  }
-`;
-
-const FooterList = styled.ul`
-  list-style: none;
-  margin-left: 0;
-  @media ${mediaQueries.xs} {
-    margin-left: 1em;
-  }
-`;
-
-const FooterLi = styled.li`
+  background: ${colors.bgLight};
   margin: 0;
+  padding: 3em 1em 1em;
+  @media ${mediaQueries.md} {
+    padding: 5vh ${container.md} 1em;
+  }
 `;
 
-const FooterLink = styled.a`
-  color: ${colors.white};
+const FooterContent = styled.div`
+display: column;
+@media ${mediaQueries.xs} {
+  display: flex;
+}
+
+`;
+
+const FooterLogo = styled.img`
+  max-width: 7.5em;
+`;
+
+const FooterLinksList = styled.ul`
+  margin: 0.33em 0.05em;
+`;
+
+const FooterLinkBase = styled.li`
+`;
+
+const FooterHref = styled.a`
   text-decoration: none;
-  font-weight: normal;
-  line-height: 1.11em;
+  color: ${colors.textLight};
+`;
+
+const FooterLink = ({ title, to }) => (
+  <FooterLinkBase>
+    <FooterHref target="_blanc" href={to}>
+      {title || 'learn more'}
+    </FooterHref>
+  </FooterLinkBase>
+);
+
+const FooterColumn = styled.div`
+    flex-direction: column;
+    ul {
+      list-style: none;
+      list-style-position: outside;
+      margin-right:
+    }
+    @media ${mediaQueries.xs} {
+      p {
+        margin-left: 0.1em;
+      }
+    }
+    @media ${mediaQueries.sm} {
+      width: 50%;
+      flex-basis: 50%;
+      padding: 3em;
+    }
+    @media ${mediaQueries.md} {
+      width: 25%;
+      flex-basis: 25%;
+      padding: 3em;
+    }
 `;
 
 const Footer = () => (
-  <>
-    <FooterBase>
-      <FoorterContent>
-        <Subtitle>Richard van &apos;t Hof</Subtitle>
-        <h3><FooterLink href={`mailto:${email}`}>richardvanthof@pm.me</FooterLink></h3>
-        <h3><FooterLink href={`tel:${phone}`}>+31 6 41 21 95 54</FooterLink></h3>
-      </FoorterContent>
-      <FooterLinks>
-        <FooterLinkColumn>
-          <FooterList>
-            <FooterLink target="_blanc" href="https://goo.gl/maps/hL9ojTqKzf5e6zan8">
-              <FooterLi>
-            Weg en Bos 9E
-              </FooterLi>
-              <FooterLi>
-            2661DG Bergschenhoek
-              </FooterLi>
-              <FooterLi>
-            Netherlands
-              </FooterLi>
-            </FooterLink>
-          </FooterList>
-        </FooterLinkColumn>
-        <FooterLinkColumn>
-          <FooterList>
-            <FooterLi>
-            Terms of Service
-            </FooterLi>
-            <FooterLi>
-            Privacy Statement
-            </FooterLi>
-            <FooterLi>
-              <Link to="/sitemap.xml">Sitemap</Link>
-            </FooterLi>
-          </FooterList>
-        </FooterLinkColumn>
-        <FooterLinkColumn>
-          <p>Handmade in Roterdam</p>
-          <Button title="View Source Code" light external to={repo} />
-        </FooterLinkColumn>
-      </FooterLinks>
-    </FooterBase>
+  <FooterBase>
+    <FooterContent>
+      <FooterColumn>
+        <FooterLogo src={Logo} />
+      </FooterColumn>
+      <FooterColumn>
+        <h6>Open Source</h6>
+        <p className="light small">Good news! This site is open source. Would you like to see how I made it or do you want to build from this site? It’s all possible!</p>
+        <Button external title="View source code" to="https://github.com/RichART-Official/therichart.space" />
+      </FooterColumn>
 
-  </>
+      <FooterColumn>
+        <h6>Follow me!</h6>
+        <Socials />
+      </FooterColumn>
+      <FooterColumn>
+        <h6>References</h6>
+        <FooterLinksList>
+          <FooterLink to="/sitemap.xml" title="Sitemap" />
+        </FooterLinksList>
+      </FooterColumn>
+    </FooterContent>
+    <Copyright />
+  </FooterBase>
 );
-
 export default Footer;
