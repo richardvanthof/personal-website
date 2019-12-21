@@ -7,18 +7,6 @@ import Gallery from '../components/gallery';
 import Socials from '../components/socials';
 import theme from '../styles/theme';
 
-<<<<<<< HEAD
-import DefaultLayout from '../layouts/defaultLayout';
-import Container from '../components/container';
-import Header from '../components/header';
-
-const Contact = () => (
-  <DefaultLayout>
-    <Header>
-      <h1>Contact</h1>
-    </Header>
-  </DefaultLayout>
-=======
 import Map from '../static/icons/content/map.svg';
 import Lock from '../static/icons/UI/lock.svg';
 
@@ -103,7 +91,6 @@ const PGP = ({ permalink }) => (
   <LockMessage href={permalink}>
     <LockIcon />
   </LockMessage>
->>>>>>> feature/cms
 );
 
 const ContactInfoItem = styled.li`
