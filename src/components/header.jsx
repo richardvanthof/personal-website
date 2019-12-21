@@ -10,6 +10,7 @@ const HeaderBase = styled.header`
   @media ${breakpoint.xs} {
     position: absolute;
     top: 0vh;
+    min-height: 50em;
     h1 {
       font-size: 35vw;
       transform: translateX(-3vw);

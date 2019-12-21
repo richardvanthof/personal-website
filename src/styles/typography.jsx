@@ -3,6 +3,17 @@ import WebFont from 'webfontloader';
 import theme from './theme';
 import textScale, { scaleHeaders } from '../lib/textScale';
 
+// Import Haverj W01 Bold font
+const haverj = {
+  /* eslint-disable global-require */
+  eot: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.eot'),
+  woff: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.woff'),
+  woff2: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.woff2'),
+  ttf: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.ttf'),
+  svg: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.svg'),
+  /* eslint-enable global-require */
+};
+
 const baseLineHeight = theme.typography.base.lineheight;
 const HeaderFonts = theme.typography.heading.font;
 const BaseFonts = theme.typography.base.font;
@@ -10,24 +21,23 @@ const BaseFonts = theme.typography.base.font;
 const { mediaQueries, colors } = theme;
 
 const fontSizes = {
-  lg: textScale(1.44),
+  lg: textScale(1.33),
   md: textScale(1.33),
   sm: textScale(1.30),
-  xs: textScale(1.11),
+  xs: textScale(1.15),
 };
 
 const scaleText = css`
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   html {
     margin: 0;
     padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
     line-height: ${baseLineHeight};
     font-size: ${fontSizes.xs[0]}
     ${scaleHeaders(fontSizes.xs)};
 
-    @media ${mediaQueries.sm} {
+    @media ${mediaQueries.xs} {
       font-size: ${fontSizes.sm[0]};
       ${scaleHeaders(fontSizes.sm)}
     }
@@ -60,26 +70,39 @@ const scaleText = css`
   }
 `;
 
-WebFont.load({
-  google: {
-    families: ['Karla', 'Source Sans Pro']
-  },
-});
+if (typeof window !== 'undefined') {
+  WebFont.load({
+    google: {
+      families: ['Karla', 'Source Sans Pro'],
+    },
+  });
+}
 
 const setFont = css`
+  @font-face {font-family: "Haverj W01 Bold";
+    src: url("${haverj.eot}"); /* IE9*/
+    src: url("${haverj.eot}?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("${haverj.woff2}") format("woff2"), /* chrome、firefox */
+    url("${haverj.woff}") format("woff"), /* chrome、firefox */
+    url("${haverj.ttf}") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("${haverj.svg}#Haverj W01 Bold") format("svg"); /* iOS 4.1- */
+  }
+
   color: ${colors.black};
+  -webkit-font-smoothing: antialiased;
   body {
     font-family: ${BaseFonts.join(', ')};
   };
   h1, h2, h3, h4, h5, h6 {
     font-family: ${HeaderFonts.join(', ')};
     font-weight: normal;
-    line-height: 0.95em;
-    margin-bottom: 0.33em;
+    line-height: 0.9em;
+    margin-bottom: 0.44em;
+    color: ${colors.black};
   }
 
-  h4 {
-    font-family: serif;
+  h1 {
+    font-family: 'Haverj W01 Bold', 'Times New Roman', Times, serif;
   }
 
   h5 {
@@ -94,6 +117,22 @@ const setFont = css`
 
   .light {
     color: ${colors.textLight};
+  }
+
+  .big {
+    font-size: 1.33em;
+  }
+
+  .xl {
+    font-size: 1.66em;
+  }
+
+  .small {
+    font-size: 0.9em;
+  }
+
+  .xs {
+    font-size: 0.66em;
   }
 
   .no-margin {

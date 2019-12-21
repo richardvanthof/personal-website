@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
   }
   ${normalize}
   ${typography}
+  /* Quick Fixes/Hacks :( */
+  .gatsby-resp-image-background-image {
+    display: none !important;
+  }
 `;
 
 export default GlobalStyle;

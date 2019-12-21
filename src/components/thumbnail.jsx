@@ -5,11 +5,10 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
 import Button from './button';
-import {Small, Big} from '../components/typography';
+
+import ArrowRight from '../static/icons/UI/arrow_right.svg';
 
 const { colors, container, mediaQueries } = theme;
-
-const arrowRight = require('../static/icons/UI/arrow_right.svg')
 
 const ThumbnailBase = styled(Link)`
     display: flex;
@@ -19,12 +18,14 @@ const ThumbnailBase = styled(Link)`
     color: ${colors.black} !important;
 
     @media ${mediaQueries.xs} {
+      width: 90%;
       display: grid;
       grid-template-columns: ${container.sm} 1fr 1fr 1fr 1fr ${container.sm};
       grid-template-rows: auto;
       margin: 10vh 0;
     }
     @media ${mediaQueries.md} {
+      width: 100%;
       margin-bottom: 15vh;
       grid-template-columns: ${container.md} 1fr 1fr 1fr 1fr ${container.md};
     }
@@ -50,30 +51,6 @@ const ThumbnailInfo = styled.div`
   margin: 3em;
 `;
 
-const ThumbnailMetaData = styled.div`
-  display: none;
-  @media ${mediaQueries.sm} {
-    display: flex;
-    transform: translateX(${props => (props.right ? '-0.5em' : '0.5em')});
-    justify-content: space-between;
-    grid-column: ${props => (props.right ? 6 : 1)};
-    grid-row: 1;
-    text-align: right;
-    margin: 1em;
-    flex-direction: column;
-    align-items: ${props => (props.right ? 'baseline' : 'end')};
-  }
-`;
-
-const Type = styled.p`
-  writing-mode: tb-rl;
-  text-orientation: sideways-right;
-`;
-
-const Year = styled.h6`
-  transform: translateX(${props => (props.right ? '-0.75em' : '0.66em')});
-`;
-
 const SmallThumbnailBase = styled(Link)`
   text-decoration: none;
   display: flex;
@@ -94,9 +71,6 @@ const SmallThumbnailBase = styled(Link)`
     transition: 0.15s ease-in-out;
   }
   &:hover {
-    .thumbnail-image {
-      box-shadow: 0 0 4em 0 rgba(0, 0, 0, 0.1);
-    }
     .information-container {
       * {
         color: ${colors.textDark};
@@ -132,13 +106,13 @@ const Metadata = styled.div`
   font-size: 66%;
 `;
 
-const CallToActionIcon = styled.img`
+const CallToActionIcon = styled(ArrowRight)`
   width: 1.33em;
   transform: translateX(-0.33em);
 `;
 
 const Thumbnail = ({
-  title, client, img, alt, medium, year, description, type, url, to, right, small,
+  title, client, img, alt, medium, year, type, url, to, right, small,
 }) => {
   if (small) {
     return (
@@ -149,12 +123,19 @@ const Thumbnail = ({
           </SmallThumbnailImage>
           <SmallThumbnailInfo className="information" right={right}>
             <div className="information-container">
-              <p className='light no-margin'>{title}</p>
+              <p className="light no-margin">{title}</p>
               <Metadata>
-              {client && (<p className='light'>{client }&nbsp;&middot;&nbsp;</p>)}{type && (<p className='light'>{type}</p>)}{year && (<p className='light'>{type}</p>)}
+                {client && (
+                <p className="light">
+                  {client }
+&nbsp;&middot;&nbsp;
+                </p>
+                )}
+                {type && (<p className="light">{type}</p>)}
+                {year && (<p className="light">{type}</p>)}
               </Metadata>
             </div>
-            <CallToActionIcon className="arrow-icon" src={arrowRight} alt=">"/>
+            <CallToActionIcon className="arrow-icon" alt=">" />
           </SmallThumbnailInfo>
         </SmallThumbnailBase>
       </>
@@ -167,8 +148,19 @@ const Thumbnail = ({
       </ThumbnailImage>
       <ThumbnailInfo className="thumbnailInfo" right={right}>
         <h6>{title}</h6>
-        <p>{client} &middot; {medium} &middot; {year} </p>
-        <p></p>
+        <p>
+          {client}
+
+&middot;
+
+          {medium}
+
+&middot;
+
+          {year}
+
+        </p>
+        <p />
         <Button title="learn more" to={url} />
       </ThumbnailInfo>
     </ThumbnailBase>
@@ -184,7 +176,6 @@ Thumbnail.propTypes = {
   medium: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   right: PropTypes.bool,
   small: PropTypes.bool,

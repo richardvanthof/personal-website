@@ -35,8 +35,12 @@ const NotFoundPage = () => (
       <MessageContent>
         <h6>Error 404</h6>
         <h2>Bummer, this page is empty</h2>
-        <p>The page you tried to look for can not be found. Please recheck the URL. The page could also have been deleted. </p>
-        <Button back title="Back to home" to="/"/>
+        <p>
+          The page you tried to look for can not be found.
+          Please recheck the URL. The page could
+          also have been deleted.
+        </p>
+        <Button back title="Back to home" to="/" />
       </MessageContent>
     </MessageWrapper>
   </MinimalLayout>

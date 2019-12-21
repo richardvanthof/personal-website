@@ -1,18 +1,32 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import { Blogpost } from '../components/thumbnail';
 import Gallery from '../components/gallery';
+import theme from '../styles/theme';
+
+const { mediaQueries } = theme;
+
+const Header = styled.header`
+  @media ${mediaQueries.xs} {
+    padding: 0 10vw;
+  }
+  padding: 0 1em;
+  padding-top: 20vh !important;
+`;
 
 const Work = ({ data }) => {
   const { edges: posts } = data.allMdx;
   return (
-    <DefaultLayout>
+    <DefaultLayout gray>
       <SEO title="Home" />
       {/* <Header title="work" /> */}
-
+      <Header>
+        <h1>Work</h1>
+      </Header>
       <Gallery fluid width={33}>
         {
           posts.map(({ node: post }, index, key) => {
@@ -30,6 +44,7 @@ const Work = ({ data }) => {
 export const pageQuery = graphql`
   query getWorkProjects {
     allMdx (
+      sort: {fields: frontmatter___rating, order: DESC},
       filter: {frontmatter: {draft: {ne: true}}}
     ){
       edges {
@@ -40,22 +55,20 @@ export const pageQuery = graphql`
           fileAbsolutePath
           frontmatter{
             title
-              key
-              client
-              description
-              type
-              video
-              image {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
+            key
+            client
+            description
+            type
+            video
+            image {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
-              alt
-              length
-              draft
-              url
+            }
+            alt
+            draft
           }
         }
       }

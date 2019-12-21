@@ -1,36 +1,52 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import SEO from '../components/seo';
 import DefaultLayout from '../layouts/defaultLayout';
-import PropTypes from 'prop-types';
-import P5Wrapper from 'react-p5-wrapper';
-import { Small, Hero } from '../components/typography';
+import { Small, HeroTitle } from '../components/typography';
 import { Blogpost } from '../components/thumbnail';
 import Gallery from '../components/gallery';
+import Img from 'gatsby-image';
 import Button from '../components/button';
-import sketch from '../animations/sketch1';
 import theme from '../styles/theme';
 import smoothScrollToElement from '../lib/smoothScroll';
+import EyeIcon from '../static/icons/UI/watch.svg';
+import ArrowDownIcon from '../static/icons/UI/arrow_down.svg';
+import Chaos from '../static/icons/content/chaos.svg';
 
 const { mediaQueries, colors } = theme;
 
-const eye = require('../static/icons/UI/watch.svg');
-const arrowDown = require('../static/icons/UI/arrow_down.svg');
 
 const HeroHeader = styled.header`
-  max-height: 50rem;
   height: 100vh;
+  min-height: 40em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 25vh;
+  padding-top: 15vh;
   background: ${theme.colors.bgLight};
   padding: 1em;
   display: flex;
   justify-content: center;
-  @media ${mediaQueries.sm} {
+  max-height: 60em !important;
+  /* &:before {
+    content: '';
+    background: white;
+    width: 95vw;
+    height: 95vh;
+    opacity: 0.25;
+    position: absolute;
+    top: 2em;
+  } */
+  @media ${mediaQueries.xs}{
+    height: 85vh;
     max-height: none !important;
+    min-height: 40em;
+  };
+  @media ${mediaQueries.sm} {
+    display: grid;
+    grid-template: 2fr 2fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
   };
 `;
 
@@ -38,41 +54,31 @@ const Work = styled.section`
 
 `;
 
-const WorkSelector = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  padding: 10vh 2em 0;
-`;
-const Tags = styled.ul`
-  display: flex;
-  list-style: none;
-  padding: 3em;
-  padding-bottom: 0;
-`;
-
-const Tag = styled.li`
-  padding: 1em;
-`;
-
 const CallToAction = styled.a`
+  display: none;
+  width: 100%;
   position: absolute;
   scroll-behavior: smooth;
-  top: 45em;
+  top: 50em;
+  margin: 0 auto;
   text-decoration: none;
+  text-align: center;
+  @media ${mediaQueries.xs} {
+    display: block;
+    transform: translateY(15%);
+  };
   @media ${mediaQueries.sm} {
-    top: 90vh;
+    top: 83vh;
   };
 `;
 
-const ArrowDown = styled.img`
+const ArrowDown = styled(ArrowDownIcon)`
   opacity: 0.5;
-  height: 10vh;
+  height: 7vh;
   margin: 0;
 `;
 
-const EyeIcon = styled.img`
+const Eye = styled(EyeIcon)`
   height:1em;
   margin: 0;
 `;
@@ -83,32 +89,13 @@ const ActionText = styled.p`
   opacity: 0.5;
 `;
 
-const Title = styled(Hero)`
-  max-width: 40em;
-`;
-
 const Subtitle = styled.p`
-  max-width: 35em;
-`;
-
-const HeroAnimation = styled(P5Wrapper)`
-  -webkit-box-shadow: -4px 13px 86px -40px rgba(0,0,0,0.75);
-  -moz-box-shadow: -4px 13px 86px -40px rgba(0,0,0,0.75);
-  box-shadow: -4px 13px 86px -40px rgba(0,0,0,0.7);
-  animation: zoomOut 1s;
-  @keyframes zoomOut {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scaleX()(0.9);
-    }
-  }
 `;
 
 const CallToActionContent = styled.div`
   animation: hover 2s infinite;
   cursor: pointer;
+  text-align: center;
   @keyframes hover {
     0% {
       transform: translateY(0)
@@ -123,42 +110,72 @@ const CallToActionContent = styled.div`
 `;
 
 const HeroHeaderContent = styled.div`
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   align-self: self-start;
-  padding: 2em;
-  max-width: 30em;
-  top: 40vh;
-  min-height: 50em;
+  padding-right: 1em;
+  top: 25vh;
+  text-align: center;
+  @media ${mediaQueries.xs} {
+    padding: 2em;
+  }
+`;
+
+const HeaderTitle= styled.h1`
+  grid-column: 2;
+  grid-row: 2/4;
+  z-index: 2;
+  ${mediaQueries.xs}{
+    color: ${colors.white};
+    text-shadow: 0em 0em 2em rgba(0,0,0,0.75);
+  }
+`;
+
+const HeaderSubtitle = styled(Subtitle)`
+  grid-column: 4;
+  grid-row: 3;
+`;
+
+const HeroImage1 = styled(Img)`
+  width: 20em;
+  grid-row: 2;
+  grid-column: 3
+`;
+
+const ChaosDrawing = styled(Chaos)`
+  grid-column: 1/5;
+  grid-row: 1/3;
+  opacity: 1;
 `;
 
 const IndexPage = ({ data }) => {
-  const { edges: posts } = data.allMdx;
+  console.log(data.projects);
+  const { edges: posts } = data.projects;
   const handleClick = () => {
     smoothScrollToElement('work');
-  }
+  };
   return (
     <DefaultLayout gray>
       <SEO title="Home" />
       {/* <Header title="work" /> */}
       <HeroHeader>
-        <HeroHeaderContent>
-            <Title>Exploring my creative chaos to gain new perspectives on the world</Title>
-            <Subtitle className="light">I am Richard van ’t Hof. An audiovisual maker, programmer and everything in between who likes to control everything in his path. Until he can't. Which he strives for.</Subtitle>
-            <Button title="Learn more" to="/about" />
-        </HeroHeaderContent>
-        <HeroAnimation sketch={sketch}/>
+
+          {/* <HeroImage1 fluid={data.image.childImageSharp.fluid} /> */}
+          <ChaosDrawing/>
+          <HeaderTitle>Exploring my creative chaos to gain new perspectives on the world</HeaderTitle>
+          <HeaderSubtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital artist and everything in between who likes to control everything in his path. Until he can&apos;t. Which he strives for.</HeaderSubtitle>
+
+        {/* <HeroAnimation sketch={sketch}/> */}
         <CallToAction onClick={handleClick}>
           <CallToActionContent>
-            <EyeIcon className="eye" src={eye} alt='Watch!' />
+            <Eye />
             <ActionText><Small>Watch my stuff</Small></ActionText>
           </CallToActionContent>
-          <ArrowDown src={arrowDown} />
+          <ArrowDown />
         </CallToAction>
       </HeroHeader>
       <Work id="work">
-
-      {/* <WorkSelector>
+        {/* <WorkSelector>
           <h3>Work</h3>
           <Tags>
             <Tag>Audiovisual</Tag>
@@ -166,8 +183,8 @@ const IndexPage = ({ data }) => {
             <Tag>Code</Tag>
           </Tags>
         </WorkSelector> */}
-      <Gallery width={50}>
-        {
+        <Gallery width={50}>
+          {
           posts.map(({ node: post }, index, key) => {
             const setRight = (index % 2 === 0);
             return (
@@ -175,47 +192,54 @@ const IndexPage = ({ data }) => {
             );
           })
         }
-      </Gallery>
+        </Gallery>
       </Work>
     </DefaultLayout>
   );
 };
 
 export const pageQuery = graphql`
-  query getProjects {
-    allMdx (
-      filter: {frontmatter: {draft: {ne: true}}}
-    ){
-      edges {
-        node {
-          fields {
-            slug
-          }
-          fileAbsolutePath
-          frontmatter{
-            title
-              key
-              client
-              description
-              type
-              video
-              image {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
+  query {
+    projects: allMdx (
+        sort: {fields: frontmatter___rating, order: DESC},
+        filter: {frontmatter: {draft: {ne: true}}}
+      ){
+        edges {
+          node {
+            fields {
+              slug
+            }
+            fileAbsolutePath
+            frontmatter{
+              title
+                key
+                client
+                description
+                type
+                video
+                image {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid_withWebp_noBase64
+                    }
                   }
                 }
-              }
-              alt
-              length
-              draft
-              url
+                alt
+                draft
+            }
+          }
+        }
+    },
+    image: file(relativePath: {eq: "headers/Richard/img030.jpeg"}) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
-    }
   }
 `;
+
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -243,4 +267,3 @@ Blogpost.defaultProps = {
 };
 
 export default IndexPage;
-

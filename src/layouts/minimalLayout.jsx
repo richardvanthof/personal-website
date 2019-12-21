@@ -39,7 +39,7 @@ const MinimalLayout = ({ children }) => {
             <NoScript />
             <Main>{children}</Main>
             <GlobalStyle />
-            <Copyright/>
+            <Copyright />
           </>
         </ThemeProvider>
       )}

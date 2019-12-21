@@ -9,12 +9,12 @@ import Footer from '../components/footer';
 import removeLoader from '../lib/removeLoader';
 import theme from '../styles/theme';
 
-const { mediaQueries, colors } = theme;
+const { colors } = theme;
 
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
-  background: ${props => props.grayBg ? colors.bgLight : 'none'} !important;
+  background: ${props => (props.grayBg ? colors.bgLight : 'none')} !important;
   scroll-behavior: smooth;
 `;
 const DefaultLayout = ({ children, gray }) => (

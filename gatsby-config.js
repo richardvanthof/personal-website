@@ -30,6 +30,14 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: `${__dirname}/src/static/icons`,
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'work',
@@ -43,7 +51,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages`,
       },
@@ -51,7 +59,15 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        quality: 100,
+        webpQuality: 90,
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -65,6 +81,8 @@ module.exports = {
             options: {
               maxWidth: 4000,
               defaultQuality: 100,
+              withWebp: true,
+
             },
           },
         ],
@@ -104,7 +122,7 @@ module.exports = {
       resolve: 'gatsby-plugin-hotjar',
       options: {
         id: 1501492,
-        sv: 6
+        sv: 6,
       },
     },
     {

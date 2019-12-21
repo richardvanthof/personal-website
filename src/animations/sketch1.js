@@ -1,8 +1,10 @@
-import theme from '../styles/theme';
+/* eslint-disable no-param-reassign */
 
-const bg = theme.colors.white;// Example sketch from p5js.org, not made by me! replace with own sketch before launching!!!!
+
+const bg = 'transparent';// Example sketch from p5js.org, not made by me! replace with own sketch before launching!!!!
 
 export default function sketch(p) {
+  // eslint-disable-next-line no-unused-vars
   let canvas;
 
   p.setup = () => {
@@ -12,7 +14,7 @@ export default function sketch(p) {
   p.draw = () => {
     p.background(bg);
     p.rotateY(p.frameCount * 0.01);
-    p.color(0,255,0);
+    p.color(0, 255, 0);
     for (let j = 0; j < 5; j++) {
       p.push();
       for (let i = 0; i < 80; i++) {
@@ -32,5 +34,5 @@ export default function sketch(p) {
 
   p.windowResized = () => {
     p.resizeCanvas(p.windowWidth, p.windowHeight);
-  }
-};
+  };
+}

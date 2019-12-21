@@ -20,7 +20,6 @@ const GalleryBase = styled.section`
             width: ${props => props.width}%;
             padding: 0.5em;
             margin: 0;
-            padding: ${props => (props.padded ? '5vw' : '0.5em')} 0;
         }
     }
     @media ${mediaQueries.md} {

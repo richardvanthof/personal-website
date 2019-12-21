@@ -3,21 +3,22 @@ import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
+import ArrowIcon from '../static/icons/UI/arrow_right.svg';
 
 const { colors } = theme;
-const arrow = require('../static/icons/arrow-link.svg');
+
 let reverseButton = false;
 const buttonStyling = css`
     padding-top: 0.1em;
     margin-left: 0.2em;
     display: flex;
-    flex-direction: ${reverseButton ? 'row-reverse' : 'row'};
+    color: ${colors.teal};
     text-decoration: none;
     margin-left: 0.2em;
     transition: 0.15s ease-in-out;
     font-size: 0.8em;
     &:hover {
-        transform: translateX(0.2em);
+
         svg, img {
             transform: scaleX(1.1) translateX(0.1em);
         }
@@ -26,21 +27,22 @@ const buttonStyling = css`
 
 const ButtonBase = styled(Link)`
   ${buttonStyling}
+  flex-direction: ${props => (props.isReversed ? 'row-reverse' : 'row')};
   /* color: ${props => (props.light ? colors.bgLight : colors.primairy)} */
 `;
 
 const ExternalButtonBase = styled.a`
   ${buttonStyling}
-
+  flex-direction: ${props => (props.isReversed ? 'row-reverse' : 'row')};
 `;
 
-const Arrow = styled.img`
+const Arrow = styled(ArrowIcon)`
     transition: 0.2s ease-in-out;
     width: 3em;
     margin: 0;
     padding-left: 0.5em;
     padding-top: 0em;
-    transform: ${reverseButton ? 'rotate(180deg)' : 'none'};
+    transform: ${props => (props.isReversed ? 'rotate(180deg)' : 'none')};
 `;
 const Button = ({
   to,
@@ -53,16 +55,16 @@ const Button = ({
   reverseButton = back;
   if (!external) {
     return (
-      <ButtonBase light={light} to={to}>
+      <ButtonBase isReversed={back} light={light} to={to}>
         {title || children}
-        <Arrow src={arrow} alt=">" />
+        <Arrow isReversed={back} />
       </ButtonBase>
     );
   }
   return (
-    <ExternalButtonBase target="_blanc" light={light} target="_blanc" href={to}>
+    <ExternalButtonBase isReversed={back} target="_blanc" light={light} target="_blanc" href={to}>
       {title}
-      <Arrow src={arrow} alt=">" />
+      <Arrow isReversed={back} />
     </ExternalButtonBase>
   );
 };

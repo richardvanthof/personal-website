@@ -1,107 +1,275 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import DefaultLayout from '../layouts/defaultLayout';
 import { graphql } from 'gatsby';
+import { animated } from 'react-spring';
 import Img from 'gatsby-image';
+import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import theme from '../styles/theme';
-import HeroHeader from '../components/heroHeader';
-import Gallery from '../components/gallery';
-import { Big, Small } from '../components/typography';
+import Container from '../components/container';
+import { Big } from '../components/typography';
+import Socials from '../components/socials';
+import CTA from '../components/cta';
 
-const { mediaQueries, container } = theme;
+import CVIcon from '../static/icons/UI/download-cv.svg';
 
-const Grid = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin-top: 7vh;
-  align-items: center;
-  margin: 1em;
-  @media ${mediaQueries.sm} {
-    margin: 0;
-    display: grid;
-    grid-template-columns: ${container.sm} 1fr 1fr ${container.sm};
-    grid-template-rows: auto;
-    & > * {
-       flex-basis: 50%;
-       margin: 2em;
+const { mediaQueries, colors } = theme;
+
+const CV = styled(CVIcon)`
+  #About-Copy-2 {
+    transition: 0.3s ease-in-out;
+  }
+  &:hover {
+    #Mask {
+      fill: ${colors.white};
     }
   }
+  &:active {
+    #About-Copy-2 {
+      fill: ${colors.primairy};
+    }
+  }
+`;
+
+
+
+const HeaderImg = styled(Img)`
+  position: relative !important;
+  width: 100vw;
+  top: 0vh;
+  left: 0;
+  padding: 2em;
+  opacity: ${props => (props.hide ? 0 : 1)};
+  @media ${mediaQueries.xs} {
+    padding: 0;
+    z-index: 10;
+    position: absolute !important;
+    width: 50vw;
+    top: 15vh;
+  }
+  @media ${mediaQueries.sm} {
+    width: 50vw;
+    top: 15vh;
+  }
   @media ${mediaQueries.md} {
-    grid-template-columns: ${container.md} 1fr 1fr ${container.md};
+    width: 25vw;
   }
-  @media ${mediaQueries.lg} {
-    grid-template-columns: ${container.lg} 1fr 1fr ${container.lg};
+`;
+
+const HeaderImgContainer = styled(animated.figure)`
+
+`;
+
+const CVGrid = styled(animated.div)`
+  display: flex;
+  padding: 3em 1em;
+  flex-direction: column;
+  justify-self: center;
+  align-content: center;
+  @media ${mediaQueries.xs} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5vw;
+    grid-gap: 0 4em;
   }
-  @media ${mediaQueries.xl} {
-    grid-template-columns: ${container.xl} 1fr 1fr ${container.xl};
+  @media ${mediaQueries.sm} {
+    padding: 10vw;
+
+  }
+  @media ${mediaQueries.md} {
 
   }
 `;
 
-const Image = styled.figure`
-  grid-column: 1/3;
-  display: block;
+const DownloadCV = styled.a`
+  width: 100%;
+  @media ${mediaQueries.sm} {
+    max-width: 20em;
+  }
+  align-self: center;
 `;
 
-
-const Content = styled.figure`
-  grid-column: 3;
-`;
-
-const TextContainer = styled.div`
+const TextSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  justify-content: center;
   align-items: center;
-  & > * {
-    max-width: 30em;
+  @media ${mediaQueries.xs}{
+    & > * {
+      margin: 7vh 0;
+    }
   }
 `;
 
 const Header = styled.header`
-
   overflow: hidden;
-  margin: 1em;
-  height: 30em;
+  height: 90vh;
+  max-height: 40em;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 2em;
   @media ${mediaQueries.xs} {
-    margin: 2em;
-    height: 75vh;
-  }
-  &>*{
-    height: 100%;
+    padding: 5vh 0;
+    height: 90vh;
+    min-height: 40em;
+    max-height: none;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 2em;
   }
 `;
 
-const About = ({ data }) => (
-  <DefaultLayout>
-    <SEO title="About" />
-    <HeroHeader/>
-    {/* <Header>
-      <Img fluid={data.file.childImageSharp.fluid} />
-    </Header> */}
-    <TextContainer>
-      <h6>Audiovisual maker & digital artist</h6>
-      <h2>About Richard</h2>
+const SetPosition = styled.span`
+  grid-row: ${props => props.row};
+  grid-column: ${props => props.column};
+`;
 
-    <p>Richard van 't Hof is een 19-jarige Rotterdamse audiovisueel maker en digitaal artiest die op het snijvlak zit van film, design en code. Sinds hij op zijn 11e leerde dat je door twee bewegende beelden aan elkaar te plakken nieuwe betekenis kon creeëren was hij gefascineerd door absorberende waarde van film en kunst in het algemeen. Zijn werk richt zich ook vaak op de vraag van controle. Vooral in de zin van ‘hoeveel controle kan ik hebben op mijn omgeving/de ruimte om mij heen’ maar ook ‘hoeveel controle kan ik hebben op mijzelf.’</p>
+const About = ({ data }) => {
+  let [setScrolling] = useState(true);
+  if (typeof window !== 'undefined') {
+    setInterval(() => {
+      // eslint-disable-next-line no-undef
+      if (window.scrollY > 100) {
+        setScrolling = true;
+      } else {
+        setScrolling = false;
+      }
+    }, 1000);
+  }
 
-<p>Hij werkt vaak vanut een autonome, theoretische houding waarbij hij het onderwerp oneindig uitpluist. In deze theoretische chaotiek maakt hij onverwachte verbanden. Met deze verbanden gaat hij dan visueel spelen. Vaak mixt hij hierbij analoog en digitaal, in zijn films werkt hij daarom vaak met collage en miniaturen. Door de onberekenbaarheid van analoog komen er onverwachtere resultaten uit.</p>
+  const GridImg = styled(Img)`
+    display: none;
+    @media ${mediaQueries.xs} {
+      display: block;
+    }
+  `;
 
-<p>De laatste jaren richt Richard zich ook steeds meer op de development. De digitale wereld omringt ons immers steeds meer. Als je die beheerst heb je ook een magische kracht in de echte wereld. Zodat hij buiten de kaders van het browservenster kan denken, miljoenen mensen bij elkaar kan brengen door een balon of met zijn brein een auto kan besturen. Hij wil de digitale wereld als canvas gebruiken en daar zijn audiovisuele kennis in verwerken. Want als je de digitale wereld kan bespelen, heb je ook in de echte wereld een magische kracht.</p>
-    </TextContainer>
+  const Img1 = styled(GridImg)`
+      grid-row: 1/4;
+      grid-column: 2/7;
+  `;
+  const Img2 = styled(GridImg)`
+    grid-row: 2/5;
+    grid-column: 6/10;
+  `;
+  const Img3 = styled(GridImg)`
+    grid-row: 1/3;
+    grid-column: 9/11;
+  `;
+  const Img4 = styled(Img)`
+    width: 100vw;
+    height: 100vh;
+    @media ${mediaQueries.xs}{
+      width: auto;
+      height: auto;
+      grid-row: 3/5;
+      grid-column: 1/3;
+    }
+  `;
+  const Title = styled.h1`
+    padding: 1em 4vw;
+    padding-top: 0.33em;
+    bottom: 0;
+    position: absolute;
+    bottom: 0vh;
+    width: 75%;
+    color: ${colors.white};
+    @media ${mediaQueries.xs} {
+      color: ${colors.textDark};
+      position: relative;
+      grid-row: 4;
+      grid-column: 3/7;
+      z-index: 5;
+      width: 100%;
+    }
 
-  </DefaultLayout>
-);
+  `;
+
+  return (
+    <DefaultLayout gray>
+      <SEO title="About" />
+      <Header className="header">
+            <Img1 fluid={data.image1.childImageSharp.fluid} />
+            <Img2 fluid={data.image2.childImageSharp.fluid} />
+            <Img3 fluid={data.image3.childImageSharp.fluid} />
+            <Img4 fluid={data.image4.childImageSharp.fluid} />
+            <Title>I am Richard</Title>
+        <CTA />
+        {/* <BackgroundAnimation options={defaultOptions/> */}
+      </Header>
+      <Container id="about-content">
+        <TextSection>
+          <h3>
+            Richard van &apos;t Hof is a Rotterdam based audiovisual maker and digital artist.
+            His work is on the verge of film, design and code. He is fascinated by it&apos;s
+            emersive quality. His work focuses much on the question of this control. Especially
+            in the question of how much control he can have over his surroundings and other
+            people but also himself.
+          </h3>
+        </TextSection>
+        <TextSection>
+          <h3>
+          He works with an autonimous, theoretical mindset to disect subjects around him,
+          explore them and disect them into theoretical chaos from which he can gain unexpected
+          insights. With these connections he plays visually. In this he likes to mix
+          the analog and digital in his work.
+          </h3>
+        </TextSection>
+        <TextSection>
+          <h3>
+          This is why he has been focussing more on programming the last few years. The
+          digital world envelops us more and more, also in the real world. This creates
+          a canvas that not only involves the digital but also the real. He is currently
+          trying to find his voice in this digital world.
+          </h3>
+        </TextSection>
+      </Container>
+      <Container>
+        <CVGrid>
+          <p className="light">
+            <Big>
+              Richard currently studies audiovisual design at the Willem de Kooning Academy.
+              Since 2017 he is also active at Bytecode Digital Agency where he designs
+              branding, concepts, user expericences and does front-end development.
+            </Big>
+          </p>
+          <DownloadCV target="_blanc" href="/test-cv.pdf"><CV /></DownloadCV>
+          <Socials />
+        </CVGrid>
+      </Container>
+
+    </DefaultLayout>
+  );
+};
+
+export const squareImage = graphql`
+  fragment squareImage on File {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid_withWebp_noBase64
+      }
+    }
+  }
+`;
 
 export const query = graphql`
   query {
-    file(relativePath: { eq: "richard.jpg" }) {
-      childImageSharp {
-        fluid{
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
+    image1: file(relativePath: { eq: "headers/Richard/landscape.jpg" }) {
+      ...squareImage
+    }
+
+    image2: file(relativePath: { eq: "headers/Richard/img029.jpeg" }) {
+      ...squareImage
+    }
+
+    image3: file(relativePath: { eq: "headers/Richard/img031.jpeg" }) {
+      ...squareImage
+    }
+
+    image4: file(relativePath: { eq: "headers/Richard/img030.jpeg" }) {
+      ...squareImage
     }
   }
 `;

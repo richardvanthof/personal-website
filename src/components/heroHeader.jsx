@@ -107,6 +107,9 @@ const HeroHeaderContent = styled.div`
   max-width: 30em;
   top: 40vh;
   min-height: 50em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const HeroHeaderBackground = styled.div`
@@ -120,11 +123,13 @@ const HeroHeaderBackground = styled.div`
   }
 `;
 
+
+
 const HeroHeader = () => (
   <HeroHeaderWrapper>
         <HeroHeaderContent>
             <Title>About Richard</Title>
-            <Subtitle className="light">I am Richard van ’t Hof. An audiovisual maker, programmer and everything in between who likes to control everything in his path. Until he can't. Which he strives for.</Subtitle>
+            <Subtitle style={{width: 50%}} className="light">I am Richard van ’t Hof. An audiovisual maker, programmer and everything in between who likes to control everything in his path. Until he can't. Which he strives for.</Subtitle>
             {/* <Button title="Learn more" to="/about" /> */}
         </HeroHeaderContent>
         <HeroHeaderBackground>

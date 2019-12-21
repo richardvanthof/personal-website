@@ -11,8 +11,8 @@ Julian van Dijk
 Last update: 2019/09/07
 repo: https://github.com/RichART-Official/therichart.space
 Standards: HTML5, CSS3 (SCSS), ES6
-Components: GatsbyJS, Webpack, React, Styled-Components, Travis-CI, Netlify
-Software: VS Code, Photoshop, Illustrator, Sketch
+Components: GatsbyJS, Webpack, React, Styled-Components, Lottie, Travis-CI, Netlify
+Software: VS Code, Photoshop, Illustrator, Sketch, After Effects
 
 /* LICENSE */
 https://github.com/RichART-Official/therichart.space/blob/master/LICENSE

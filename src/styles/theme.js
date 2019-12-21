@@ -1,24 +1,25 @@
 const theme = {};
 
-const white = '#FEFEFE';
-const black = '#202645';
-const lightBlue = '#EEFAFF';
+const white = '#FFFFFF';
+const black = '#000E41';
+const darkGray = '#787878';
 const lightGray = '#F6F6F6';
-const teal = '#969AB0';
-const blue = '#96E1F3';
-const transparentBlack = 'rgba(20,20,20,0.80)';
+const teal = '#7985B0';
+const blue = '#414C74';
 const yellow = '#FFFB7B';
 
 theme.colors = {
   primairy: blue,
+  secundairy: yellow,
   yellow,
   black,
   white,
+  blue,
+  teal,
   textDark: black,
-  textLight: teal,
-  bgDark: black,
+  textLight: blue,
+  bgDark: darkGray,
   bgLight: lightGray,
-  bgMenu: transparentBlack,
 };
 
 theme.breakpoints = {
