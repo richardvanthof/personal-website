@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const loader = {
   __html: `
-  <svg id="loading_logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  <svg id="loader__logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
   viewBox="0 0 95.1 78.1" style="enable-background:new 0 0 95.1 78.1;" xml:space="preserve">
 <style type="text/css">
  .st0{display:none;}
@@ -124,6 +124,7 @@ const styles = {
     body {
       margin:0;
       padding:0;
+      font-family: sans-serif;
     }
     .loadingScreen {
       background: #F6F6F6;

@@ -3,16 +3,14 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFB7B;}
-	.st1{fill:none;}
-	.st2{fill:#000E41;}
-	.st3{font-family:'Avenir-Medium';}
-	.st4{font-size:91.1633px;}
+	.st0{fill:none;}
+	.st1{fill:#000E41;}
+	.st2{font-family:'Avenir-Medium';}
+	.st3{font-size:134.94px;}
 </style>
 <title>Artboard 2</title>
-<circle class="st0" cx="50" cy="50" r="50"/>
 <g>
-	<rect x="20.4" y="13.1" class="st1" width="59.6" height="73.9"/>
-	<text transform="matrix(1.0036 0 0 1 20.3859 81.9858)" class="st2 st3 st4">R</text>
+	<rect x="2.2" y="-4.6" class="st0" width="95.9" height="109.4"/>
+	<text transform="matrix(1.0915 0 0 1 2.2095 97.3214)" class="st1 st2 st3">R</text>
 </g>
 </svg>
