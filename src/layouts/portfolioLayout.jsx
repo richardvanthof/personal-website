@@ -11,7 +11,6 @@ import Footer from '../components/footer';
 import PortfolioHeader from '../components/portfolioHeader.v2';
 import theme from '../styles/theme';
 import removeLoader from '../lib/removeLoader';
-import Container from '../components/container';
 
 const { colors, mediaQueries } = theme;
 
@@ -28,7 +27,7 @@ const Page = styled.div`
 
 const PortfolioLayout = ({ data: { mdx } }) => {
   const {
-    title, video, length, website, repo, date, type, alt, description, client,
+    title, video, runningTime, website, repo, date, type, alt, description, client,
   } = mdx.frontmatter;
 
   removeLoader();
@@ -45,7 +44,7 @@ const PortfolioLayout = ({ data: { mdx } }) => {
           type={type}
           alt={alt}
           year={date}
-          length={length}
+          length={runningTime}
           website={website}
           repository={repo}
           fluid={mdx.frontmatter.image.childImageSharp.fluid}
@@ -76,6 +75,7 @@ export const pageQuery = graphql`
         client
         website
         repo
+        runningTime
         description
         image {
             childImageSharp {

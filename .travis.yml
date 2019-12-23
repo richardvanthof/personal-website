@@ -1,5 +1,3 @@
-# ESLINT HAS BEEN DISABLED :/
-
 language: node_js
 
 node_js:
@@ -10,6 +8,7 @@ notifications:
     - hello@therichard.space
 
 before_deploy:
+  - yarn lint
   - yarn build
 
 deploy:

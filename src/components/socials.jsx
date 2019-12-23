@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import Behance from '../static/icons/Social/behance.svg';
 import Linkedin from '../static/icons/Social/linkedin.svg';
@@ -67,55 +68,14 @@ const Socials = () => (
   />
 );
 
+SocialMediaItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
 
-// const Socials = () => (
-//   <staticQuery
-//     query={
-//     graphql`
-//       query getSocialsData {
-//         site {
-//           siteMetadata {
-//             linkedin
-//             github
-//             behance
-//           }
-//         }
-//       }
-//     `
-//   }
-//     render={ data => (
-//       <SocialMedia>
-//         <li>
-//           <a className="light" href="#">LinkedIn</a>
-//         </li>
-//         <li>
-//           <a className="light" href="#">GitHub</a>
-//         </li>
-//         <li>
-//           <a className="light" href="#">Behance</a>
-//         </li>
-//       </SocialMedia>
-//     )}
-//   />
-
-// );
-
-// const query = graphql`
-// {
-//   "data": {
-//     "site": {
-//       "siteMetadata": {
-//         "author": "Richard van 't Hof",
-//         "email": "hello@therichard.space",
-//         "github": "https://www.github.com/RichART-Official",
-//         "linkedin": "https://www.linkedin.com/in/richard-van-t-hof/",
-//         "phone": "+31 6 41219554",
-//         "repo": "https://www.github.com/RichART-Official/therichart.space",
-//         "behance": "https://www.behance.net/therichartspace"
-//       }
-//     }
-//   }
-// }
-// `;
+SocialMediaItem.defaultProps = {
+  children: null,
+};
 
 export default Socials;

@@ -169,13 +169,13 @@ const Thumbnail = ({
 
 Thumbnail.propTypes = {
   title: PropTypes.string.isRequired,
-  client: PropTypes.string.isRequired,
+  client: PropTypes.string,
   img: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   medium: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
+  year: PropTypes.string,
   url: PropTypes.string.isRequired,
   right: PropTypes.bool,
   small: PropTypes.bool,
@@ -184,6 +184,8 @@ Thumbnail.propTypes = {
 Thumbnail.defaultProps = {
   right: false,
   small: false,
+  client: null,
+  year: null,
 };
 
 export const Blogpost = ({

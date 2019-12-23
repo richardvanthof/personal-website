@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 import Button from './button';
-import { Subtitle, Big, Small } from './typography';
 
 import theme from '../styles/theme';
 import Socials from './socials';
@@ -103,4 +102,10 @@ const Footer = () => (
     <Copyright />
   </FooterBase>
 );
+
+FooterLink.propTypes = {
+  title: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
+
 export default Footer;

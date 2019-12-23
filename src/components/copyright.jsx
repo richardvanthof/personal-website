@@ -28,7 +28,13 @@ const Copyright = () => (
     }
     render={data => (
       <CopyrightBase>
-        <Small><a target="_blanc" href="/humans.txt" >Copyright {data.site.siteMetadata.author}</a></Small>
+        <Small>
+          <a target="_blanc" href="/humans.txt">
+            Copyright
+
+            {data.site.siteMetadata.author}
+          </a>
+        </Small>
       </CopyrightBase>
     )
     }

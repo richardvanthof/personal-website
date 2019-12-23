@@ -45,6 +45,10 @@ const DefaultLayout = ({ children, gray }) => (
 
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  gray: PropTypes.bool,
 };
 
+DefaultLayout.defaultProps = {
+  gray: true,
+};
 export default DefaultLayout;

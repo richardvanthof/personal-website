@@ -2,14 +2,16 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
 import SEO from '../components/seo';
 import DefaultLayout from '../layouts/defaultLayout';
-import { Small, HeroTitle } from '../components/typography';
+import { Small } from '../components/typography';
 import { Blogpost } from '../components/thumbnail';
 import Gallery from '../components/gallery';
-import Img from 'gatsby-image';
 import Button from '../components/button';
+
 import theme from '../styles/theme';
+
 import smoothScrollToElement from '../lib/smoothScroll';
 import EyeIcon from '../static/icons/UI/watch.svg';
 import ArrowDownIcon from '../static/icons/UI/arrow_down.svg';
@@ -20,33 +22,28 @@ const { mediaQueries, colors } = theme;
 
 const HeroHeader = styled.header`
   height: 100vh;
-  min-height: 40em;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 15vh;
   background: ${theme.colors.bgLight};
   padding: 1em;
+  grid-gap: 5vw;
   display: flex;
   justify-content: center;
-  max-height: 60em !important;
-  /* &:before {
-    content: '';
-    background: white;
-    width: 95vw;
-    height: 95vh;
-    opacity: 0.25;
-    position: absolute;
-    top: 2em;
-  } */
-  @media ${mediaQueries.xs}{
+  @media ${mediaQueries.sm}{
+    display: grid;
     height: 85vh;
+    grid-gap: 5vw;
     max-height: none !important;
     min-height: 40em;
+    grid-template: 1fr 1fr / 1fr 6fr 6fr 1fr;
   };
-  @media ${mediaQueries.sm} {
-    display: grid;
-    grid-template: 2fr 2fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+  @media ${mediaQueries.md} {
+    padding-top: 20vh;
+    grid-gap: 3vw;
+    grid-template: 1fr 1fr / 1fr 5fr 1fr 3fr 1fr;
+
   };
 `;
 
@@ -109,47 +106,49 @@ const CallToActionContent = styled.div`
   }
 `;
 
-const HeroHeaderContent = styled.div`
+const HeaderTitle = styled.h1`
   z-index: 2;
-  position: absolute;
-  align-self: self-start;
-  padding-right: 1em;
-  top: 25vh;
-  text-align: center;
-  @media ${mediaQueries.xs} {
-    padding: 2em;
-  }
-`;
-
-const HeaderTitle= styled.h1`
+  grid-row: 1/3;
   grid-column: 2;
-  grid-row: 2/4;
-  z-index: 2;
   ${mediaQueries.xs}{
+    width: auto;
     color: ${colors.white};
     text-shadow: 0em 0em 2em rgba(0,0,0,0.75);
+    position: relative;
+    top: unset;
   }
 `;
 
-const HeaderSubtitle = styled(Subtitle)`
-  grid-column: 4;
-  grid-row: 3;
+const HeaderDescription = styled.div`
+  @media ${mediaQueries.xs} {
+    grid-row: 2;
+    grid-column: 3;
+  }
+  @media ${mediaQueries.md} {
+    grid-row: 2;
+    grid-column: 4;
+  }
 `;
 
-const HeroImage1 = styled(Img)`
-  width: 20em;
-  grid-row: 2;
-  grid-column: 3
+const MobileHeaderDescription = styled(HeaderDescription)`
+  display: block;
+  margin: 3vh 1em;
+  margin-bottom: 10vh;
+  @media ${mediaQueries.xs} {
+    display: none;
+  }
 `;
 
 const ChaosDrawing = styled(Chaos)`
-  grid-column: 1/5;
-  grid-row: 1/3;
-  opacity: 1;
+  @media ${mediaQueries.sm} {
+    grid-column: 1/5;
+    grid-row: 1;
+    opacity: 1;
+    transform: none;
+  }
 `;
 
 const IndexPage = ({ data }) => {
-  console.log(data.projects);
   const { edges: posts } = data.projects;
   const handleClick = () => {
     smoothScrollToElement('work');
@@ -160,11 +159,13 @@ const IndexPage = ({ data }) => {
       {/* <Header title="work" /> */}
       <HeroHeader>
 
-          {/* <HeroImage1 fluid={data.image.childImageSharp.fluid} /> */}
-          <ChaosDrawing/>
-          <HeaderTitle>Exploring my creative chaos to gain new perspectives on the world</HeaderTitle>
-          <HeaderSubtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital artist and everything in between who likes to control everything in his path. Until he can&apos;t. Which he strives for.</HeaderSubtitle>
-
+        {/* <HeroImage1 fluid={data.image.childImageSharp.fluid} /> */}
+        <ChaosDrawing />
+        <HeaderTitle>Exploring my creative chaos to gain new perspectives on the world</HeaderTitle>
+        <HeaderDescription>
+          <Subtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital artist and everything in between who likes to control everything in his path. Until he can&apos;t. Which he strives for.</Subtitle>
+          <Button to="/about" title="Learn more" />
+        </HeaderDescription>
         {/* <HeroAnimation sketch={sketch}/> */}
         <CallToAction onClick={handleClick}>
           <CallToActionContent>
@@ -174,15 +175,11 @@ const IndexPage = ({ data }) => {
           <ArrowDown />
         </CallToAction>
       </HeroHeader>
+      <MobileHeaderDescription>
+        <Subtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital artist and everything in between who likes to control everything in his path. Until he can&apos;t. Which he strives for.</Subtitle>
+        <Button to="/about" title="Learn more" />
+      </MobileHeaderDescription>
       <Work id="work">
-        {/* <WorkSelector>
-          <h3>Work</h3>
-          <Tags>
-            <Tag>Audiovisual</Tag>
-            <Tag>Graphic Design</Tag>
-            <Tag>Code</Tag>
-          </Tags>
-        </WorkSelector> */}
         <Gallery width={50}>
           {
           posts.map(({ node: post }, index, key) => {
@@ -240,10 +237,12 @@ export const pageQuery = graphql`
   }
 `;
 
-
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.object,
+    projects: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object),
+    }),
   }),
 };
 

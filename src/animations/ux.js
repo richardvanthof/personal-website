@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const fadeIn = css`
+const fadeIn = css`
     animation: fadeIn 0.3s;
     @keyframes fadeIn {
         from {
@@ -13,3 +13,6 @@ export const fadeIn = css`
         }
     };
 `;
+
+// eslint-disable-next-line import/prefer-default-export
+export { fadeIn };

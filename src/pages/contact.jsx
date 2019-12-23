@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Button from '../components/button';
 import MinimalLayout from '../layouts/minimalLayout';
 import Gallery from '../components/gallery';
 import Socials from '../components/socials';
 import theme from '../styles/theme';
+import generateDirectionsUrl from '../lib/generateDirectionsUrl';
 
 import Map from '../static/icons/content/map.svg';
-import Lock from '../static/icons/UI/lock.svg';
+import PGP from '../components/pgp';
 
 const { colors, mediaQueries } = theme;
 
@@ -60,39 +62,6 @@ margin: 1em 0;
   }
 `;
 
-const LockIcon = styled(Lock)`
-  width: 1em;
-`;
-
-const LockMessage = styled.a`
-  text-decoration: none;
-  color: ${colors.black};
-  padding: 0.3em 0.99em;
-  margin: 0.5em;
-  border-radius: 5rem;
-  transition: 0.2s ease-in-out;
-  &:after {
-    content: 'Download PGP Key';
-    padding: 0.5em;
-    transition: 0.1s ease-in-out;
-    opacity: 0;
-  }
-  &:hover {
-    background: ${colors.yellow};
-    &:after {
-      opacity: 1;
-    }
-  }
-  @media ${mediaQueries.xs} {
-  }
-`;
-
-const PGP = ({ permalink }) => (
-  <LockMessage href={permalink}>
-    <LockIcon />
-  </LockMessage>
-);
-
 const ContactInfoItem = styled.li`
   & > * {
     display: inline;
@@ -117,21 +86,13 @@ const HeaderImage = styled(Map)`
 
 const Contact = ({ data }) => {
   const {
-    email, repo, phone, pgp, adress,
+    email, repo, pgp, adress,
   } = data.site.siteMetadata;
   const {
     street, number, zipCode, city, country,
   } = adress;
 
-
-  const generateDirectionsUrl = (location) => {
-    const url = 'https://www.google.com/maps/search/?api=1&query=';
-    const query = encodeURIComponent(location);
-    return url + query;
-  };
-
   const directions = generateDirectionsUrl(`${street} ${number}`);
-
   return (
     <Gallery>
       <ContactBase>
@@ -143,7 +104,6 @@ const Contact = ({ data }) => {
               <h3>{email}</h3>
               <PGP permalink={pgp} />
             </ContactInfoItem>
-            <ContactInfoItem><h3>{phone}</h3></ContactInfoItem>
           </ContactInfoCluster>
 
           <ContactInfoCluster>
@@ -158,7 +118,6 @@ const Contact = ({ data }) => {
               <h5>
                 {zipCode}
 ,
-
                 {city}
               </h5>
             </li>
@@ -193,7 +152,6 @@ export const pageQuery = graphql`
         author
         email
         repo
-        phone
         pgp
         adress {
           street
@@ -206,5 +164,24 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+Contact.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        email: PropTypes.string,
+        repo: PropTypes.string,
+        pgp: PropTypes.string,
+        adress: PropTypes.shape({
+          street: PropTypes.string,
+          number: PropTypes.number,
+          zipCode: PropTypes.string,
+          city: PropTypes.string,
+          country: PropTypes.string,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default Contact;

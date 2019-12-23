@@ -104,7 +104,7 @@ const NavLink = (props) => {
   const { title, to } = props;
   return (
     <NavLinkBase>
-      <Link paintDrip duration={1} to={to}>
+      <Link duration={1} to={to}>
         {title}
       </Link>
     </NavLinkBase>
@@ -197,7 +197,7 @@ const MobileNavLinks = styled.ul`
   }
 `;
 
-const MobileMenu = ({ active }) => (
+const MobileMenu = () => (
   <MobileMenuOverlay>
     <MobileNavLinks>
       <NavLinksContent />
@@ -224,7 +224,6 @@ class Navbar extends React.Component {
   }
 
   handleClick() {
-    console.log('clicked');
     this.setState(state => ({
       isActive: !state.isActive,
     }));
@@ -237,7 +236,7 @@ class Navbar extends React.Component {
       <>
         <Nav>
           <div>
-            <Link paintDrip to="/">
+            <Link to="/">
               <Logo src={logo} alt={siteTitle} />
             </Link>
           </div>

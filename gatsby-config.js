@@ -69,6 +69,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.therichard.space',
+        sitemap: 'https://www.therichard.space/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      }
+    },
+    {
       resolve: 'gatsby-plugin-mdx',
       options: {
       // Apply gatsby-mdx to both .mdx and .md files
@@ -97,11 +105,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'The Richard Space',
+        short_name: 'Richard Space',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#F6F6F6',
+        theme_color: '#7985B0',
         display: 'minimal-ui',
         icon: 'src/static/trademarks/favicon.svg', // This path is relative to the root of the site.
       },
@@ -125,6 +133,7 @@ module.exports = {
         sv: 6,
       },
     },
+
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

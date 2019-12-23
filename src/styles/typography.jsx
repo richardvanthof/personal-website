@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import WebFont from 'webfontloader';
 import theme from './theme';
-import textScale, { scaleHeaders } from '../lib/textScale';
+import generateTextSizes, { scaleHeaders } from '../lib/textScale';
 
 // Import Haverj W01 Bold font
 const haverj = {
@@ -21,10 +21,10 @@ const BaseFonts = theme.typography.base.font;
 const { mediaQueries, colors } = theme;
 
 const fontSizes = {
-  lg: textScale(1.33),
-  md: textScale(1.33),
-  sm: textScale(1.30),
-  xs: textScale(1.15),
+  lg: generateTextSizes(1.33),
+  md: generateTextSizes(1.33),
+  sm: generateTextSizes(1.27),
+  xs: generateTextSizes(1.11),
 };
 
 const scaleText = css`
@@ -128,7 +128,8 @@ const setFont = css`
   }
 
   .small {
-    font-size: 0.9em;
+    font-size: 0.8em;
+    color: ${colors.textLight};
   }
 
   .xs {

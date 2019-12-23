@@ -1,4 +1,4 @@
-const textScale = (ratio, baseSize) => {
+const generateTextSizes = (ratio, baseSize) => {
   // Generates all text sizes on the basis of a base size an a ratio
   const textSizes = [];
   const relativeBaseSize = (baseSize || 18) / 16;
@@ -24,4 +24,4 @@ const scaleHeaders = (fontSizes) => {
 
 export { scaleHeaders };
 
-export default textScale;
+export default generateTextSizes;

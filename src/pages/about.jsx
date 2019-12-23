@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { animated } from 'react-spring';
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import theme from '../styles/theme';
@@ -10,6 +11,7 @@ import Container from '../components/container';
 import { Big } from '../components/typography';
 import Socials from '../components/socials';
 import CTA from '../components/cta';
+
 
 import CVIcon from '../static/icons/UI/download-cv.svg';
 
@@ -29,35 +31,6 @@ const CV = styled(CVIcon)`
       fill: ${colors.primairy};
     }
   }
-`;
-
-
-
-const HeaderImg = styled(Img)`
-  position: relative !important;
-  width: 100vw;
-  top: 0vh;
-  left: 0;
-  padding: 2em;
-  opacity: ${props => (props.hide ? 0 : 1)};
-  @media ${mediaQueries.xs} {
-    padding: 0;
-    z-index: 10;
-    position: absolute !important;
-    width: 50vw;
-    top: 15vh;
-  }
-  @media ${mediaQueries.sm} {
-    width: 50vw;
-    top: 15vh;
-  }
-  @media ${mediaQueries.md} {
-    width: 25vw;
-  }
-`;
-
-const HeaderImgContainer = styled(animated.figure)`
-
 `;
 
 const CVGrid = styled(animated.div)`
@@ -121,24 +94,7 @@ const Header = styled.header`
   }
 `;
 
-const SetPosition = styled.span`
-  grid-row: ${props => props.row};
-  grid-column: ${props => props.column};
-`;
-
 const About = ({ data }) => {
-  let [setScrolling] = useState(true);
-  if (typeof window !== 'undefined') {
-    setInterval(() => {
-      // eslint-disable-next-line no-undef
-      if (window.scrollY > 100) {
-        setScrolling = true;
-      } else {
-        setScrolling = false;
-      }
-    }, 1000);
-  }
-
   const GridImg = styled(Img)`
     display: none;
     @media ${mediaQueries.xs} {
@@ -191,11 +147,11 @@ const About = ({ data }) => {
     <DefaultLayout gray>
       <SEO title="About" />
       <Header className="header">
-            <Img1 fluid={data.image1.childImageSharp.fluid} />
-            <Img2 fluid={data.image2.childImageSharp.fluid} />
-            <Img3 fluid={data.image3.childImageSharp.fluid} />
-            <Img4 fluid={data.image4.childImageSharp.fluid} />
-            <Title>I am Richard</Title>
+        <Img1 fluid={data.image1.childImageSharp.fluid} />
+        <Img2 fluid={data.image2.childImageSharp.fluid} />
+        <Img3 fluid={data.image3.childImageSharp.fluid} />
+        <Img4 fluid={data.image4.childImageSharp.fluid} />
+        <Title>I am Richard</Title>
         <CTA />
         {/* <BackgroundAnimation options={defaultOptions/> */}
       </Header>
@@ -273,5 +229,14 @@ export const query = graphql`
     }
   }
 `;
+
+About.propTypes = {
+  data: PropTypes.shape({
+    image1: PropTypes.object.isRequired,
+    image2: PropTypes.object.isRequired,
+    image3: PropTypes.object.isRequired,
+    image4: PropTypes.object.isRequired,
+  }).isRequired,
+};
 
 export default About;

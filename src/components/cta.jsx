@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Small, HeroTitle } from './typography';
+import { Small } from './typography';
 
 import ArrowDownIcon from '../static/icons/UI/arrow_down.svg';
 import EyeIcon from '../static/icons/UI/watch.svg';

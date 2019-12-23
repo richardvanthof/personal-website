@@ -139,6 +139,12 @@ const HeaderMetaData = styled.div`
   justify-content: end;
   width: 100%;
   padding: 0 1.11em;
+  p {
+    margin: 0;
+    margin-bottom: 0.22em;
+    line-height: 1em;
+  };
+  span { margin-bottom: 0.33em;};
   @media ${mediaQueries.md}{
     min-height: 15vh;
     grid-row: 2;
@@ -163,9 +169,17 @@ const PortfolioHeader = ({
       }
     </HeaderTitle>
     <HeaderMetaData>
-      {year && <h6>{year}</h6>}
-      {type && <p>{type}</p>}
-      {length && <p>{length}</p>}
+      <span>
+        {year && <h6>{year}</h6>}
+        {type && <p>{type}</p>}
+        {length && (
+        <p className="small">
+          {length}
+
+min.
+        </p>
+        )}
+      </span>
       {website && <Button external title="Website" to={website} />}
       {repository && <Button external title="Source Files" to={repository} />}
     </HeaderMetaData>
@@ -177,33 +191,46 @@ PortfolioHeader.propTypes = {
   alt: PropTypes.string.isRequired,
   video: PropTypes.string,
   title: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  length: PropTypes.string,
   client: PropTypes.string,
   description: PropTypes.string,
-  children: PropTypes.node,
-  cta: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  fluid: PropTypes.object.isRequired,
+  website: PropTypes.string,
+  repository: PropTypes.string,
+  fluid: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 HeaderTitle.propTypes = {
   title: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
-  cta: PropTypes.string
+  cta: PropTypes.string,
 };
 
 HeaderVisual.propTypes = {
-  video: PropTypes.string.isRequired,
+  video: PropTypes.string,
   img: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  fluid: PropTypes.object.isRequired,
+  fluid: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  alt: PropTypes.string.isRequired,
+};
+
+HeaderVisual.defaultProps = {
+  video: null,
 };
 
 PortfolioHeader.defaultProps = {
   video: null,
+  website: null,
+  repository: null,
+  length: null,
   client: null,
   description: null,
-  children: null,
-  cta: null,
 };
 
 HeaderTitle.defaultProps = {

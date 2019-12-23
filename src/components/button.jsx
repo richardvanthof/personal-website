@@ -8,6 +8,7 @@ import ArrowIcon from '../static/icons/UI/arrow_right.svg';
 const { colors } = theme;
 
 let reverseButton = false;
+
 const buttonStyling = css`
     padding-top: 0.1em;
     margin-left: 0.2em;
@@ -20,7 +21,7 @@ const buttonStyling = css`
     &:hover {
 
         svg, img {
-            transform: scaleX(1.1) translateX(0.1em);
+            transform: ${reverseButton ? 'rotate(180deg) scaleX(1.1) translateX(-0.1em)' : 'scaleX(1.1) translateX(0.1em)'}
         }
     }
 `;
@@ -62,7 +63,7 @@ const Button = ({
     );
   }
   return (
-    <ExternalButtonBase isReversed={back} target="_blanc" light={light} target="_blanc" href={to}>
+    <ExternalButtonBase isReversed={back} target="_blanc" light={light} href={to}>
       {title}
       <Arrow isReversed={back} />
     </ExternalButtonBase>
@@ -75,11 +76,13 @@ Button.propTypes = {
   external: PropTypes.bool,
   light: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  back: PropTypes.bool,
 };
 
 Button.defaultProps = {
   external: false,
   light: false,
+  back: false,
 };
 
 export default Button;

@@ -17,6 +17,7 @@
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-react-svg": "^2.1.2",
+    "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-plugin-sitemap": "^2.2.16",
@@ -68,7 +69,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "lint": "eslint --ext .jsx,.js src --format stylish src",
     "start": "npm run develop",
-    "clean": "rm -rf .cache",
+    "clean": "rm -rf .cache && rm -rf node_modules && rm -rf public",
     "serve": "gatsby serve -H 0.0.0.0",
     "reinstall": "rm -rf .cache .node_modules && yarn install",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
