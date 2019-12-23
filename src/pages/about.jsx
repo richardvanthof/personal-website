@@ -77,13 +77,13 @@ const TextSection = styled.div`
 const Header = styled.header`
   overflow: hidden;
   height: 90vh;
-  max-height: 40em;
+  max-height: 10em;
   display: flex;
   position: relative;
   flex-direction: column;
   margin-bottom: 2em;
   @media ${mediaQueries.xs} {
-    padding: 5vh 0;
+    padding: 0;
     height: 90vh;
     min-height: 40em;
     max-height: none;

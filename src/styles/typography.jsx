@@ -23,8 +23,8 @@ const { mediaQueries, colors } = theme;
 const fontSizes = {
   lg: generateTextSizes(1.33),
   md: generateTextSizes(1.33),
-  sm: generateTextSizes(1.27),
-  xs: generateTextSizes(1.11),
+  sm: generateTextSizes(1.25),
+  xs: generateTextSizes(1.20),
 };
 
 const scaleText = css`

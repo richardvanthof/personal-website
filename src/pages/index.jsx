@@ -21,6 +21,7 @@ const { mediaQueries, colors } = theme;
 
 
 const HeroHeader = styled.header`
+
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,6 +33,7 @@ const HeroHeader = styled.header`
   display: flex;
   justify-content: center;
   @media ${mediaQueries.sm}{
+
     display: grid;
     height: 85vh;
     grid-gap: 5vw;
@@ -120,7 +122,9 @@ const HeaderTitle = styled.h1`
 `;
 
 const HeaderDescription = styled.div`
-  @media ${mediaQueries.xs} {
+  display: none;
+  @media ${mediaQueries.sm} {
+    display: block;
     grid-row: 2;
     grid-column: 3;
   }
@@ -140,11 +144,20 @@ const MobileHeaderDescription = styled(HeaderDescription)`
 `;
 
 const ChaosDrawing = styled(Chaos)`
+  position: absolute;
+  top: 0%;
+  left: -25%;
+  transform: scale(1.33);
+  max-height: 100vh;
   @media ${mediaQueries.sm} {
+    max-height: unset;
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: none;
     grid-column: 1/5;
     grid-row: 1;
     opacity: 1;
-    transform: none;
   }
 `;
 

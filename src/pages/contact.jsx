@@ -110,14 +110,14 @@ const Contact = ({ data }) => {
             <li>
               <h5>
                 {street}
-
+                &nbsp;
                 {number}
               </h5>
             </li>
             <li>
               <h5>
                 {zipCode}
-,
+                ,&nbsp;
                 {city}
               </h5>
             </li>

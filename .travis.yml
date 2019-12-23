@@ -9,16 +9,31 @@ notifications:
 
 before_deploy:
   - yarn lint
-  - yarn build
+  - yarn builds
 
-deploy:
-  provider: netlify
-  message: deploying to Netlify...
-  site: 470989a8-7889-4012-8175-5a3d601a9a6d
-  dir: public/
-  prod: true
-  edge: true # opt in to dpl v2
-  on: master
+jobs:
+  include:
+    - stage: deploy-develop
+    if: branch != master
+    name: 'Deploy to Deploy Previews'
+      deploy:
+        provider: netlify
+        message: deploying to Netlify...
+        site: 470989a8-7889-4012-8175-5a3d601a9a6d
+        dir: public/
+        edge: true # opt in to dpl v2
+        prod: false
+
+    - stage: deploy-prod
+    name: 'Deploy to production'
+    if: branch = master
+      deploy:
+        provider: netlify
+        message: deploying to Netlify...
+        site: 470989a8-7889-4012-8175-5a3d601a9a6d
+        dir: public/
+        edge: true # opt in to dpl v2
+        prod: true
 
 cache:
   yarn: true
