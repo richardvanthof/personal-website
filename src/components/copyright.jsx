@@ -31,7 +31,7 @@ const Copyright = () => (
         <Small>
           <a target="_blanc" href="/humans.txt">
             Copyright
-
+            &nbsp;
             {data.site.siteMetadata.author}
           </a>
         </Small>
