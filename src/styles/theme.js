@@ -3,6 +3,7 @@ const theme = {};
 const white = '#FFFFFF';
 const black = '#000E41';
 const darkGray = '#787878';
+const middleGray = '#EEEEEE'
 const lightGray = '#F6F6F6';
 const teal = '#7985B0';
 const blue = '#414C74';
@@ -16,6 +17,7 @@ theme.colors = {
   white,
   blue,
   teal,
+  bgContent: middleGray,
   textDark: black,
   textLight: blue,
   bgDark: darkGray,

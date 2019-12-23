@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 
 import SEO from '../components/seo';
 import DefaultLayout from '../layouts/defaultLayout';
@@ -143,6 +144,7 @@ const MobileHeaderDescription = styled(HeaderDescription)`
   }
 `;
 
+
 const ChaosDrawing = styled(Chaos)`
   position: absolute;
   top: 0%;
@@ -171,8 +173,6 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       {/* <Header title="work" /> */}
       <HeroHeader>
-
-        {/* <HeroImage1 fluid={data.image.childImageSharp.fluid} /> */}
         <ChaosDrawing />
         <HeaderTitle>Exploring my creative chaos to gain new perspectives on the world</HeaderTitle>
         <HeaderDescription>
@@ -204,6 +204,7 @@ const IndexPage = ({ data }) => {
         }
         </Gallery>
       </Work>
+
     </DefaultLayout>
   );
 };
