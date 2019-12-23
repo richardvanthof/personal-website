@@ -31,8 +31,8 @@ const DefaultLayout = ({ children, gray }) => (
     render={data => (
       <ThemeProvider theme={theme}>
         <>
-          <Navbar siteTitle={data.site.siteMetadata.title} />
           {removeLoader()}
+          <Navbar siteTitle={data.site.siteMetadata.title} />
           <NoScript />
           <Main grayBg={gray}>{children}</Main>
           <Footer />

@@ -20,7 +20,6 @@ const loader = {
 <g id="Layer_1">
  <g>
    <title>B646B472-CD95-4495-B54D-65089391EF12</title>
-   <desc>Created with sketchtool.</desc>
    <g id="Pages">
      <g transform="translate(-139.000000, -61.000000)" class="st0">
        <g class="st1">
@@ -150,6 +149,23 @@ const styles = {
   `,
 };
 
+// Hack to make sure the right navbar elements get loaded
+const navbar_style__fix = {
+  __html: `
+  .hamburgerBtn {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    z-index: 5;
+  }
+    @media (min-width: 48em) {
+      .hamburgerBtn {
+        display: none;
+      }
+    }
+  `,
+};
+
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -160,7 +176,8 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <style dangerouslySetInnerHTML={styles} />
+        <style className="loadingScreen__styles" dangerouslySetInnerHTML={styles} />
+        <style className="navbar_style" dangerouslySetInnerHTML={navbar_style__fix} />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

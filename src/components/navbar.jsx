@@ -128,13 +128,17 @@ const NavLinksContent = () => (
 
 const HamburgerButton = styled.a`
   width: 3em;
+  height: 3em;
   z-index: 10;
   cursor: pointer;
+  display: inline-block;
+
   & > * {
     width: 3em;
   }
   @media ${mediaQueries.xs} {
     display: none;
+    visibility: hidden;
   }
 `;
 const MobileMenuOverlay = styled.div`
