@@ -175,8 +175,7 @@ const PortfolioHeader = ({
         {length && (
         <p className="small">
           {length}
-
-min.
+          &nbsp;min.
         </p>
         )}
       </span>
@@ -236,4 +235,5 @@ PortfolioHeader.defaultProps = {
 HeaderTitle.defaultProps = {
   cta: null,
 };
+
 export default PortfolioHeader;

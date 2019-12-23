@@ -114,6 +114,10 @@ const CallToActionIcon = styled(ArrowRight)`
 const Thumbnail = ({
   title, client, img, alt, medium, year, type, url, to, right, small,
 }) => {
+  const textSubstring = (data, wordCountThreshold) => {
+    const getDots = () => ((data.length >= wordCountThreshold) ? '...' : '');
+    return `${data.substring(0, wordCountThreshold)}${getDots()}`;
+  };
   if (small) {
     return (
       <>
@@ -131,7 +135,11 @@ const Thumbnail = ({
 &nbsp;&middot;&nbsp;
                 </p>
                 )}
-                {type && (<p className="light">{type}</p>)}
+                {type && (
+                <p className="light">
+                  {textSubstring(type, 48)}
+                </p>
+                )}
                 {year && (<p className="light">{type}</p>)}
               </Metadata>
             </div>
