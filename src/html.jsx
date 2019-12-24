@@ -125,7 +125,9 @@ const styles = {
       padding:0;
       font-family: sans-serif;
     }
+
     .loadingScreen {
+      animation: fadeIn 0.3s ease-out;
       background: #F6F6F6;
       width: 100vw;
       height: 100vh;
@@ -136,15 +138,48 @@ const styles = {
       animation: ease-in 0.3s;
       flex-direction: column;
       position: absolute;
+      transition: 0.1s ease-in;
       top: 0;
       left: 0;
-      z-index: -1;
+      z-index: 2;
+      opacity: 1;
+
     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0,
+      }
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-25%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .loading-screen__deactivate {
+      transition: 0.1s ease-in;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-screen__deactivate > #loader__logo{
+      transition: 0.1s ease-in;
+      transformX(15%);
+    }
+
     #loader__logo {
       width: 7em;
       height: auto;
-      animation: ease-in 0.3s;
-      transform: translateX(1em);
     }
   `,
 };
@@ -186,12 +221,12 @@ export default function HTML(props) {
         <noscript key="noscript" id="gatsby-noscript">
           This app works best with JavaScript enabled.
         </noscript>
+        <section dangerouslySetInnerHTML={loader} className="loadingScreen" />
         <div
           key="body"
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
-        <section dangerouslySetInnerHTML={loader} className="loadingScreen" />
         {props.postBodyComponents}
       </body>
     </html>

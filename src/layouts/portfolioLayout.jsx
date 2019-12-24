@@ -52,6 +52,7 @@ const PortfolioLayout = ({ data: { mdx } }) => {
           client={client}
         />
         <Main>
+
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Main>
         <Footer />

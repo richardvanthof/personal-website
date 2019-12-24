@@ -7,11 +7,7 @@ const removeLoader = () => {
     const styles = document.querySelector('.loadingScreen__styles');
     /* eslint-enable no-undef */
     if (screen) {
-      screen.className += ' loaded';
-      setTimeout(() => {
-        screen.remove();
-        styles.remove();
-      }, 500);
+      screen.className += ' loading-screen__deactivate';
     }
   });
 };

@@ -17,7 +17,8 @@ module.exports = {
     github: 'https://www.github.com/RichART-Official',
     linkedin: 'https://www.linkedin.com/in/richard-van-t-hof/',
     behance: 'https://www.behance.net/therichartspace',
-    siteUrl: `https://www.therichard.space`,
+    bno: 'https://www.bno.nl/partners/richard-van-t-hof-19691',
+    siteUrl: 'https://www.therichard.space',
     repo: 'https://www.github.com/RichART-Official/therichart.space',
   },
   plugins: [
@@ -109,7 +110,7 @@ module.exports = {
         short_name: 'Richard Space',
         start_url: '/',
         background_color: '#F6F6F6',
-        theme_color: '#7985B0',
+        theme_color: '#D2D7EA',
         display: 'minimal-ui',
         icon: 'src/static/trademarks/favicon.svg', // This path is relative to the root of the site.
       },
