@@ -9,7 +9,7 @@ notifications:
 
 before_deploy:
   - yarn lint
-  - yarn builds
+  - yarn build
 
 deploy:
   provider: netlify
