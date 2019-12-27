@@ -7,31 +7,11 @@ import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import theme from '../styles/theme';
-import Container from '../components/container';
-import { Big } from '../components/typography';
 import Socials from '../components/socials';
-import CTA from '../components/cta';
-
-
-import CVIcon from '../static/icons/UI/download-cv.svg';
+import MinimalList, { generateList } from '../components/minimalList';
+import Container from '../components/container';
 
 const { mediaQueries, colors } = theme;
-
-const CV = styled(CVIcon)`
-  #About-Copy-2 {
-    transition: 0.3s ease-in-out;
-  }
-  &:hover {
-    #Mask {
-      fill: ${colors.white};
-    }
-  }
-  &:active {
-    #About-Copy-2 {
-      fill: ${colors.primairy};
-    }
-  }
-`;
 
 const CVGrid = styled(animated.div)`
   display: flex;
@@ -41,12 +21,12 @@ const CVGrid = styled(animated.div)`
   align-content: center;
   @media ${mediaQueries.xs} {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 3fr;
     padding: 5vw;
-    grid-gap: 0 4em;
+    grid-gap: 0 2em;
   }
   @media ${mediaQueries.sm} {
-    padding: 10vw;
+    padding: 10vh 15vw;
 
   }
   @media ${mediaQueries.md} {
@@ -54,13 +34,6 @@ const CVGrid = styled(animated.div)`
   }
 `;
 
-const DownloadCV = styled.a`
-  width: 100%;
-  @media ${mediaQueries.sm} {
-    max-width: 20em;
-  }
-  align-self: center;
-`;
 
 const TextSection = styled.div`
   display: flex;
@@ -72,76 +45,159 @@ const TextSection = styled.div`
       margin: 7vh 0;
     }
   }
+
+  @media ${mediaQueries.md}{
+    & > * {
+      margin: 7vh 5vw;
+    }
+  }
+  @media ${mediaQueries.md}{
+    & > * {
+      margin: 7vh 10vw;
+    }
+  }
 `;
 
 const Header = styled.header`
   overflow: hidden;
-  height: 90vh;
-  max-height: 10em;
+  height: 100vh;
+  max-height: 50em;
   display: flex;
   position: relative;
   flex-direction: column;
-  margin-bottom: 2em;
+  margin-bottom: 5vh;
+  height: 100vh;
   @media ${mediaQueries.xs} {
     padding: 0;
     height: 90vh;
     min-height: 40em;
     max-height: none;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 2fr 2fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2em;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 90vw;
+      height: 80vh;
+      background: ${colors.yellow};
+      top: 5vh;
+      left: 5vw;
+      opacity: 0.1;
+    }
+  }
+  @media ${mediaQueries.lg} {
+    margin: 0 5vw;
+    margin-bottom: 10vh;
+  }
+`;
+
+const PositionedSocials = styled(Socials)`
+  grid-column: 1;
+  background: red;
+`;
+
+const GridImg = styled(Img)`
+display: none;
+@media ${mediaQueries.xs} {
+  display: block;
+}
+`;
+
+const Img1 = styled(GridImg)`
+grid-row: 2/5;
+grid-column: 2/7;
+`;
+const Img2 = styled(GridImg)`
+grid-row: 3/6;
+grid-column: 6/10;
+`;
+const Img3 = styled(GridImg)`
+grid-row: 1/3;
+grid-column: 9/11;
+`;
+const Img4 = styled(Img)`
+width: 100vw;
+height: 100vh;
+@media ${mediaQueries.xs}{
+  width: auto;
+  height: auto;
+  grid-row: 4/6;
+  grid-column: 1/3;
+}
+`;
+const Title = styled.h2`
+margin: 1em;
+align-self: flex-end;
+bottom: 0;
+left: 0;
+position: absolute;
+color: ${colors.white};
+@media ${mediaQueries.xs} {
+  margin: 0;
+  color: ${colors.textDark};
+  position: relative;
+  grid-row: 1;
+  grid-column: 5/10;
+  z-index: 5;
+  width: 100%;
+  transform: translateY(50%);
+  font-size: 5rem;
+}
+@media ${mediaQueries.lg} {
+  font-size: 10rem;
+  transform: translateY(33%);
+}`;
+
+const Tools = styled.div`
+opacity: 0.3;
+margin: 10vh 0em;
+justify-self: center;
+  h6 {
+    font-size: 1.11rem;
+    color: ${colors.primairy};
+  }
+  ul {
+    li {
+      color: ${colors.primairy};
+    }
+  }
+  @media ${mediaQueries.xs} {
+    margin: 0em;
   }
 `;
 
 const About = ({ data }) => {
-  const GridImg = styled(Img)`
-    display: none;
-    @media ${mediaQueries.xs} {
-      display: block;
-    }
-  `;
-
-  const Img1 = styled(GridImg)`
-      grid-row: 1/4;
-      grid-column: 2/7;
-  `;
-  const Img2 = styled(GridImg)`
-    grid-row: 2/5;
-    grid-column: 6/10;
-  `;
-  const Img3 = styled(GridImg)`
-    grid-row: 1/3;
-    grid-column: 9/11;
-  `;
-  const Img4 = styled(Img)`
-    width: 100vw;
-    height: 100vh;
-    @media ${mediaQueries.xs}{
-      width: auto;
-      height: auto;
-      grid-row: 3/5;
-      grid-column: 1/3;
-    }
-  `;
-  const Title = styled.h1`
-    padding: 1em 4vw;
-    padding-top: 0.33em;
-    bottom: 0;
-    position: absolute;
-    bottom: 0vh;
-    width: 75%;
-    color: ${colors.white};
-    @media ${mediaQueries.xs} {
-      color: ${colors.textDark};
-      position: relative;
-      grid-row: 4;
-      grid-column: 3/7;
-      z-index: 5;
-      width: 100%;
-    }
-
-  `;
+  const developmentTools = [
+    'HTML5',
+    'CSS3 (SASS)',
+    'Javascript (ES6',
+    'Python',
+    'Processing',
+    'NodeJS',
+    'React',
+    'ESlint',
+    'P5js',
+    'GatsbyJS',
+    'Lottie',
+    'Git (Github/GitLab',
+    'Postman',
+    'TravisCI',
+    'Google Firebase',
+  ];
+  const designTools = [
+    'Photoshop',
+    'Illustrator',
+    'InDesign',
+    'Sketch',
+    'Invision',
+    'Premiere Pro',
+    'After Effects',
+    'Logic Pro X',
+    'Davinci Resolve',
+    'Resolume Arena',
+  ];
 
   return (
     <DefaultLayout gray>
@@ -151,8 +207,18 @@ const About = ({ data }) => {
         <Img2 fluid={data.image2.childImageSharp.fluid} />
         <Img3 fluid={data.image3.childImageSharp.fluid} />
         <Img4 fluid={data.image4.childImageSharp.fluid} />
-        <Title>I am Richard</Title>
-        <CTA />
+        <Title>
+I am
+          <br />
+Richard
+        </Title>
+        {/* <CallToAction onClick={handleClick}>
+          <CallToActionContent>
+            <Eye />
+            <ActionText className="small">Learn more</ActionText>
+          </CallToActionContent>
+          <ArrowDown />
+        </CallToAction> */}
         {/* <BackgroundAnimation options={defaultOptions/> */}
       </Header>
       <Container id="about-content">
@@ -167,10 +233,9 @@ const About = ({ data }) => {
         </TextSection>
         <TextSection>
           <h3>
-          He works with an autonimous, theoretical mindset to disect subjects around him,
-          explore them and disect them into theoretical chaos from which he can gain unexpected
-          insights. With these connections he plays visually. In this he likes to mix
-          the analog and digital in his work.
+          He works with an autonimous, theoretical mindset to disect subjects around him
+          from which he can gain unexpected insights. With these connections he plays
+          visually. In this he likes to mix the analog and digital in his work.
           </h3>
         </TextSection>
         <TextSection>
@@ -184,18 +249,25 @@ const About = ({ data }) => {
       </Container>
       <Container>
         <CVGrid>
-          <p className="light">
-            <Big>
-              Richard currently studies audiovisual design at the Willem de Kooning Academy.
-              Since 2017 he is also active at Bytecode Digital Agency where he designs
-              branding, concepts, user expericences and does front-end development.
-            </Big>
-          </p>
-          <DownloadCV target="_blanc" href="/cv.pdf"><CV /></DownloadCV>
-          <Socials />
+          <div>
+            <p className="big light">
+                Richard currently studies audiovisual design at the Willem de Kooning Academy.
+                Since 2017 he is also active at Bytecode Digital Agency where he designs
+                branding, concepts, user expericences and does front-end development.
+            </p>
+            <PositionedSocials />
+          </div>
+          <Tools>
+            <h6>Current Tools</h6>
+            <MinimalList columns={2}>
+              {generateList(developmentTools)}
+            </MinimalList>
+            <MinimalList columns={2}>
+              {generateList(designTools)}
+            </MinimalList>
+          </Tools>
         </CVGrid>
       </Container>
-
     </DefaultLayout>
   );
 };

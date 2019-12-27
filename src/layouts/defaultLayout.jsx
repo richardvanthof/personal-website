@@ -16,6 +16,8 @@ const Main = styled.main`
   transition: 0.5 ease-in-out;
   background: ${props => (props.grayBg ? colors.bgLight : 'none')} !important;
   scroll-behavior: smooth;
+  width: 100vw;
+  overflow: hidden;
 `;
 const DefaultLayout = ({ children, gray }) => (
   <StaticQuery

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import Behance from '../static/icons/Social/behance.svg';
 import Linkedin from '../static/icons/Social/linkedin.svg';
 import Github from '../static/icons/Social/github.svg';
+import BNO from '../static/icons/Social/bno.svg';
 
 import theme from '../styles/theme';
 
@@ -31,13 +31,18 @@ const SocialMediaListItem = styled.li`
   }
 `;
 
-const SocialMediaItem = ({ name, href, children }) => (
-  <SocialMediaListItem>
-    <a className="light" target="_blanc" href={href}>
-      {children || name}
-    </a>
-  </SocialMediaListItem>
-);
+const SocialMediaItem = ({ name, href, children }) => {
+  if (href) {
+    return (
+      <SocialMediaListItem>
+        <a className="light" target="_blanc" href={href}>
+          {children || name}
+        </a>
+      </SocialMediaListItem>
+    );
+  }
+  return null;
+};
 
 const Socials = () => (
   <StaticQuery
@@ -49,18 +54,22 @@ const Socials = () => (
              linkedin
              github
              behance
+             bno
             }
           }
         }
       `
     }
     render={(data) => {
-      const { linkedin, github, behance } = data.site.siteMetadata;
+      const {
+        linkedin, github, bno,
+      } = data.site.siteMetadata;
       return (
         <SocialMedia>
           <SocialMediaItem name="LinkedIn" href={linkedin}><Linkedin /></SocialMediaItem>
           <SocialMediaItem name="GitHub" href={github}><Github /></SocialMediaItem>
-          <SocialMediaItem name="Behance" href={behance}><Behance /></SocialMediaItem>
+          {/* <SocialMediaItem name="Behance" href={behance}><Behance /></SocialMediaItem> */}
+          <SocialMediaItem name="BNO" href={bno}><BNO /></SocialMediaItem>
         </SocialMedia>
       );
     }

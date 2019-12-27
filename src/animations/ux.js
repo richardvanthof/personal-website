@@ -14,5 +14,19 @@ const fadeIn = css`
     };
 `;
 
+const hover = css`
+    @keyframes hover {
+        0% {
+        transform: translateY(0)
+        }
+        50% {
+        transform: translateY(0.3em)
+        }
+        100% {
+        transform: translateY(0)
+        }
+    }
+`;
+
 // eslint-disable-next-line import/prefer-default-export
-export { fadeIn };
+export { fadeIn, hover };

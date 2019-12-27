@@ -15,6 +15,8 @@ const FooterBase = styled.footer`
   background: ${colors.bgLight};
   margin: 0;
   padding: 3em 1em 1em;
+  width: 100vw;
+  overflow: hidden;
   @media ${mediaQueries.md} {
     padding: 5vh ${container.md} 1em;
   }

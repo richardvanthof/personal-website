@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 
 import SEO from '../components/seo';
 import DefaultLayout from '../layouts/defaultLayout';
-import { Small } from '../components/typography';
 import { Blogpost } from '../components/thumbnail';
 import Gallery from '../components/gallery';
 import Button from '../components/button';
 
 import theme from '../styles/theme';
+
+import { hover } from '../animations/ux';
 
 import smoothScrollToElement from '../lib/smoothScroll';
 import EyeIcon from '../static/icons/UI/watch.svg';
@@ -54,15 +55,18 @@ const Work = styled.section`
 `;
 
 const CallToAction = styled.a`
-  display: none;
   width: 100%;
-  position: absolute;
   scroll-behavior: smooth;
-  top: 50em;
-  margin: 0 auto;
+  top: 85vh;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
+  margin-left: 2em;
   @media ${mediaQueries.xs} {
+    position: absolute;
+    text-align: left;
+    margin-right: 0;
+    text-align: center;
+    margin: 0 auto;
     display: block;
     transform: translateY(15%);
   };
@@ -72,9 +76,16 @@ const CallToAction = styled.a`
 `;
 
 const ArrowDown = styled(ArrowDownIcon)`
-  opacity: 0.5;
-  height: 7vh;
+  height: 5em;
   margin: 0;
+  animation: hover 0.3s ease-in-out;
+  ${hover}
+  @media ${mediaQueries.sm} {
+    animation: none;
+    opacity: 0.5;
+    height: 3em;
+  };
+
 `;
 
 const Eye = styled(EyeIcon)`
@@ -92,20 +103,14 @@ const Subtitle = styled.p`
 `;
 
 const CallToActionContent = styled.div`
+  display: none;
+  @media ${mediaQueries.xs} {
+    display: block;
+  }
   animation: hover 2s infinite;
   cursor: pointer;
   text-align: center;
-  @keyframes hover {
-    0% {
-      transform: translateY(0)
-    }
-    50% {
-      transform: translateY(0.3em)
-    }
-    100% {
-      transform: translateY(0)
-    }
-  }
+  ${hover}
 `;
 
 const HeaderTitle = styled.h1`
@@ -165,7 +170,7 @@ const ChaosDrawing = styled(Chaos)`
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.projects;
   const handleClick = () => {
-    smoothScrollToElement('work');
+    smoothScrollToElement('#work');
   };
   return (
     <DefaultLayout gray>
@@ -182,7 +187,7 @@ const IndexPage = ({ data }) => {
         <CallToAction onClick={handleClick}>
           <CallToActionContent>
             <Eye />
-            <ActionText><Small>Watch my stuff</Small></ActionText>
+            <ActionText className="small">Watch my stuff</ActionText>
           </CallToActionContent>
           <ArrowDown />
         </CallToAction>

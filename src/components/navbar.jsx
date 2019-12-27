@@ -25,6 +25,8 @@ const Nav = styled.nav`
   margin: 1em 0;
   top: 0;
   transform: 0.3s ease-in;
+  width: 100vw;
+  overflow: hidden;
   .hamburger-btn {
     display: none;
     @media ${mediaQueries.sm} {
