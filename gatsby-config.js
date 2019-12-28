@@ -31,12 +31,12 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: `${__dirname}/src/static/icons`,
-        }
-      }
+        },
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -59,7 +59,12 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/draft/*'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
@@ -75,7 +80,7 @@ module.exports = {
         host: 'https://www.therichard.space',
         sitemap: 'https://www.therichard.space/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
-      }
+      },
     },
     {
       resolve: 'gatsby-plugin-mdx',

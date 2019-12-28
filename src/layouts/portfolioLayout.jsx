@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import GlobalStyle from '../styles/globalStyles';
-import NoScript from '../components/noScript';
 import SEO from '../components/seo';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -37,7 +36,6 @@ const PortfolioLayout = ({ data: { mdx } }) => {
       <Page>
         <SEO title={title} />
         <Navbar />
-        <NoScript />
         <PortfolioHeader
           title={title}
           video={video}

@@ -93,6 +93,12 @@ const SmallThumbnailImage = styled(ThumbnailImage)`
   @media ${mediaQueries.xs} {
     height:30vw;
   } */
+  height: 80vh;
+  max-height: 30em;
+  @media ${mediaQueries.xs} {
+    height: auto;
+    max-height: unset;
+  }
 `;
 
 const SmallThumbnailImageContent = styled(Img)`

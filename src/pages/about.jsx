@@ -128,10 +128,10 @@ height: 100vh;
 }
 `;
 const Title = styled.h2`
-margin: 1em;
+margin: 3.33em 1em;
 align-self: flex-end;
 bottom: 0;
-left: 0;
+right: 0;
 position: absolute;
 color: ${colors.white};
 @media ${mediaQueries.xs} {

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globalStyles';
-import NoScript from '../components/noScript';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import removeLoader from '../lib/removeLoader';
@@ -35,7 +34,6 @@ const DefaultLayout = ({ children, gray }) => (
         <>
           {removeLoader()}
           <Navbar siteTitle={data.site.siteMetadata.title} />
-          <NoScript />
           <Main grayBg={gray}>{children}</Main>
           <Footer />
           <GlobalStyle />

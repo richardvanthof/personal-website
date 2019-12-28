@@ -20,7 +20,6 @@ import Chaos from '../static/icons/content/chaos.svg';
 
 const { mediaQueries, colors } = theme;
 
-
 const HeroHeader = styled.header`
 
   height: 100vh;
@@ -33,8 +32,9 @@ const HeroHeader = styled.header`
   grid-gap: 5vw;
   display: flex;
   justify-content: center;
+  max-height: 50em;
   @media ${mediaQueries.sm}{
-
+    max-height: unset;
     display: grid;
     height: 85vh;
     grid-gap: 5vw;
@@ -76,7 +76,7 @@ const CallToAction = styled.a`
 `;
 
 const ArrowDown = styled(ArrowDownIcon)`
-  height: 5em;
+  height: 3em;
   margin: 0;
   animation: hover 0.3s ease-in-out;
   ${hover}

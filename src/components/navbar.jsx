@@ -22,11 +22,11 @@ const Nav = styled.nav`
   width: 100%;
   z-index: 10;
   color: ${colors.white};
-  margin: 1em 0;
+  padding: 0.66em;
   top: 0;
   transform: 0.3s ease-in;
   width: 100vw;
-  overflow: hidden;
+  background: transparent;
   .hamburger-btn {
     display: none;
     @media ${mediaQueries.sm} {

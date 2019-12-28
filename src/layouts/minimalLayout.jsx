@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globalStyles';
-import NoScript from '../components/noScript';
 import Navbar from '../components/navbar';
 import removeLoader from '../lib/removeLoader';
 import Copyright from '../components/copyright';
@@ -36,7 +35,6 @@ const MinimalLayout = ({ children }) => {
         <ThemeProvider theme={theme}>
           <>
             <Navbar siteTitle={data.site.siteMetadata.title} />
-            <NoScript />
             <Main>{children}</Main>
             <GlobalStyle />
             <Copyright />

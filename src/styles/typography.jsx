@@ -24,7 +24,7 @@ const fontSizes = {
   lg: generateTextSizes(1.33),
   md: generateTextSizes(1.33),
   sm: generateTextSizes(1.25),
-  xs: generateTextSizes(1.20),
+  xs: generateTextSizes(1.15),
 };
 
 const scaleText = css`

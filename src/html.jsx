@@ -93,6 +93,16 @@ const styles = {
       font-family: sans-serif;
     }
 
+    noscript {
+      z-index: 100;
+      position: absolute;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 1em;
+      bottom: 10vh;
+    }
+
     .loadingScreen {
       animation: fadeIn 0.3s ease-out;
       background: #F6F6F6;
@@ -111,7 +121,6 @@ const styles = {
       left: 0;
       z-index: 2;
       opacity: 1;
-
     }
 
     @keyframes fadeIn {
@@ -206,7 +215,7 @@ export default function HTML(props) {
         {props.preBodyComponents}
 
         <noscript key="noscript" id="gatsby-noscript">
-          This app works best with JavaScript enabled.
+          This website works only with JavaScript enabled.
         </noscript>
         <section dangerouslySetInnerHTML={loader} className="loadingScreen" />
         <div
