@@ -70,8 +70,11 @@ module.exports = {
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        quality: 100,
+        quality: 90,
         webpQuality: 90,
+        pngQuality: 90,
+        jpegQuality: 90,
+        maxWidth: 2500,
       },
     },
     {

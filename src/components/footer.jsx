@@ -85,7 +85,7 @@ const Footer = () => (
         <FooterLogo src={Logo} />
       </FooterColumn>
       <FooterColumn>
-        <h6>Open Source</h6>
+        <h6>Source Code</h6>
         <p className="light small">Good news! This site is open source. Would you like to see how I made it or do you want to build from this site? It’s all possible!</p>
         <Button external title="View source code" to="https://github.com/RichART-Official/therichart.space" />
       </FooterColumn>

@@ -30,7 +30,7 @@ theme.breakpoints = {
   xs: '48em',
   sm: '64em',
   md: '85.375em',
-  lg: '120em',
+  lg: '122em',
   xl: '160em',
   xxl: '192em',
 };
