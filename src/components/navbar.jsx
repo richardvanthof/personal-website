@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import styled from 'styled-components';
-import Lottie from 'react-lottie';
-// import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Link } from 'gatsby';
 import lottie from 'lottie-web';
 import theme from '../styles/theme';
@@ -212,17 +210,32 @@ const MobileMenu = () => (
   </MobileMenuOverlay>
 );
 
-const hamburgerButtonConfig = {
-  loop: false,
-  autoplay: true,
-  animationData: hamburger,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-  },
-};
+let btn;
 
 const Navbar = ({ siteTitle }) => {
-  let [active, setActive] = useState(0);
+  let [active, setActive] = useState(false);
+  let hamburgerBtn = createRef();
+
+  useEffect(() => {
+    btn = lottie.loadAnimation({
+      container: hamburgerBtn.current,
+      renderer: 'svg',
+      animationData: hamburger,
+      autoplay: false,
+      loop: false,
+    });
+    console.log(btn);
+    btn.gotoFrame(btn.firstFrame);
+  }, []);
+
+  useEffect(() => {
+    btn.play();
+  });
+
+  const handleClick = () => {
+    setActive(!active);
+  };
+
   return (
     <>
       <Nav>
@@ -234,13 +247,7 @@ const Navbar = ({ siteTitle }) => {
         <NavLinksDesktop>
           <NavLinksContent />
         </NavLinksDesktop>
-        <HamburgerButton class="hamburgerBtn" onClick={() => setActive(!active)}>
-          <Lottie
-            options={hamburgerButtonConfig}
-            isStopped={!active}
-            height={50}
-          />
-        </HamburgerButton>
+        <HamburgerButton ref={hamburgerBtn} onClick={handleClick} />
         { active
             && <MobileMenu />
           }
