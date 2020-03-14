@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
 // import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Link } from 'gatsby';
+import lottie from 'lottie-web';
 import theme from '../styles/theme';
 
 import hamburger from '../static/animations/hamburgermenu.json';
@@ -220,51 +221,33 @@ const hamburgerButtonConfig = {
   },
 };
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isActive: false,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState(state => ({
-      isActive: !state.isActive,
-    }));
-  }
-
-  render() {
-    const { siteTitle } = this.props;
-    const { isActive } = this.state;
-    return (
-      <>
-        <Nav>
-          <div>
-            <Link to="/">
-              <Logo src={logo} alt={siteTitle} />
-            </Link>
-          </div>
-          <NavLinksDesktop>
-            <NavLinksContent />
-          </NavLinksDesktop>
-          <HamburgerButton class="hamburgerBtn" onClick={this.handleClick}>
-            <Lottie
-              options={hamburgerButtonConfig}
-              isStopped={!isActive}
-              height={50}
-            />
-          </HamburgerButton>
-          { isActive
+const Navbar = ({ siteTitle }) => {
+  let [active, setActive] = useState(0);
+  return (
+    <>
+      <Nav>
+        <div>
+          <Link to="/">
+            <Logo src={logo} alt={siteTitle} />
+          </Link>
+        </div>
+        <NavLinksDesktop>
+          <NavLinksContent />
+        </NavLinksDesktop>
+        <HamburgerButton class="hamburgerBtn" onClick={() => setActive(!active)}>
+          <Lottie
+            options={hamburgerButtonConfig}
+            isStopped={!active}
+            height={50}
+          />
+        </HamburgerButton>
+        { active
             && <MobileMenu />
           }
-        </Nav>
-      </>
-    );
-  }
-}
-
+      </Nav>
+    </>
+  );
+};
 
 Navbar.propTypes = {
   siteTitle: PropTypes.string,
