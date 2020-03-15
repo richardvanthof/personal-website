@@ -1,18 +1,27 @@
 ---
 key: 1
 title: Voor Later
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-date: 2019
-type: Audiovisual
-image: '../../static/img/work/voorlater/voorlater-12.png'
+type: audiovisual
+date: '2019'
+description: Voor later (For Later) is a video essay made in collaboration with Jorick Buursma and Bas de Haas. It is a video essay about how the emotional value of photos might decline because of the dawn of fast digital photography.
+image: "../../static/img/work/voorlater/voorlater-10.png"
 video: https://www.youtube.com/embed/Jy4Fg6n4f_4
-alt: Film still
+alt: film still
+runningTime: '8:54'
+rating: 5
 draft: false
 ---
-import Gallery from '../../components/gallery';
-import headerImg from '../../static/img/work/voorlater/voorlater-10.png';
-import img18 from '../../static/img/work/voorlater/voorlater-18.png';
-import img11 from '../../static/img/work/voorlater/voorlater-11.png';
-import img07 from '../../static/img/work/voorlater/voorlater-7.png';
-import img12 from '../../static/img/work/voorlater/voorlater-12.png';
-import img06 from '../../static/img/work/voorlater/voorlater-6.png';
+import Gallery from '../../components/gallery.jsx';
+import Embed from '../../components/embed.jsx';
+
+import voorlater1 from '../../static/img/work/voorlater/voorlater-9.png';
+import voorlater2 from '../../static/img/work/voorlater/voorlater-2.png';
+import voorlater3 from '../../static/img/work/voorlater/voorlater-3.png';
+import voorlater4 from '../../static/img/work/voorlater/voorlater-11.png';
+
+<Gallery width={100}>
+    <img src={voorlater1} alt="film still"/>
+    <img src={voorlater2} alt="film still"/>
+    <img src={voorlater4} alt="film still"/>
+    <img src={voorlater3} alt="film still"/>
+</Gallery>

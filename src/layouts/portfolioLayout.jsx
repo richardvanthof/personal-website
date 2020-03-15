@@ -4,47 +4,58 @@ import { graphql } from 'gatsby';
 import styled, { ThemeProvider } from 'styled-components';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import GlobalStyle from '../styles/globalStyles';
-import NoScript from '../components/noScript';
+import SEO from '../components/seo';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import PortfolioHeader from '../components/portfolioHeader';
+import PortfolioHeader from '../components/portfolioHeader.v2';
 import theme from '../styles/theme';
+import removeLoader from '../lib/removeLoader';
+
+const { colors, mediaQueries } = theme;
 
 const Main = styled.main`
   transition: 0.5 ease-in-out;
+  @media ${mediaQueries.xs} {
+    margin-top: 5vh;
+  }
+`;
+
+const Page = styled.div`
+  background: ${colors.bgLight};
 `;
 
 const PortfolioLayout = ({ data: { mdx } }) => {
   const {
-    video,
-    type,
-    title,
-    alt,
-    date,
-    description,
+    title, video, runningTime, website, repo, date, type, alt, description, client,
   } = mdx.frontmatter;
-  const img = mdx.frontmatter.image.childImageSharp.fluid;
+
+  removeLoader();
 
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <Page>
+        <SEO title={title} />
         <Navbar />
-        <NoScript />
         <PortfolioHeader
           title={title}
           video={video}
           type={type}
           alt={alt}
-          date={date}
+          year={date}
+          length={runningTime}
+          website={website}
+          repository={repo}
+          fluid={mdx.frontmatter.image.childImageSharp.fluid}
           description={description}
-          fluid={img}
+          client={client}
         />
         <Main>
+
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Main>
         <Footer />
         <GlobalStyle />
-      </>
+      </Page>
     </ThemeProvider>
   );
 };
@@ -55,36 +66,31 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
-          video
-          type
-          title
-          alt
-          date
-          description
-          image {
+        title
+        type
+        alt
+        video
+        date
+        client
+        website
+        repo
+        runningTime
+        description
+        image {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              fluid(quality: 100) {
+                ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
           }
-        }
+      }
     }
   }
 `;
 
 PortfolioLayout.propTypes = {
   data: PropTypes.shape({
-    mdx: PropTypes.shape({
-      body: PropTypes.node,
-      frontmatter: PropTypes.frontmatter({
-        video: PropTypes.string,
-        title: PropTypes.string,
-        alt: PropTypes.string,
-        date: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    }),
+    mdx: PropTypes.object.isRequired,
   }).isRequired,
 };
 

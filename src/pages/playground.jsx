@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Flipper, Flipped } from 'react-flip-toolkit';
-// import P5Wrapper from 'react-p5-wrapper';
 import SEO from '../components/seo';
 import Container from '../components/container';
+import MinimalLayout from '../layouts/minimalLayout';
 
 const thumbnail = 'https://images.artnet.com/aoa_lot_images/SpecialSale/469/SaleBanner/BANNER-Brandt_Elephant%20Herd.jpg';
 
@@ -12,8 +12,8 @@ const Main = styled.main`
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: whitesmoke;
     transition: 0.3s ease-in-out;
+    background: whitesmoke;
 `;
 
 const Content = styled.div`
@@ -46,35 +46,37 @@ const Post = () => {
   const [fullScreen, setFullScreen] = useState(false);
   const toggleFullScreen = () => setFullScreen(prevState => !prevState);
   return (
-    <Flipper flipKey={fullScreen}>
-      <SEO title="Playground" keywords={['gatsby', 'application', 'react']} />
-      {fullScreen ? (
-        <Flipped flipId="post">
-          <Content onClick={toggleFullScreen}>
-            <Flipped inverseFlipId="post">
-              <Container>
-                <h1>Richardhotline</h1>
-                <p>2018</p>
-                <img src={thumbnail} alt="richard hotline" />
-              </Container>
-            </Flipped>
-          </Content>
-        </Flipped>
-      ) : (
+    <MinimalLayout grey>
+      <Flipper flipKey={fullScreen}>
+        <SEO title="Playground" keywords={['gatsby', 'application', 'react']} />
+        {fullScreen ? (
+          <Flipped flipId="post">
+            <Content onClick={toggleFullScreen}>
+              <Flipped inverseFlipId="post">
+                <Container>
+                  <h1>Richardhotline</h1>
+                  <p>2018</p>
+                  <img src={thumbnail} alt="richard hotline" />
+                </Container>
+              </Flipped>
+            </Content>
+          </Flipped>
+        ) : (
 
-        <Flipped flipId="post">
-          <Thumbnail onClick={toggleFullScreen}>
-            <Flipped inverseFlipId="post">
-              <>
-                <h3>Richardhotline</h3>
-                <p>2018</p>
-                <img src={thumbnail} alt="richard hotline" />
-              </>
-            </Flipped>
-          </Thumbnail>
-        </Flipped>
-      )}
-    </Flipper>
+          <Flipped flipId="post">
+            <Thumbnail onClick={toggleFullScreen}>
+              <Flipped inverseFlipId="post">
+                <>
+                  <h3>Richardhotline</h3>
+                  <p>2018</p>
+                  <img src={thumbnail} alt="richard hotline" />
+                </>
+              </Flipped>
+            </Thumbnail>
+          </Flipped>
+        )}
+      </Flipper>
+    </MinimalLayout>
   );
 };
 

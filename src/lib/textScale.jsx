@@ -1,53 +1,27 @@
-const generateTextScale = {
-  // Saves scaleratio and text bases
-  ratio: 1.333, // number
-  base: [18], // array[ number ]
-  defaultFontSize: 16,
-
-  // Set Scale ratio (number)
-  set setRatio(input) {
-    this.ratio = input;
-  },
-  // Set Base size (array[number])
-  set setBase(input) {
-    this.base = input;
-  },
-  scale() {
-    const baseSizes = this.base.map(currentValue => currentValue / this.defaultFontSize);
-    // // Generate font sizes for a base size
-    const generateTextSizes = (base) => {
-      const { ratio } = this;
-      const textSizes = [];
-      for (let i = 0; i < 10; i++) {
-        const newSize = base * (ratio ** i);
-        textSizes.push(`${newSize}rem`);
-      }
-      return textSizes;
-    };
-
-    // Generate font sizes for a base size
-    if (baseSizes.length > 1) {
-      const allTextSizes = baseSizes.map(currentValue => generateTextSizes(currentValue));
-      return allTextSizes;
-    }
-    return generateTextSizes(baseSizes);
-  },
+const generateTextSizes = (ratio, baseSize) => {
+  // Generates all text sizes on the basis of a base size an a ratio
+  const textSizes = [];
+  const relativeBaseSize = (baseSize || 18) / 16;
+  const scaleRatio = ratio || 1.33;
+  for (let i = 0; i <= 10; i++) {
+    const newTextSize = (relativeBaseSize * (scaleRatio ** i)).toFixed(3);
+    textSizes.push(`${newTextSize}rem`);
+  }
+  return textSizes;
 };
 
-const scale = () => generateTextScale.scale();
-
-const setBaseSize = () => generateTextScale.setBase;
-
-const setRatio = () => generateTextScale.setRatio;
-
-const configureTextScale = (base, ratio) => {
-  generateTextScale.setBase = base;
-  generateTextScale.setRatio = ratio;
+const scaleHeaders = (fontSizes) => {
+  // Assigns the right text size to a header element and makes css automaticially
+  const elements = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].reverse();
+  let counter = 1;
+  const headingSizes = elements.map((currentValue) => {
+    const css = `${currentValue} { font-size: ${fontSizes[counter]}}`;
+    counter++;
+    return css;
+  });
+  return headingSizes.join('; ');
 };
 
-export {
-  setBaseSize,
-  setRatio,
-  configureTextScale,
-};
-export default scale;
+export { scaleHeaders };
+
+export default generateTextSizes;

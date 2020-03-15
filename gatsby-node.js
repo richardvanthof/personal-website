@@ -9,7 +9,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // `File` node here
   if (node.internal.type === "Mdx") {
     const value = createFilePath({ node, getNode })
-
+    const getCategory = () => {
+      if (node.frontmatter.draft) {
+        return '/draft';
+      }
+      return '/work';
+    };
     createNodeField({
       // Name of the field you are adding
       name: "slug",
@@ -18,7 +23,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. We
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: `/work${value}`,
+      value: `${getCategory()}${value}`,
     });
   }
 };
@@ -26,7 +31,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
-  const { createPage } = actions
+  const { createPage } = actions;
 
   const result = await graphql(`
     query {
@@ -36,6 +41,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+            }
+            frontmatter {
+              draft
             }
           }
         }
@@ -64,3 +72,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 };
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /webfontloader/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+}

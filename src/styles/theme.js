@@ -1,19 +1,28 @@
 const theme = {};
 
-const white = '#FEFEFE';
-const black = '#141414';
-const lightGray = '#F2F2F2';
-const blue = '#1000FF';
-
-// TODO: Move these to a more appropriate file.
-theme.repo = 'https://github.com/RichART-Official/therichart.space';
-theme.email = 'richardvanthof@pm.me';
-theme.phone = '+31641219554';
+const white = '#FFFFFF';
+const black = 'rgba(0,0,0,0.9)';
+const darkBlue = '#000E41';
+const darkGray = '#787878';
+const middleGray = '#EEEEEE';
+const lightGray = '#F6F6F6';
+const teal = '#7985B0';
+const blue = '#414C74';
+const yellow = '#FFFC62';
 
 theme.colors = {
   primairy: blue,
+  secundairy: yellow,
+  yellow,
+  darkBlue,
+  black,
   white,
-  bgDark: black,
+  blue,
+  teal,
+  bgContent: middleGray,
+  textDark: black,
+  textLight: blue,
+  bgDark: darkGray,
   bgLight: lightGray,
 };
 
@@ -21,7 +30,7 @@ theme.breakpoints = {
   xs: '48em',
   sm: '64em',
   md: '85.375em',
-  lg: '120em',
+  lg: '122em',
   xl: '160em',
   xxl: '192em',
 };
@@ -48,11 +57,12 @@ theme.typography = {
   base: {
     size: '1em',
     lineHeight: '1.66em',
-    font: ['times', 'sans-serif'],
+    font: ['Source Sans Pro', 'sans-serif'],
   },
   heading: {
     lineHeight: '1.11em',
     font: [
+      'Karla',
       'sans-serif',
     ],
   },

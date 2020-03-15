@@ -3,21 +3,21 @@ language: node_js
 node_js:
   - '10'
 
-
 notifications:
   email:
-    - richardvanthof@pm.me
+    - hello@therichard.space
 
 before_deploy:
   - yarn lint
   - yarn build
 
 deploy:
-  provider: surge
-  project: public/
-  skip_cleanup: true
-  domain: therichart.space
-  on: master
+  provider: netlify
+  message: deploying to Netlify...
+  site: 470989a8-7889-4012-8175-5a3d601a9a6d
+  dir: public/
+  edge: true # opt in to dpl v2
+  prod: true
 
 cache:
   yarn: true
