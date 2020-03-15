@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import styled from 'styled-components';
-import Lottie from 'react-lottie';
-// import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Link } from 'gatsby';
+import lottie from 'lottie-web';
 import theme from '../styles/theme';
 
 import hamburger from '../static/animations/hamburgermenu.json';
@@ -143,6 +142,7 @@ const HamburgerButton = styled.a`
     visibility: hidden;
   }
 `;
+
 const MobileMenuOverlay = styled.div`
   background: ${colors.bgLight};
   position: fixed;
@@ -211,60 +211,55 @@ const MobileMenu = () => (
   </MobileMenuOverlay>
 );
 
-const hamburgerButtonConfig = {
-  loop: false,
-  autoplay: true,
-  animationData: hamburger,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-  },
-};
+let btn;
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isActive: false,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
+const Navbar = ({ siteTitle }) => {
+  const [active, setActive] = useState(false);
+  const hamburgerBtn = createRef();
 
-  handleClick() {
-    this.setState(state => ({
-      isActive: !state.isActive,
-    }));
-  }
+  useEffect(() => {
+    btn = lottie.loadAnimation({
+      container: hamburgerBtn.current,
+      renderer: 'svg',
+      animationData: hamburger,
+      autoplay: false,
+      loop: false,
+    });
+    btn.setSpeed(2);
+  }, []);
 
-  render() {
-    const { siteTitle } = this.props;
-    const { isActive } = this.state;
-    return (
-      <>
-        <Nav>
-          <div>
-            <Link to="/">
-              <Logo src={logo} alt={siteTitle} />
-            </Link>
-          </div>
-          <NavLinksDesktop>
-            <NavLinksContent />
-          </NavLinksDesktop>
-          <HamburgerButton class="hamburgerBtn" onClick={this.handleClick}>
-            <Lottie
-              options={hamburgerButtonConfig}
-              isStopped={!isActive}
-              height={50}
-            />
-          </HamburgerButton>
-          { isActive
+  useEffect(() => {
+    if (active) {
+      btn.setDirection(1);
+    } else {
+      btn.setDirection(-1);
+    }
+    btn.play();
+  });
+
+  const handleClick = () => {
+    setActive(!active);
+  };
+
+  return (
+    <>
+      <Nav>
+        <div>
+          <Link to="/">
+            <Logo src={logo} alt={siteTitle} />
+          </Link>
+        </div>
+        <NavLinksDesktop>
+          <NavLinksContent />
+        </NavLinksDesktop>
+        <HamburgerButton ref={hamburgerBtn} onClick={handleClick} />
+        { active
             && <MobileMenu />
           }
-        </Nav>
-      </>
-    );
-  }
-}
-
+      </Nav>
+    </>
+  );
+};
 
 Navbar.propTypes = {
   siteTitle: PropTypes.string,
