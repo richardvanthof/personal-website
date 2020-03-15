@@ -142,28 +142,6 @@ module.exports = {
         sv: 6,
       },
     },
-
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utilities/typography`,
-        omitGoogleFont: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utilities/typography`,
-        omitGoogleFont: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utilities/typography`,
-        omitGoogleFont: false,
-      },
-    },
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

@@ -3,6 +3,7 @@ import React, { useState, useEffect, createRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import lottie from 'lottie-web';
+import gsap from 'gsap';
 import theme from '../styles/theme';
 
 import hamburger from '../static/animations/hamburgermenu.json';
@@ -52,7 +53,6 @@ const NavLinksDesktop = styled.ul`
       position: relative;
     }
   }
-
 `;
 
 const NavLinkBase = styled.li`
@@ -61,6 +61,14 @@ const NavLinkBase = styled.li`
   text-decoration: none;
   margin: 1em;
   position: relative;
+  overflow: hidden;
+  .nav-link-content {
+    position: relative;
+    display: inline-block;
+    @media ${mediaQueries.xs} {
+      transform: none;
+    }
+  }
   &:before {
       content: '';
       left: 0;
@@ -101,31 +109,12 @@ const NavLinkBase = styled.li`
   }
 `;
 
-const NavLink = (props) => {
-  const { title, to } = props;
-  return (
-    <NavLinkBase>
-      <Link duration={1} to={to}>
-        {title}
-      </Link>
-    </NavLinkBase>
-  );
-};
 
 const Logo = styled.img`
   width: 4em;
   margin: 0;
 `;
 
-
-const NavLinksContent = () => (
-  <>
-    <NavLink title="Home" to="/" />
-    <NavLink title="Work" to="/work" />
-    <NavLink title="About" to="/about" />
-    <NavLink title="Contact" to="/contact" />
-  </>
-);
 
 const HamburgerButton = styled.a`
   width: 3em;
@@ -154,17 +143,8 @@ const MobileMenuOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: self-start;
-  animation: fadeIn 0.1s ease-in-out;
-  @keyframes fadeIn {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+  opacity: 0;
+  pointer-events: 0;
   @media ${mediaQueries.xs} {
     display: none;
   }
@@ -180,18 +160,6 @@ const MobileNavLinks = styled.ul`
   max-width: 40em;
   margin-top: 15vh;
   text-align: center;
-  animation: fadeInLinks 0.2s ease-in-out;
-  @keyframes fadeInLinks {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
   li {
     width: 100%;
     margin: 0.33em 0;
@@ -203,35 +171,76 @@ const MobileNavLinks = styled.ul`
   }
 `;
 
+let btn;
+const navOverlay = createRef();
+const hamburgerBtn = createRef();
+const navLink = createRef();
+
+const NavLink = (props) => {
+  const { title, to } = props;
+  return (
+    <NavLinkBase>
+      <Link ref={navLink} className="nav-link-content" duration={1} to={to}>
+        {title}
+      </Link>
+    </NavLinkBase>
+  );
+};
+
+const navTl = gsap.timeline();
+
+const NavLinksContent = () => (
+  <>
+    <NavLink className="nav-link" title="Home" to="/" />
+    <NavLink className="nav-link" title="Work" to="/work" />
+    <NavLink className="nav-link" title="About" to="/about" />
+    <NavLink className="nav-link" title="Contact" to="/contact" />
+  </>
+);
+
 const MobileMenu = () => (
-  <MobileMenuOverlay>
-    <MobileNavLinks>
+  <MobileMenuOverlay ref={navOverlay} className="menu-overlay">
+    <MobileNavLinks className="nav-links">
       <NavLinksContent />
     </MobileNavLinks>
   </MobileMenuOverlay>
 );
 
-let btn;
-
 const Navbar = ({ siteTitle }) => {
   const [active, setActive] = useState(false);
-  const hamburgerBtn = createRef();
+
 
   useEffect(() => {
     btn = lottie.loadAnimation({
       container: hamburgerBtn.current,
       renderer: 'svg',
       animationData: hamburger,
-      autoplay: false,
       loop: false,
     });
     btn.setSpeed(2);
-  }, []);
+    navTl.fromTo(navOverlay.current, {
+      opacity: 0,
+    }, {
+      opacity: 1,
+      duration: 0.2,
+    }, 0)
+      .fromTo(navLink.current, {
+        transform: 'translateY(5em)',
+        pointerEvents: 'none',
+      }, {
+        transform: 'translateY(0)',
+        duration: 0.3,
+        pointerEvents: 'all',
+      }, '<0.2');
+    navTl.pause();
+  },
+  []);
 
   useEffect(() => {
     if (active) {
       btn.setDirection(1);
     } else {
+      navTl.reverse();
       btn.setDirection(-1);
     }
     btn.play();
@@ -239,6 +248,7 @@ const Navbar = ({ siteTitle }) => {
 
   const handleClick = () => {
     setActive(!active);
+    navTl.play();
   };
 
   return (
@@ -252,6 +262,7 @@ const Navbar = ({ siteTitle }) => {
         <NavLinksDesktop>
           <NavLinksContent />
         </NavLinksDesktop>
+        <MobileMenu />
         <HamburgerButton ref={hamburgerBtn} onClick={handleClick} />
         { active
             && <MobileMenu />

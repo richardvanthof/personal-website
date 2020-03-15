@@ -1,7 +1,4 @@
-import React from 'react';
-import {createGlobalStyle} from 'styled-components';
-
-import theme from './theme';
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -595,6 +592,6 @@ const GlobalStyle = createGlobalStyle`
       font-size: 100%;
     }
   }
-`
+`;
 
 export default GlobalStyle;
