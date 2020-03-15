@@ -142,6 +142,7 @@ const HamburgerButton = styled.a`
     visibility: hidden;
   }
 `;
+
 const MobileMenuOverlay = styled.div`
   background: ${colors.bgLight};
   position: fixed;
@@ -213,8 +214,8 @@ const MobileMenu = () => (
 let btn;
 
 const Navbar = ({ siteTitle }) => {
-  let [active, setActive] = useState(false);
-  let hamburgerBtn = createRef();
+  const [active, setActive] = useState(false);
+  const hamburgerBtn = createRef();
 
   useEffect(() => {
     btn = lottie.loadAnimation({
@@ -224,11 +225,15 @@ const Navbar = ({ siteTitle }) => {
       autoplay: false,
       loop: false,
     });
-    console.log(btn);
-    btn.gotoFrame(btn.firstFrame);
+    btn.setSpeed(2);
   }, []);
 
   useEffect(() => {
+    if (active) {
+      btn.setDirection(1);
+    } else {
+      btn.setDirection(-1);
+    }
     btn.play();
   });
 
