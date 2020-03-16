@@ -174,13 +174,14 @@ const MobileNavLinks = styled.ul`
 let btn;
 const navOverlay = createRef();
 const hamburgerBtn = createRef();
-const navLink = createRef();
+const navLinks = [];
 
 const NavLink = (props) => {
   const { title, to } = props;
+  const appendElement = element => navLinks.push(element);
   return (
     <NavLinkBase>
-      <Link ref={navLink} className="nav-link-content" duration={1} to={to}>
+      <Link ref={appendElement} className="nav-link-content" duration={1} to={to}>
         {title}
       </Link>
     </NavLinkBase>
@@ -211,6 +212,7 @@ const Navbar = ({ siteTitle }) => {
 
 
   useEffect(() => {
+    setActive(false);
     btn = lottie.loadAnimation({
       container: hamburgerBtn.current,
       renderer: 'svg',
@@ -224,13 +226,14 @@ const Navbar = ({ siteTitle }) => {
       opacity: 1,
       duration: 0.2,
     }, 0)
-      .fromTo(navLink.current, {
+      .fromTo(navLinks, {
         transform: 'translateY(5em)',
         pointerEvents: 'none',
       }, {
         transform: 'translateY(0)',
         duration: 0.3,
         pointerEvents: 'all',
+        stagger: 0.05,
       }, '<0.2');
     navTl.pause();
   },
@@ -288,5 +291,6 @@ NavLink.propTypes = {
 NavLink.defaultProps = {
   to: '#',
 };
+
 
 export default Navbar;

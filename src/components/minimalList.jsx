@@ -49,12 +49,13 @@ const MinimalLi = ({ name, to, external }) => {
 };
 
 MinimalLi.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   to: PropTypes.string,
   external: PropTypes.bool,
 };
 
 MinimalLi.defaultProps = {
+  name: null,
   to: null,
   external: false,
 };

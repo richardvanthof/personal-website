@@ -138,7 +138,7 @@ const Thumbnail = ({
                 {client && (
                 <p className="light">
                   {client }
-&nbsp;&middot;&nbsp;
+                  &nbsp;&middot;&nbsp;
                 </p>
                 )}
                 {type && (
@@ -184,7 +184,14 @@ const Thumbnail = ({
 Thumbnail.propTypes = {
   title: PropTypes.string.isRequired,
   client: PropTypes.string,
-  img: PropTypes.string.isRequired,
+  img: PropTypes.shape({
+    aspectRatio: PropTypes.number,
+    sizes: PropTypes.string,
+    src: PropTypes.string,
+    srcSet: PropTypes.string,
+    srcSetWebp: PropTypes.string,
+    srcWebp: PropTypes.string,
+  }).isRequired,
   to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   medium: PropTypes.string.isRequired,
