@@ -247,27 +247,6 @@ Richard
           </h3>
         </TextSection>
       </Container>
-      <Container>
-        <CVGrid>
-          <div>
-            <p className="big light">
-                Richard currently studies audiovisual design at the Willem de Kooning Academy.
-                Since 2017 he is also active at Bytecode Digital Agency where he designs
-                branding, concepts, user expericences and does front-end development.
-            </p>
-            <PositionedSocials />
-          </div>
-          <Tools>
-            <h6>Current Tools</h6>
-            <MinimalList columns={2}>
-              {generateList(developmentTools)}
-            </MinimalList>
-            <MinimalList columns={2}>
-              {generateList(designTools)}
-            </MinimalList>
-          </Tools>
-        </CVGrid>
-      </Container>
     </DefaultLayout>
   );
 };
