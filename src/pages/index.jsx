@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -21,33 +22,12 @@ import Chaos from '../static/icons/content/chaos.svg';
 const { mediaQueries, colors } = theme;
 
 const HeroHeader = styled.header`
-
-  height: 100vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 15vh;
-  background: ${theme.colors.bgLight};
-  padding: 1em;
-  grid-gap: 5vw;
   display: flex;
   justify-content: center;
-  max-height: 50em;
-  @media ${mediaQueries.sm}{
-    max-height: unset;
-    display: grid;
-    height: 85vh;
-    grid-gap: 5vw;
-    max-height: none !important;
-    min-height: 40em;
-    grid-template: 1fr 1fr / 1fr 6fr 6fr 1fr;
-  };
-  @media ${mediaQueries.md} {
-    padding-top: 20vh;
-    grid-gap: 3vw;
-    grid-template: 1fr 1fr / 1fr 5fr 1fr 3fr 1fr;
-
-  };
+  padding: 0 10vw;
 `;
 
 const Work = styled.section`
@@ -115,8 +95,6 @@ const CallToActionContent = styled.div`
 
 const HeaderTitle = styled.h1`
   z-index: 2;
-  grid-row: 1/3;
-  grid-column: 2;
   ${mediaQueries.xs}{
     width: auto;
     color: ${colors.white};
@@ -127,16 +105,6 @@ const HeaderTitle = styled.h1`
 `;
 
 const HeaderDescription = styled.div`
-  display: none;
-  @media ${mediaQueries.sm} {
-    display: block;
-    grid-row: 2;
-    grid-column: 3;
-  }
-  @media ${mediaQueries.md} {
-    grid-row: 2;
-    grid-column: 4;
-  }
 `;
 
 const MobileHeaderDescription = styled(HeaderDescription)`
@@ -167,6 +135,10 @@ const ChaosDrawing = styled(Chaos)`
   }
 `;
 
+const HeaderImg = styled(Img)`
+
+`;
+
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.projects;
   const handleClick = () => {
@@ -177,12 +149,12 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       {/* <Header title="work" /> */}
       <HeroHeader>
-        <ChaosDrawing />
-        <HeaderTitle>Exploring my creative chaos to gain new perspectives on the world</HeaderTitle>
+        <HeaderTitle>Making digital worlds</HeaderTitle>
         <HeaderDescription>
-          <Subtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital artist and everything in between who likes to control everything in his path. Until he can&apos;t. Which he strives for.</Subtitle>
+          <Subtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital maker.</Subtitle>
           <Button to="/about" title="Learn more" />
         </HeaderDescription>
+       
         {/* <HeroAnimation sketch={sketch}/> */}
         <CallToAction onClick={handleClick}>
           <CallToActionContent>
@@ -192,10 +164,6 @@ const IndexPage = ({ data }) => {
           <ArrowDown />
         </CallToAction>
       </HeroHeader>
-      <MobileHeaderDescription>
-        <Subtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital artist and everything in between who likes to control everything in his path. Until he can&apos;t. Which he strives for.</Subtitle>
-        <Button to="/about" title="Learn more" />
-      </MobileHeaderDescription>
       <Work id="work">
         <Gallery width={50}>
           {

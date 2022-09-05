@@ -19,11 +19,11 @@ theme.colors = {
   white,
   blue,
   teal,
-  bgContent: middleGray,
+  bgContent: white,
   textDark: black,
   textLight: blue,
   bgDark: darkGray,
-  bgLight: lightGray,
+  bgLight: white,
 };
 
 theme.breakpoints = {
