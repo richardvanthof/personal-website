@@ -9,12 +9,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // `File` node here
   if (node.internal.type === "Mdx") {
     const value = createFilePath({ node, getNode })
-    const getCategory = () => {
-      if (node.frontmatter.draft) {
-        return '/draft';
-      }
-      return '/work';
-    };
     createNodeField({
       // Name of the field you are adding
       name: "slug",
@@ -23,7 +17,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. We
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: `${getCategory()}${value}`,
+      value: `${value}`,
     });
   }
 };

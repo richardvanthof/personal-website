@@ -202,50 +202,9 @@ const About = ({ data }) => {
   return (
     <DefaultLayout gray>
       <SEO title="About" />
-      <Header className="header">
-        <Img1 fluid={data.image1.childImageSharp.fluid} />
-        <Img2 fluid={data.image2.childImageSharp.fluid} />
-        <Img3 fluid={data.image3.childImageSharp.fluid} />
-        <Img4 fluid={data.image4.childImageSharp.fluid} />
-        <Title>
-I am
-          <br />
-Richard
-        </Title>
-        {/* <CallToAction onClick={handleClick}>
-          <CallToActionContent>
-            <Eye />
-            <ActionText className="small">Learn more</ActionText>
-          </CallToActionContent>
-          <ArrowDown />
-        </CallToAction> */}
-        {/* <BackgroundAnimation options={defaultOptions/> */}
-      </Header>
       <Container id="about-content">
-        <TextSection>
-          <h3>
-            Richard van &apos;t Hof is a Rotterdam based audiovisual maker and digital artist.
-            His work is on the verge of film, design and code. He is fascinated by it&apos;s
-            emersive quality. His work focuses much on the question of this control. Especially
-            in the question of how much control he can have over his surroundings and other
-            people but also himself.
-          </h3>
-        </TextSection>
-        <TextSection>
-          <h3>
-          He works with an autonimous, theoretical mindset to disect subjects around him
-          from which he can gain unexpected insights. With these connections he plays
-          visually. In this he likes to mix the analog and digital in his work.
-          </h3>
-        </TextSection>
-        <TextSection>
-          <h3>
-          This is why he has been focussing more on programming the last few years. The
-          digital world envelops us more and more, also in the real world. This creates
-          a canvas that not only involves the digital but also the real. He is currently
-          trying to find his voice in this digital world.
-          </h3>
-        </TextSection>
+        <h2>About Richard</h2>
+        <p>Richard is an audiovisual maker, designer and creative coder who, in an autonomous, investigative way, unravels the influence of implicit values of systems, such as the influence of data extracivism on the digital world. He looks for how people try to change or bend the values of these worlds. He works associatively where he is analytically able to capture a feeling or message in a unique way with an eye for detail.</p> 
       </Container>
     </DefaultLayout>
   );

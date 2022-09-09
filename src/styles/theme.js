@@ -6,7 +6,7 @@ const darkBlue = '#000E41';
 const darkGray = '#787878';
 const middleGray = '#EEEEEE';
 const lightGray = '#F6F6F6';
-const teal = '#7985B0';
+const teal = '#313c37';
 const blue = '#414C74';
 const yellow = '#FFFC62';
 
@@ -23,7 +23,7 @@ theme.colors = {
   textDark: black,
   textLight: blue,
   bgDark: darkGray,
-  bgLight: white,
+  bgLight: lightGray,
 };
 
 theme.breakpoints = {
@@ -45,27 +45,14 @@ theme.mediaQueries = {
   xxl: `(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: ${theme.breakpoints.xxl})`,
 };
 
+const clamp = 'clamp(0.1em, 15vw, 25em)'
+
 theme.container = {
-
-  sm: '4vw',
-  md: '8vw',
-  lg: '12vw',
-  xl: '18vw',
+  sm: 'clamp(1em, 3vw, 3em)',
+  md: clamp,
+  lg: clamp,
+  xl: clamp,
 };
 
-theme.typography = {
-  base: {
-    size: '1em',
-    lineHeight: '1.66em',
-    font: ['Source Sans Pro', 'sans-serif'],
-  },
-  heading: {
-    lineHeight: '1.11em',
-    font: [
-      'Karla',
-      'sans-serif',
-    ],
-  },
-};
 
 export default theme;

@@ -5,7 +5,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globalStyles';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import removeLoader from '../lib/removeLoader';
 import theme from '../styles/theme';
 
 const { colors } = theme;
@@ -13,12 +12,11 @@ const { colors } = theme;
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
-  background: ${props => (props.grayBg ? colors.bgLight : 'none')} !important;
   scroll-behavior: smooth;
   width: 100vw;
   overflow: hidden;
 `;
-const DefaultLayout = ({ children, gray }) => (
+const DefaultLayout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -32,9 +30,9 @@ const DefaultLayout = ({ children, gray }) => (
     render={data => (
       <ThemeProvider theme={theme}>
         <>
-          {removeLoader()}
+          
           <Navbar siteTitle={data.site.siteMetadata.title} />
-          <Main grayBg={gray}>{children}</Main>
+          <Main>{children}</Main>
           <Footer />
           <GlobalStyle />
         </>

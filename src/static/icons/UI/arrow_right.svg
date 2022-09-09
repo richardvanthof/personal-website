@@ -1,16 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
-    <title>Group 5@3x</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Thumbnails/metadata" transform="translate(-435.000000, -4.000000)" stroke="#979797">
-            <g id="Group-7" transform="translate(0.000000, -3.000000)">
-                <g id="Group-5" transform="translate(435.000000, 8.000000)">
-                    <polyline id="Path-63" points="11 0 20 7.5 11 15"></polyline>
-                    <line x1="20" y1="7.5" x2="0" y2="7.5" id="Path-64"></line>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13.1716 0.464439L16.3536 3.64642C16.5488 3.84168 16.5488 4.15826 16.3536 4.35353L13.1716 7.53551C12.9763 7.73077 12.6598 7.73077 12.4645 7.53551C12.2692 7.34024 12.2692 7.02366 12.4645 6.8284L14.7929 4.49997L0.667908 4.49997L0.667908 3.49997L14.7929 3.49997L12.4645 1.17155C12.2692 0.976283 12.2692 0.659701 12.4645 0.464439C12.6598 0.269176 12.9763 0.269176 13.1716 0.464439Z" />
 </svg>

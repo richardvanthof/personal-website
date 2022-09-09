@@ -1,149 +1,173 @@
 import { css } from 'styled-components';
-import WebFont from 'webfontloader';
 import theme from './theme';
-import generateTextSizes, { scaleHeaders } from '../lib/textScale';
-
-// Import Haverj W01 Bold font
-const haverj = {
-  /* eslint-disable global-require */
-  eot: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.eot'),
-  woff: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.woff'),
-  woff2: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.woff2'),
-  ttf: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.ttf'),
-  svg: require('../static/fonts/Haverj-W01-Bold/563c8b9b0fb5bd192bb632f1d851fd6d.svg'),
-  /* eslint-enable global-require */
-};
-
-const baseLineHeight = theme.typography.base.lineheight;
-const HeaderFonts = theme.typography.heading.font;
-const BaseFonts = theme.typography.base.font;
+import NeueHaasUnicaRegular from '../static/fonts/Neue-haas-unica/NeueHaasUnica-Regular.ttf';
+import NeueHaasUnicaItalic from '../static/fonts/Neue-haas-unica/NeueHaasUnica-Italic.ttf';
+import NeueHaasUnicaLight from '../static/fonts/Neue-haas-unica/NeueHaasUnica-Light.ttf';
+import NeueHaasUnicaLightItalic from '../static/fonts/Neue-haas-unica/NeueHaasUnica-LightItalic.ttf';
+import NeueHaasUnicaMedium from '../static/fonts/Neue-haas-unica/NeueHaasUnica-Medium.ttf';
+import NeueHaasUnicaMediumItalic from '../static/fonts/Neue-haas-unica/NeueHaasUnica-MediumItalic.ttf';
+import NeueHaasGroteskRoman from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-55Rg.woff';
+import NeueHaasGroteskItalic from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-56It.woff';
+import NeueHaasGroteskMedium from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-65Md.woff';
+import NeueHaasGroteskMediumItalic from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-66MdIt.woff';
+import NeueHaasGroteskLight from '../static/fonts/Neue-haas-grotesk/NeueHaasUnicaPro-UltraLight.woff';
+import NeueHaasGroteskLightItalic from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-46LtIt.woff';
 
 const { mediaQueries, colors } = theme;
 
-const fontSizes = {
-  lg: generateTextSizes(1.33),
-  md: generateTextSizes(1.33),
-  sm: generateTextSizes(1.25),
-  xs: generateTextSizes(1.15),
-};
 
-const scaleText = css`
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  html {
-    margin: 0;
-    padding: 0;
-    line-height: ${baseLineHeight};
-    font-size: ${fontSizes.xs[0]}
-    ${scaleHeaders(fontSizes.xs)};
 
-    @media ${mediaQueries.xs} {
-      font-size: ${fontSizes.sm[0]};
-      ${scaleHeaders(fontSizes.sm)}
-    }
+const fonts = css`
+  /* Import Neue Haas Grotesk Family */
 
-    @media ${mediaQueries.md} {
-      font-size: ${fontSizes.md[0]};
-      ${scaleHeaders(fontSizes.md)}
-    }
-
-    @media ${mediaQueries.lg} {
-      font-size: ${fontSizes.lg[0]};
-      ${scaleHeaders(fontSizes.lg)}
-    }
-
+  /* Regular */
+  @font-face {
+    font-family: 'Neue Haas Unica';
+    src: url(${NeueHaasUnicaRegular}) format('truetype');
+    font-weight: 400;
+    font-style: normal;
   }
-  body {
-    margin: 0;
-    padding: 0;
-    &::selection {
-      background: ${colors.yellow};
-    }
+  
+  @font-face {
+    font-family: 'Neue Haas Unica';
+    src: url(${NeueHaasUnicaItalic}) format('truetype');
+    font-weight: 400;
+    font-style: italic;
   }
 
-  p, a, li {
-
+  @font-face {
+    font-family: 'Neue Haas Unica';
+    src: url(${NeueHaasUnicaLight}) format('truetype');
+    font-weight: 300;
+    font-style: normal;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0em;
-  }
-`;
-
-if (typeof window !== 'undefined') {
-  WebFont.load({
-    google: {
-      families: ['Karla', 'Source Sans Pro'],
-    },
-  });
-}
-
-const setFont = css`
-  @font-face {font-family: "Haverj W01 Bold";
-    src: url("${haverj.eot}"); /* IE9*/
-    src: url("${haverj.eot}?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("${haverj.woff2}") format("woff2"), /* chrome、firefox */
-    url("${haverj.woff}") format("woff"), /* chrome、firefox */
-    url("${haverj.ttf}") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url("${haverj.svg}#Haverj W01 Bold") format("svg"); /* iOS 4.1- */
+  @font-face {
+    font-family: 'Neue Haas Unica';
+    src: url(${NeueHaasUnicaLightItalic}) format('truetype');
+    font-weight: 300;
+    font-style: italic;
   }
 
-  color: ${colors.black};
-  -webkit-font-smoothing: antialiased;
-  body {
-    font-family: ${BaseFonts.join(', ')};
-  };
-  h1, h2, h3, h4, h5, h6 {
-    font-family: ${HeaderFonts.join(', ')};
-    font-weight: normal;
-    line-height: 0.9em;
-    margin-bottom: 0.44em;
-    color: ${colors.black};
+  @font-face {
+    font-family: 'Neue Haas Unica';
+    src: url(${NeueHaasUnicaMedium}) format('truetype');
+    font-weight: 500;
+    font-style: normal;
   }
 
-  h1 {
-    font-family: 'Haverj W01 Bold', 'Times New Roman', Times, serif;
+  @font-face {
+    font-family: 'Neue Haas Unica';
+    src: url(${NeueHaasUnicaMediumItalic}) format('truetype');
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url(${NeueHaasGroteskRoman}) format('woff');
+    font-weight: 400;
+    font-style: normal;
   }
 
-  h5 {
-    margin-bottom: 0.22em;
-    line-height: 0.85em;
+  @font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url(${NeueHaasGroteskItalic}) format('woff');
+    font-weight: 400;
+    font-style: italic;
   }
 
-  h6 {
-    margin-bottom: 0.22em;
-    line-height: 0.95em;
+  @font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url(${NeueHaasGroteskMedium}) format('woff');
+    font-weight: 500;
+    font-style: normal;
   }
 
-  .light {
-    color: ${colors.textLight};
+  @font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url(${NeueHaasGroteskMediumItalic}) format('woff');
+    font-weight: 500;
+    font-style: italic;
   }
 
-  .big {
-    font-size: 1.33em;
+  @font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url(${NeueHaasGroteskLight}) format('woff');
+    font-weight: 300;
+    font-style: normal;
   }
 
-  .xl {
-    font-size: 1.66em;
+  @font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url(${NeueHaasGroteskLightItalic}) format('woff');
+    font-weight: 300;
+    font-style: italic;
   }
 
-  .small {
-    font-size: 0.8em;
-    color: ${colors.textLight};
-  }
-
-  .xs {
-    font-size: 0.66em;
-  }
-
-  .no-margin {
-    margin: 0;
-  }
 `;
 
 const typography = css`
-  ${scaleText}
-  ${setFont}
+  ${fonts}
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    font-family: 'Neue Haas Grotesk', sans-serif;
+    font-size: clamp(1.1rem, 1vw, 1.4rem);
+    line-height: 1.33em;
+    font-weight: 400;
+  }
+
+  a, p {
+    color: ${colors.textDark};
+    text-decoration: none;
+    margin: 0 0 0.33em 0;
+  }
+
+  h1 {
+    font-size: clamp(1rem, 4vw + 1rem, 3.7rem);
+    font-family: 'Neue Haas Grotesk', Arial, Helvetica, sans-serif, sans-serif;
+    font-weight: 400;
+    line-height: 1.1em;
+    margin: 0.1em 0;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0 0 0.1em 0;
+  }
+
+  h2 {
+    font-size: clamp(1rem, 3vw , 2rem);
+  }
+
+  h3 {
+    font-size: clamp(1rem, 1.11vw, 2rem);
+  }
+
+  h4 {
+    font-size: clamp(0.9rem, 1.11vw, 1.11rem);
+  }
+
+  h5 {
+
+  }
+
+  h6 {
+
+  }
+
+  small {
+    font-size: clamp(1rem, 0.8vw, 1.15rem);
+    line-height: 1.44;
+  }
+
+  .big {
+    font-size: 1.88rem;
+    line-height: 1.33em;
+  }
 `;
 
 export default typography;

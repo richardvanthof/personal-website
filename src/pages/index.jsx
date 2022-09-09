@@ -23,11 +23,14 @@ const { mediaQueries, colors } = theme;
 
 const HeroHeader = styled.header`
   height: 50vh;
+  padding: 3em 1em;
   display: flex;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  padding: 0 10vw;
+  align-items: end;
+  background: ${colors.white};
+  * {
+    flex-basis: 50%;
+    margin: 0
+  }
 `;
 
 const Work = styled.section`
@@ -93,50 +96,11 @@ const CallToActionContent = styled.div`
   ${hover}
 `;
 
-const HeaderTitle = styled.h1`
-  z-index: 2;
-  ${mediaQueries.xs}{
-    width: auto;
-    color: ${colors.white};
-    text-shadow: 0em 0em 2em rgba(0,0,0,0.75);
-    position: relative;
-    top: unset;
-  }
-`;
-
 const HeaderDescription = styled.div`
-`;
-
-const MobileHeaderDescription = styled(HeaderDescription)`
-  display: block;
-  margin: 3vh 1em;
-  margin-bottom: 10vh;
-  @media ${mediaQueries.xs} {
-    display: none;
+  div {
+    max-width: 50%;
+    margin: auto;
   }
-`;
-
-
-const ChaosDrawing = styled(Chaos)`
-  position: absolute;
-  top: 0%;
-  left: -25%;
-  transform: scale(1.33);
-  max-height: 100vh;
-  @media ${mediaQueries.sm} {
-    max-height: unset;
-    position: unset;
-    top: unset;
-    left: unset;
-    transform: none;
-    grid-column: 1/5;
-    grid-row: 1;
-    opacity: 1;
-  }
-`;
-
-const HeaderImg = styled(Img)`
-
 `;
 
 const IndexPage = ({ data }) => {
@@ -147,35 +111,27 @@ const IndexPage = ({ data }) => {
   return (
     <DefaultLayout gray>
       <SEO title="Home" />
-      {/* <Header title="work" /> */}
       <HeroHeader>
-        <HeaderTitle>Making digital worlds</HeaderTitle>
+        <h1>Finding connections everywhere</h1>
         <HeaderDescription>
-          <Subtitle className="light big">I am Richard van &apos;t Hof. An audiovisual maker, programmer, digital maker.</Subtitle>
-          <Button to="/about" title="Learn more" />
+          <div>
+            <Subtitle>I am Richard van &apos;t Hof. Richard is a Rotterdam based audiovisual maker, editor and front-end developer who usus his connective mind to find connection everywhere.</Subtitle>
+            <Button to="/about" title="Learn more" />
+          </div>
         </HeaderDescription>
-       
-        {/* <HeroAnimation sketch={sketch}/> */}
-        <CallToAction onClick={handleClick}>
-          <CallToActionContent>
-            <Eye />
-            <ActionText className="small">Watch my stuff</ActionText>
-          </CallToActionContent>
-          <ArrowDown />
-        </CallToAction>
       </HeroHeader>
       <Work id="work">
-        <Gallery width={50}>
+        <Gallery fluid width={50}>
           {
           posts.map(({ node: post }, index, key) => {
             const setRight = (index % 2 === 0);
             return (
-              <Blogpost padded small right={setRight} data={post} key={key} />
+              <Blogpost padded right={setRight} data={post} key={key} />
             );
           })
         }
         </Gallery>
-      </Work>
+      </Work> *
 
     </DefaultLayout>
   );

@@ -7,7 +7,7 @@ import Button from './button';
 import theme from '../styles/theme';
 import { Subtitle } from './typography';
 
-const { colors, mediaQueries } = theme;
+const { colors, mediaQueries, container } = theme;
 
 
 const HeaderBase = styled.header`
@@ -17,25 +17,24 @@ const HeaderBase = styled.header`
     text-decoration: none;
     color: ${colors.black} !important;
     padding: 0em;
-    align-items: center;
-    @media ${mediaQueries.xs} {
-      margin: 0 5vw;
-      padding-top: 22vh;
+    padding-top: clamp(3rem, 7vh, 7rem);
+    @media ${mediaQueries.sm} {
+      padding: 0em;
       display: grid;
-      grid-gap: 7vh 2em;
-      grid-template-columns: 0.5fr 2fr 2fr 1fr;;
-      grid-template-rows: 1fr 0.25fr auto;
-      align-items: start;
+      align-items: end;
+      grid-gap: 2vh 1em ;
+      grid-template-columns: ${container.md} 2fr 0.5fr 1fr ${container.md};
+      grid-template-rows: 23vh auto auto;
     }
  `;
 
 const HeaderFigure = styled.figure`
   width: 100%;
-  order: -1;
-  height: 66vh;
-  max-height: 30em;
+  height: 90vh;
+  max-height: 30rem;
   margin: 0;
   box-shadow: inset 0px -4px 17px -1px rgba(50, 50, 50, 0.4);
+  overflow: hidden;
   & > * {
     height: 100%;
     object-fit: cover;
@@ -44,27 +43,25 @@ const HeaderFigure = styled.figure`
     content: '';
     width: 100vw;
     position: absolute;
-    height: 10em;
     background: white;
     background: linear-gradient(0deg, rgba(0,212,255,0) 0%, rgba(255,255,255,0.3) 100%);;
     z-index: 8;
+    max-height: 30rem;
     @media ${mediaQueries.xs} {
       background: none;
     }
   }
   @media ${mediaQueries.xs} {
-    box-shadow: none;
-    height: auto;
     max-height: none;
-    order: 0;
-    grid-row: 3;
-    grid-column: 2/5;
+    box-shadow: none;
+    grid-row: 2;
+    grid-column: 1/6;
   }
 `;
 
 const HeaderVideo = styled(Embed)`
   order: 0;
-  grid-row: 3;
+  grid-row: 2;
   grid-column: 1/5;
   align-self: center;
 `;
@@ -84,6 +81,7 @@ const HeaderVideoWrapper = styled.div`
   @media ${mediaQueries.sm} {
   }
 `;
+
 
 const HeaderVisual = ({
   video, img, fluid, alt,
@@ -110,44 +108,37 @@ const HeaderVisual = ({
 };
 
 const HeaderTitle = styled.div`
-  grid-row: 1/3;
-  grid-column: 1/4;
-  align-items: start;
+  grid-column: 2;
   padding: 2em 1em 0;
   z-index: 2;
-  @media ${mediaQueries.xs} {
+  margin: 0 1em;
+  padding: 0;
+  h1 {
+    margin: 0;
+    margin-bottom: 0.3em;
     padding: 0;
   }
-  @media ${mediaQueries.md} {
-    grid-column 1/3;
+  @media ${mediaQueries.sm} {
+    padding: 0;
+    margin: 0;
   }
 `;
 
-const HeaderDescription = styled.div`
-  @media ${mediaQueries.xs} {
-    margin-left: 0.66em;
-  }
-`;
 
 const HeaderMetaData = styled.div`
   grid-row: 1;
   grid-column: 4;
-  align-self: center;
-  margin: 2em 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
   width: 100%;
-  padding: 0 1.11em;
-  p {
+  margin: 1em;
+  *:nth-last-child {
     margin: 0;
-    margin-bottom: 0.22em;
-    line-height: 1em;
-  };
+    padding: 0;
+  }
   span { margin-bottom: 0.33em;};
   @media ${mediaQueries.md}{
-    min-height: 15vh;
-    grid-row: 2;
+    margin: 0;
+    grid-row: 1;
+    text-align: right;
   }
 `;
 
@@ -156,32 +147,29 @@ const PortfolioHeader = ({
   image, fluid, year, alt, length, video, website, repository, title, type, client, description,
 }) => (
   <HeaderBase>
-    <HeaderVisual fluid={fluid} video={video} img={image} alt={alt} />
     <HeaderTitle>
-      {client
-        && <Subtitle>{client}</Subtitle>
-      }
-      {title
-        && <h1>{title}</h1>
-      }
-      {description
-        && <HeaderDescription className="big light">{description}</HeaderDescription>
-      }
+      <Button back >Back</Button>
+      <h1>{title}</h1>
     </HeaderTitle>
     <HeaderMetaData>
-      <span>
+      {description
+        && <p>{description}</p>
+      }
+      <p><small>{client || 'Autonomous work'}  &#8212;  {year}</small></p>
+      {/* <span>
         {year && <h6>{year}</h6>}
         {type && <p>{type}</p>}
         {length && (
-        <p className="small">
+        <p>
           {length}
           &nbsp;min.
         </p>
         )}
-      </span>
-      {website && <Button external title="Website" to={website} />}
-      {repository && <Button external title="Source Files" to={repository} />}
+      </span> */}
+      {/* {website && <Button external title="Website" to={website} />} */}
     </HeaderMetaData>
+    <HeaderVisual fluid={fluid} video={video} img={image} alt={alt} />
+    
   </HeaderBase>
 );
 

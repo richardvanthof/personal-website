@@ -6,6 +6,7 @@ import typography from './typography';
 const GlobalStyle = createGlobalStyle`
   .body {
     scroll-behavior: smooth;
+
   }
   ${normalize}
   ${typography}

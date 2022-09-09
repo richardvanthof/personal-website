@@ -6,7 +6,6 @@ import theme from '../styles/theme';
 const { container, mediaQueries } = theme;
 
 const GalleryBase = styled.section`
-    margin: 1em ${props => (props.fluid ? '1em' : container.sm)};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,16 +22,12 @@ const GalleryBase = styled.section`
         }
     }
     @media ${mediaQueries.md} {
-        margin: 0 ${props => (props.fluid ? '2em' : container.md)};
+        margin: 0 ${props => (props.fluid ? '0' : container.md)};
         & > * {
             width: ${props => props.width}%;
-            padding: 2vw;
             margin: 0;
         }
 
-    }
-    @media ${mediaQueries.lg} {
-        margin: 0 ${props => (props.fluid ? '2em' : container.lg)};
     }
 `;
 

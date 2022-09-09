@@ -8,20 +8,15 @@ import SEO from '../components/seo';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import PortfolioHeader from '../components/portfolioHeader.v2';
+import PortfolioDescription from '../components/portfolioDescription';
 import theme from '../styles/theme';
 import removeLoader from '../lib/removeLoader';
+
 
 const { colors, mediaQueries } = theme;
 
 const Main = styled.main`
   transition: 0.5 ease-in-out;
-  @media ${mediaQueries.xs} {
-    margin-top: 5vh;
-  }
-`;
-
-const Page = styled.div`
-  background: ${colors.bgLight};
 `;
 
 const PortfolioLayout = ({ data: { mdx } }) => {
@@ -33,7 +28,7 @@ const PortfolioLayout = ({ data: { mdx } }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Page>
+      <>
         <SEO title={title} />
         <Navbar />
         <PortfolioHeader
@@ -46,7 +41,14 @@ const PortfolioLayout = ({ data: { mdx } }) => {
           website={website}
           repository={repo}
           fluid={mdx.frontmatter.image.childImageSharp.fluid}
+          description="This is a short tag line"
+          client={client}
+        />
+        <PortfolioDescription
           description={description}
+          type={type}
+          year={date}
+          role="editor"
           client={client}
         />
         <Main>
@@ -55,7 +57,7 @@ const PortfolioLayout = ({ data: { mdx } }) => {
         </Main>
         <Footer />
         <GlobalStyle />
-      </Page>
+      </>
     </ThemeProvider>
   );
 };

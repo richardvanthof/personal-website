@@ -7,6 +7,11 @@ const normalize = css`
     word-wrap: break-word;
   }
 
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   article,
   aside,
   details,

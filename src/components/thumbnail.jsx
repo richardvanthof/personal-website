@@ -10,33 +10,10 @@ import ArrowRight from '../static/icons/UI/arrow_right.svg';
 
 const { colors, container, mediaQueries } = theme;
 
-const ThumbnailBase = styled(Link)`
-    display: flex;
-    flex-direction: column;
-    margin: 1em 0;
-    text-decoration: none;
-    color: ${colors.black} !important;
-
-    @media ${mediaQueries.xs} {
-      width: 90%;
-      display: grid;
-      grid-template-columns: ${container.sm} 1fr 1fr 1fr 1fr ${container.sm};
-      grid-template-rows: auto;
-      margin: 10vh 0;
-    }
-    @media ${mediaQueries.md} {
-      width: 100%;
-      margin-bottom: 15vh;
-      grid-template-columns: ${container.md} 1fr 1fr 1fr 1fr ${container.md};
-    }
-`;
-
 const ThumbnailImage = styled.figure`
-  grid-column: ${props => (props.right ? '3/6' : '2/5')};
-  max-height: 65vh;
+  height: 50vh;
   overflow: hidden;
   margin: 0;
-  }
   img {
     transition: 0.3s ease-in-out;
     height: auto;
@@ -45,47 +22,27 @@ const ThumbnailImage = styled.figure`
   }
 `;
 
-const ThumbnailInfo = styled.div`
-  grid-column: ${props => (props.right ? 2 : 5)};
-  grid-row: 1;
-  margin: 3em;
-`;
 
 const SmallThumbnailBase = styled(Link)`
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  margin: 1em 0;
-  justify-content: center;
-  align: center;
   transition: 0.15s ease-in-out;
   .thumbnail-image {
     transition: 0.15s ease-in-out;
   }
   .information-container {
     * {
-       transition: 0.15s ease-in-out;
+      display: block;
+      color: ${colors.textDark};
+      line-height: 1.1em;
     }
   }
   .arrow-icon {
     transition: 0.15s ease-in-out;
   }
-  &:hover {
-    .information-container {
-      * {
-        color: ${colors.textDark};
-      }
-    }
-    .arrow-icon {
-      transform: translateX(0);
-    }
-  }
 `;
 
 const SmallThumbnailInfo = styled.div`
-  padding: 1em;
-  display: flex;
-  justify-content: space-between;
+  margin-top: 0.33em;
 `;
 
 const SmallThumbnailImage = styled(ThumbnailImage)`
@@ -93,24 +50,14 @@ const SmallThumbnailImage = styled(ThumbnailImage)`
   @media ${mediaQueries.xs} {
     height:30vw;
   } */
-  height: 80vh;
-  max-height: 30em;
-  @media ${mediaQueries.xs} {
-    height: auto;
-    max-height: unset;
-  }
 `;
 
 const SmallThumbnailImageContent = styled(Img)`
   height: 100%;
   width: auto;
-
+  object-fit: cover;
 `;
 
-const Metadata = styled.div`
-  display: flex;
-  font-size: 66%;
-`;
 
 const CallToActionIcon = styled(ArrowRight)`
   width: 1.33em;
@@ -124,7 +71,6 @@ const Thumbnail = ({
     const getDots = () => ((data.length >= wordCountThreshold) ? '...' : '');
     return `${data.substring(0, wordCountThreshold)}${getDots()}`;
   };
-  if (small) {
     return (
       <>
         <SmallThumbnailBase to={to}>
@@ -133,53 +79,19 @@ const Thumbnail = ({
           </SmallThumbnailImage>
           <SmallThumbnailInfo className="information" right={right}>
             <div className="information-container">
-              <p className="light no-margin">{title}</p>
-              <Metadata>
-                {client && (
-                <p className="light">
-                  {client }
-&nbsp;&middot;&nbsp;
-                </p>
-                )}
-                {type && (
-                <p className="light">
-                  {textSubstring(type, 48)}
-                </p>
-                )}
-                {year && (<p className="light">{type}</p>)}
-              </Metadata>
+              <h4>{title}</h4>
+              <small>
+                {client && ({client } + " &middot; ")}
+                {type}
+                {year}
+              </small>
             </div>
-            <CallToActionIcon className="arrow-icon" alt=">" />
           </SmallThumbnailInfo>
         </SmallThumbnailBase>
       </>
     );
-  }
-  return (
-    <ThumbnailBase to={to}>
-      <ThumbnailImage right={right}>
-        <Img fluid={img} alt={alt || title} />
-      </ThumbnailImage>
-      <ThumbnailInfo className="thumbnailInfo" right={right}>
-        <h6>{title}</h6>
-        <p>
-          {client}
+  };
 
-&middot;
-
-          {medium}
-
-&middot;
-
-          {year}
-
-        </p>
-        <p />
-        <Button title="learn more" to={url} />
-      </ThumbnailInfo>
-    </ThumbnailBase>
-  );
-};
 
 Thumbnail.propTypes = {
   title: PropTypes.string.isRequired,
