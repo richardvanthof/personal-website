@@ -24,7 +24,7 @@ const HeaderBase = styled.header`
       align-items: end;
       grid-gap: 2vh 1em ;
       grid-template-columns: ${container.md} 2fr 0.5fr 1fr ${container.md};
-      grid-template-rows: 23vh auto auto;
+      grid-template-rows: 20vh auto auto;
     }
  `;
 
@@ -149,16 +149,20 @@ const PortfolioHeader = ({
   <HeaderBase>
     <HeaderTitle>
       <Button back >Back</Button>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
     </HeaderTitle>
     <HeaderMetaData>
+    <p>
+        <small>{client || 'Autonomous work'} &#8212;  {type}  &#8212;  {year}</small>
+      </p>
       {description
         && <p>{description}</p>
       }
-      <p><small>{client || 'Autonomous work'}  &#8212;  {year}</small></p>
+      
+      
       {/* <span>
         {year && <h6>{year}</h6>}
-        {type && <p>{type}</p>}
+        
         {length && (
         <p>
           {length}

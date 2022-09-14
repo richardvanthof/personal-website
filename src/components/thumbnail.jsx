@@ -79,7 +79,7 @@ const Thumbnail = ({
           </SmallThumbnailImage>
           <SmallThumbnailInfo className="information" right={right}>
             <div className="information-container">
-              <h4>{title}</h4>
+              <h5>{title}</h5>
               <small>
                 {client && ({client } + " &middot; ")}
                 {type}

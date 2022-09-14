@@ -110,7 +110,7 @@ const NavLink = (props) => {
   );
 };
 
-const Logo = styled.h2`
+const Logo = styled.h3`
   font-weight: 400;
 `;
 
@@ -245,7 +245,7 @@ class Navbar extends React.Component {
           <NavLinksDesktop>
             <NavLinksContent />
           </NavLinksDesktop>
-          <HamburgerButton class="hamburgerBtn" onClick={this.handleClick}>
+          <HamburgerButton className="hamburgerBtn" onClick={this.handleClick}>
             <Lottie
               options={hamburgerButtonConfig}
               isStopped={!isActive}

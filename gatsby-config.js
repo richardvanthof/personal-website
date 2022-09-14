@@ -1,8 +1,8 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'Richard van \'t Hof',
-    description: 'Audiovisual maker & developer',
+    title: 'The Richard Space',
+    description: 'Pesonal internet space Richard',
     author: "Richard van 't Hof",
     phone: '+31 6 41219554',
     email: 'hello@therichard.space',
@@ -70,10 +70,10 @@ module.exports = {
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        quality: 100,
-        webpQuality: 100,
-        pngQuality: 100,
-        jpegQuality: 100,
+        quality: 90,
+        webpQuality: 90,
+        pngQuality: 90,
+        jpegQuality: 90,
         maxWidth: 2500,
       },
     },
@@ -114,8 +114,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "Richard van 't Hof Portfolio",
-        short_name: "Richard van 't Hof",
+        name: 'The Richard Space',
+        short_name: 'Richard Space',
         start_url: '/',
         background_color: '#F6F6F6',
         theme_color: '#D2D7EA',

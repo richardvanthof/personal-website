@@ -115,8 +115,8 @@ const typography = css`
 
   body {
     font-family: 'Neue Haas Grotesk', sans-serif;
-    font-size: clamp(1.1rem, 1vw, 1.4rem);
-    line-height: 1.33em;
+    font-size: clamp(1.1rem, 1vw, 1.3rem);
+    line-height: 1.22em;
     font-weight: 400;
   }
 
@@ -126,33 +126,31 @@ const typography = css`
     margin: 0 0 0.33em 0;
   }
 
-  h1 {
-    font-size: clamp(1rem, 4vw + 1rem, 3.7rem);
-    font-family: 'Neue Haas Grotesk', Arial, Helvetica, sans-serif, sans-serif;
+  h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
+    margin: 0 0 0.1em 0;
     line-height: 1.1em;
     margin: 0.1em 0;
   }
 
-  h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    margin: 0 0 0.1em 0;
+  h1 {
+    font-size: clamp(1rem, 4vw + 1rem, 7rem);
   }
 
   h2 {
-    font-size: clamp(1rem, 3vw , 2rem);
+    font-size: clamp(1rem, 4vw + 1rem, 3rem);
   }
 
   h3 {
-    font-size: clamp(1rem, 1.11vw, 2rem);
+    font-size: clamp(1rem, 3vw , 2rem);
   }
 
   h4 {
-    font-size: clamp(0.9rem, 1.11vw, 1.11rem);
+    font-size: clamp(1rem, 1.11vw, 2rem);
   }
 
   h5 {
-
+    font-size: clamp(0.9rem, 1.11vw, 1.11rem);
   }
 
   h6 {
@@ -165,8 +163,8 @@ const typography = css`
   }
 
   .big {
-    font-size: 1.88rem;
-    line-height: 1.33em;
+    font-size: 1.5rem;
+    line-height: 1.4em;
   }
 `;
 
