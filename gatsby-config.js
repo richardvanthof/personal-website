@@ -1,16 +1,12 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'The Richard Space',
-    description: 'Pesonal internet space Richard',
+    title: "Richard van 't Hof",
+    description: 'Audiovisual maker & editor',
     author: "Richard van 't Hof",
-    phone: '+31 6 41219554',
     email: 'hello@therichard.space',
     adress: {
-      street: 'Weg en Bos',
-      number: '9e',
-      zipCode: '2661DG',
-      city: 'Bergschenhoek',
+      city: 'Rotterdam',
       country: 'Netherlands',
     },
     pgp: 'https://pgp.key-server.io/download/0x1817B960BB405C71',

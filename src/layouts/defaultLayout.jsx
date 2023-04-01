@@ -7,13 +7,17 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import theme from '../styles/theme';
 
-const { colors } = theme;
+const { colors, mediaQueries } = theme;
 
 const Main = styled.main`
   min-height: 0vh;
   transition: 0.5 ease-in-out;
   scroll-behavior: smooth;
-  width: 100vw;
+  margin: auto;
+  width: 90vw;
+  @media ${mediaQueries.lg} {
+    width: 80vw;
+  }
   overflow: hidden;
 `;
 const DefaultLayout = ({ children }) => (

@@ -16,7 +16,6 @@ const HeaderBase = styled.header`
       transform: translateX(-3vw);
       opacity: 0.2;
       z-index: -1;
-      font-family: serif, times;
       line-height: 0.9em;
     }
   }

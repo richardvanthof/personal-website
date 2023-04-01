@@ -23,8 +23,11 @@ const HeaderBase = styled.header`
       display: grid;
       align-items: end;
       grid-gap: 2vh 1em ;
-      grid-template-columns: ${container.md} 2fr 0.5fr 1fr ${container.md};
-      grid-template-rows: 20vh auto auto;
+      grid-template-columns: ${container.md} 2fr 0fr 1fr ${container.md};
+      grid-template-rows: 25vh auto auto;
+    }
+    @media ${mediaQueries.md} {
+      grid-template-columns: ${container.md} 2fr 4em 30ch ${container.md};
     }
  `;
 
@@ -62,7 +65,7 @@ const HeaderFigure = styled.figure`
 const HeaderVideo = styled(Embed)`
   order: 0;
   grid-row: 2;
-  grid-column: 1/5;
+  grid-column: 1/6;
   align-self: center;
 `;
 
@@ -86,13 +89,6 @@ const HeaderVideoWrapper = styled.div`
 const HeaderVisual = ({
   video, img, fluid, alt,
 }) => {
-  if (video) {
-    return (
-      <HeaderVideoWrapper>
-        <HeaderVideo style={{ gridColumn: '1/7' }} src={video} />
-      </HeaderVideoWrapper>
-    );
-  }
   if (img) {
     return (
       <HeaderFigure>
@@ -113,10 +109,8 @@ const HeaderTitle = styled.div`
   z-index: 2;
   margin: 0 1em;
   padding: 0;
-  h1 {
-    margin: 0;
-    margin-bottom: 0.3em;
-    padding: 0;
+  h2 {
+    margin: .66em 0 .33em 0;
   }
   @media ${mediaQueries.sm} {
     padding: 0;
@@ -138,7 +132,7 @@ const HeaderMetaData = styled.div`
   @media ${mediaQueries.md}{
     margin: 0;
     grid-row: 1;
-    text-align: right;
+    margin-bottom: .5em;
   }
 `;
 
@@ -152,9 +146,9 @@ const PortfolioHeader = ({
       <h2>{title}</h2>
     </HeaderTitle>
     <HeaderMetaData>
-    <p>
+    {/* <p> 
         <small>{client || 'Autonomous work'} &#8212;  {type}  &#8212;  {year}</small>
-      </p>
+      </p> */}
       {description
         && <p>{description}</p>
       }

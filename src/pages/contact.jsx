@@ -101,17 +101,10 @@ const Contact = ({ data }) => {
         </MainContactInfo>
         <ContactDetails>
           <div>
-            <h6>Open Source</h6>
-            <p className="light">Good news! This site is open source. Would you like to see how I made it or do you want to build from this site? It’s all possible!</p>
-          </div>
-          <div>
             <h6>Follow me!</h6>
             <Socials />
           </div>
-          <div>
-            <h6>Want to print your message in front of Richards face?</h6>
-            <Button external title="Try the Richard Hotline!" to="https://richardhotline.nl" />
-          </div>
+          
         </ContactDetails>
       </ContactBase>
     </Gallery>
@@ -127,9 +120,6 @@ export const pageQuery = graphql`
         repo
         pgp
         adress {
-          street
-          number
-          zipCode
           city
           country
         }
@@ -146,9 +136,6 @@ Contact.propTypes = {
         repo: PropTypes.string,
         pgp: PropTypes.string,
         adress: PropTypes.shape({
-          street: PropTypes.string,
-          number: PropTypes.number,
-          zipCode: PropTypes.string,
           city: PropTypes.string,
           country: PropTypes.string,
         }).isRequired,

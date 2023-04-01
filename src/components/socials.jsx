@@ -69,7 +69,6 @@ const Socials = () => (
           <SocialMediaItem name="LinkedIn" href={linkedin}><Linkedin /></SocialMediaItem>
           <SocialMediaItem name="GitHub" href={github}><Github /></SocialMediaItem>
           {/* <SocialMediaItem name="Behance" href={behance}><Behance /></SocialMediaItem> */}
-          <SocialMediaItem name="BNO" href={bno}><BNO /></SocialMediaItem>
         </SocialMedia>
       );
     }

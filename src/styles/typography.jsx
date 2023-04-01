@@ -12,6 +12,7 @@ import NeueHaasGroteskMedium from '../static/fonts/Neue-haas-grotesk/NHaasGrotes
 import NeueHaasGroteskMediumItalic from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-66MdIt.woff';
 import NeueHaasGroteskLight from '../static/fonts/Neue-haas-grotesk/NeueHaasUnicaPro-UltraLight.woff';
 import NeueHaasGroteskLightItalic from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-46LtIt.woff';
+import Biotif from '../static/fonts/biotif/Biotif-Regular.ttf';
 
 const { mediaQueries, colors } = theme;
 
@@ -105,6 +106,13 @@ const fonts = css`
     font-style: italic;
   }
 
+  @font-face {
+    font-family: 'Biotif';
+    src: url(${Biotif}) format('woff');
+    font-weight: 300;
+    font-style: normal;
+  }
+
 `;
 
 const typography = css`
@@ -114,9 +122,9 @@ const typography = css`
   }
 
   body {
-    font-family: 'Neue Haas Grotesk', sans-serif;
-    font-size: clamp(1.1rem, 1vw, 1.3rem);
-    line-height: 1.22em;
+    font-family: 'Biotif', sans-serif;
+    font-size: clamp(1.1rem, 0.7vw, 1.3rem);
+    line-height: 1.55em;
     font-weight: 400;
   }
 
@@ -127,18 +135,20 @@ const typography = css`
   }
 
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Neue Haas Grotesk', sans-serif;
     font-weight: 400;
     margin: 0 0 0.1em 0;
-    line-height: 1.1em;
+    line-height: 1em;
     margin: 0.1em 0;
+    
   }
 
   h1 {
-    font-size: clamp(1rem, 4vw + 1rem, 7rem);
+    font-size: clamp(2rem, 4vw + 1rem, 6rem);
   }
 
   h2 {
-    font-size: clamp(1rem, 4vw + 1rem, 3rem);
+    font-size: clamp(2rem, 4vw, 4.3rem);
   }
 
   h3 {

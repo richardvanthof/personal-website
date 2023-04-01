@@ -22,14 +22,19 @@ import Chaos from '../static/icons/content/chaos.svg';
 const { mediaQueries, colors } = theme;
 
 const HeroHeader = styled.header`
-  height: 50vh;
+  height: 35vh;
+  min-height: 25rem;
   padding: 3em 1em;
   display: flex;
-  align-items: end;
+  flex-direction: column;
+  align-items: start;
   background: ${colors.white};
   * {
     flex-basis: 50%;
-    margin: 0
+  }
+  @media ${mediaQueries.sm} {
+    flex-direction: row;
+    align-items: end;
   }
 `;
 
@@ -97,9 +102,11 @@ const CallToActionContent = styled.div`
 `;
 
 const HeaderDescription = styled.div`
-  div {
-    max-width: 50%;
-    margin: auto;
+  @media ${mediaQueries.xs} {
+    div {
+      max-width: 50%;
+      margin: auto;
+    }
   }
 `;
 

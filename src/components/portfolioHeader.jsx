@@ -73,13 +73,6 @@ const HeaderVideoWrapper = styled.div`
 `;
 
 const HeaderVisual = ({ video, img, fluid }) => {
-  if (video) {
-    return (
-      <HeaderVideoWrapper>
-        <HeaderVideo style={{ gridColumn: '1/7' }} src={video} />
-      </HeaderVideoWrapper>
-    );
-  }
   if (fluid) {
     return (
       <FluidHeaderFigure fluid={fluid} />

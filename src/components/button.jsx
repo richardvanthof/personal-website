@@ -15,6 +15,7 @@ const buttonStyling = css`
     color: ${colors.teal};
     text-decoration: none;
     transition: 0.15s ease-in-out;
+    margin-top: 1em;
     &:hover {
       svg, img {
           transform: ${props => ( props.isReversed ? 'rotate(180deg) scaleX(1.05) translateX(0.1em)' : 'scaleX(1.1) translateX(0.1em)')}

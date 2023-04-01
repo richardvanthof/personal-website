@@ -24,6 +24,7 @@ const ThumbnailImage = styled.figure`
 
 
 const SmallThumbnailBase = styled(Link)`
+  min-height: 15rem;
   text-decoration: none;
   transition: 0.15s ease-in-out;
   .thumbnail-image {
@@ -43,6 +44,9 @@ const SmallThumbnailBase = styled(Link)`
 
 const SmallThumbnailInfo = styled.div`
   margin-top: 0.33em;
+  @media ${mediaQueries.sm} {
+    display: none;
+  }
 `;
 
 const SmallThumbnailImage = styled(ThumbnailImage)`

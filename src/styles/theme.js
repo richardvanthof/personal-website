@@ -45,7 +45,7 @@ theme.mediaQueries = {
   xxl: `(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: ${theme.breakpoints.xxl})`,
 };
 
-const clamp = 'clamp(0.1em, 15vw, 25em)'
+const clamp = 'clamp(0.1em, 15vw, 50em)'
 
 theme.container = {
   sm: 'clamp(1em, 3vw, 3em)',
