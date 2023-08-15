@@ -1,4 +1,3 @@
-![logo](https://i.imgur.com/3CaSPNj.png)
 ![Build Status](https://travis-ci.com/RichART-Official/therichart.space.svg?branch=master)
 
 # **Personal website**
