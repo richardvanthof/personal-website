@@ -20,7 +20,7 @@ const Main = styled.main`
 
 const PortfolioLayout = ({ data: { mdx } }) => {
   const {
-    title, video, runningTime, website, repo, date, type, alt, description, client,
+    title, role, video, runningTime, website, repo, date, type, alt, description, client,
   } = mdx.frontmatter;
 
   removeLoader();
@@ -48,7 +48,7 @@ const PortfolioLayout = ({ data: { mdx } }) => {
           description={description}
           type={type}
           year={date}
-          role="editor"
+          role={role}
           client={client}
         />
         <Main>
@@ -77,6 +77,7 @@ export const pageQuery = graphql`
         repo
         runningTime
         description
+        role
         image {
             childImageSharp {
               fluid(quality: 100) {

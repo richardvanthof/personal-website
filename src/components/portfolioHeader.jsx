@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import BackgroundImage from 'gatsby-background-image';
-import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
 
@@ -56,23 +55,7 @@ const FluidHeaderFigure = styled(BackgroundImage)`
   background-position: center;
 `;
 
-const HeaderVideo = styled(Embed)`
-  width: 100%;
-  max-height: 75vh;
-`;
-
-const HeaderVideoWrapper = styled.div`
-  grid-column: 1/7;
-  width: 100%;
-  background: ${colors.bgLight};
-  margin-top: 5em;
-  @media ${mediaQueries.sm} {
-    margin-top: 0;
-    padding: 10vh;
-  }
-`;
-
-const HeaderVisual = ({ video, img, fluid }) => {
+const HeaderVisual = ({ img, fluid }) => {
   if (fluid) {
     return (
       <FluidHeaderFigure fluid={fluid} />
@@ -118,10 +101,10 @@ const HeaderDescription = styled.p`
 `;
 
 const PortfolioHeader = ({
-  image, fluid, alt, video, title, client, description, children, cta, url,
+  image, fluid, alt, title, client, description, children, cta, url,
 }) => (
   <HeaderBase>
-    <HeaderVisual fluid={fluid} video={video} img={image} alt={alt} />
+    <HeaderVisual fluid={fluid} img={image} alt={alt} />
     <HeaderTitle title={title} client={client} cta={cta} url={url}>
       {children}
     </HeaderTitle>
@@ -134,7 +117,6 @@ const PortfolioHeader = ({
 PortfolioHeader.propTypes = {
   image: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  video: PropTypes.string,
   title: PropTypes.string.isRequired,
   client: PropTypes.string,
   description: PropTypes.string,
@@ -153,14 +135,12 @@ HeaderTitle.propTypes = {
 };
 
 HeaderVisual.propTypes = {
-  video: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   fluid: PropTypes.object.isRequired,
 };
 
 PortfolioHeader.defaultProps = {
-  video: null,
   client: null,
   description: null,
   children: null,

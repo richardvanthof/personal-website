@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import theme from '../styles/theme';
 import Container from './container';
 
-const { colors, mediaQueries, container } = theme;
+const { mediaQueries } = theme;
 
 const Description = styled.div`
   display: flex;
@@ -35,7 +35,8 @@ const PortfolioDescription = ({
       <div>
         <p>
           <small>
-Role:
+            Role:
+
             {role}
           </small>
           <small>
@@ -52,5 +53,13 @@ Year:
     </Description>
   </Container>
 );
+
+PortfolioDescription.propTypes = {
+  description: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  client: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+};
 
 export default PortfolioDescription;

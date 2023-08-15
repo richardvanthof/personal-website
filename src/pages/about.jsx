@@ -1,6 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import Container from '../components/container';
@@ -12,7 +10,7 @@ const About = () => (
     <SEO title="About" />
     <Container id="about-content">
       <h2>About Richard</h2>
-      <img src={image} />
+      <img src={image} alt="Richard van &apos;t Hof sitting in a chair." />
       <p>
         Richard is an audiovisual maker, designer and creative coder who,
         in an autonomous, investigative way, unravels the influence of implicit

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
@@ -11,8 +11,6 @@ import hamburger from '../static/animations/hamburgermenu.json';
 
 
 const { colors, mediaQueries } = theme;
-
-const logo = require('../static/trademarks/logo.svg');
 
 const Nav = styled.nav`
   display: flex;
@@ -220,7 +218,6 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       isActive: false,
-      isHidden: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -233,14 +230,13 @@ class Navbar extends React.Component {
 
 
   render() {
-    const { siteTitle } = this.props;
     const { isActive } = this.state;
     return (
       <>
         <Nav>
           <div>
             <Link to="/">
-              <Logo>Richard van 't Hof</Logo>
+              <Logo>Richard van &apos;t Hof</Logo>
             </Link>
           </div>
           <NavLinksDesktop>
@@ -262,14 +258,6 @@ class Navbar extends React.Component {
   }
 }
 
-
-Navbar.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Navbar.defaultProps = {
-  siteTitle: '',
-};
 
 NavLink.propTypes = {
   title: PropTypes.string.isRequired,

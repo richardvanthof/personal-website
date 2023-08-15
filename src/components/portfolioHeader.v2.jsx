@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
 
@@ -63,7 +62,7 @@ const HeaderFigure = styled.figure`
 
 
 const HeaderVisual = ({
-  video, img, fluid, alt,
+  img, fluid, alt,
 }) => {
   if (img) {
     return (
@@ -96,54 +95,16 @@ const HeaderTitle = styled.div`
 `;
 
 
-const HeaderMetaData = styled.div`
-  grid-row: 1;
-  grid-column: 4;
-  width: 100%;
-  margin: 1em;
-  *:nth-last-child {
-    margin: 0;
-    padding: 0;
-  }
-  span { margin-bottom: 0.33em;};
-  @media ${mediaQueries.md}{
-    margin: 0;
-    grid-row: 1;
-    margin-bottom: .5em;
-  }
-`;
-
-
 const PortfolioHeader = ({
-  image, fluid, alt, title, description, video
+  image, fluid, alt, title,
 }) => (
   <HeaderBase>
     <HeaderTitle>
       <Button back>Back</Button>
       <h2>{title}</h2>
     </HeaderTitle>
-    <HeaderMetaData>
-      {/* <p>
-        <small>{client || 'Autonomous work'} &#8212;  {type}  &#8212;  {year}</small>
-      </p> */}
-      {description
-        && <p>{description}</p>
-      }
 
-
-      {/* <span>
-        {year && <h6>{year}</h6>}
-
-        {length && (
-        <p>
-          {length}
-          &nbsp;min.
-        </p>
-        )}
-      </span> */}
-      {/* {website && <Button external title="Website" to={website} />} */}
-    </HeaderMetaData>
-    <HeaderVisual fluid={fluid} video={video} img={image} alt={alt} />
+    <HeaderVisual fluid={fluid} img={image} alt={alt} />
 
   </HeaderBase>
 );
@@ -151,14 +112,11 @@ const PortfolioHeader = ({
 PortfolioHeader.propTypes = {
   image: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  video: PropTypes.string,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
   fluid: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
-  type: PropTypes.string.isRequired,
 };
 
 HeaderTitle.propTypes = {
@@ -168,26 +126,12 @@ HeaderTitle.propTypes = {
 };
 
 HeaderVisual.propTypes = {
-  video: PropTypes.string,
   img: PropTypes.string.isRequired,
   fluid: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
   alt: PropTypes.string.isRequired,
-};
-
-HeaderVisual.defaultProps = {
-  video: null,
-};
-
-PortfolioHeader.defaultProps = {
-  video: null,
-  website: null,
-  repository: null,
-  length: null,
-  client: null,
-  description: null,
 };
 
 HeaderTitle.defaultProps = {

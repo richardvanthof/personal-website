@@ -7,8 +7,6 @@ import ArrowIcon from '../static/icons/UI/arrow_right.svg';
 
 const { colors } = theme;
 
-let reverseButton = false;
-
 const buttonStyling = css`
     display: block;
     padding-bottom: .33em;
@@ -48,7 +46,6 @@ const Button = ({
   children,
   back,
 }) => {
-  reverseButton = back;
   if (back) {
     return (
       <ButtonBase isReversed={back} light={light} to={to}>
