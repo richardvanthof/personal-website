@@ -4,7 +4,6 @@ const white = '#FFFFFF';
 const black = 'rgba(0,0,0,0.9)';
 const darkBlue = '#000E41';
 const darkGray = '#787878';
-const middleGray = '#EEEEEE';
 const lightGray = '#F6F6F6';
 const teal = '#313c37';
 const blue = '#414C74';
@@ -45,7 +44,7 @@ theme.mediaQueries = {
   xxl: `(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: ${theme.breakpoints.xxl})`,
 };
 
-const clamp = 'clamp(0.1em, 15vw, 50em)'
+const clamp = 'clamp(0.1em, 20vw, 50em)';
 
 theme.container = {
   sm: 'clamp(1em, 3vw, 3em)',

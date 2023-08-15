@@ -7,19 +7,21 @@ import theme from '../styles/theme';
 const breakpoint = theme.mediaQueries;
 const sizeRef = theme.container;
 
+const paddingTop = '10vh';
+
 const ContainerBase = styled.section`
-  padding: 0 ${sizeRef.sm};
+  padding: ${paddingTop} ${sizeRef.sm};
 
   @media ${breakpoint.md} {
-    padding: 0 ${sizeRef.md};
+    padding: ${paddingTop} ${sizeRef.md};
   }
 
   @media ${breakpoint.lg} {
-    padding: 0 ${sizeRef.lg};
+    padding: ${paddingTop} ${sizeRef.lg};
   }
 
   @media ${breakpoint.xl} {
-    padding: 0 ${sizeRef.xl};
+    padding: ${paddingTop} ${sizeRef.xl};
   }
 `;
 

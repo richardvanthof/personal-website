@@ -7,7 +7,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import theme from '../styles/theme';
 
-const { colors, mediaQueries } = theme;
+const { mediaQueries } = theme;
 
 const Main = styled.main`
   min-height: 0vh;
@@ -34,7 +34,7 @@ const DefaultLayout = ({ children }) => (
     render={data => (
       <ThemeProvider theme={theme}>
         <>
-          
+
           <Navbar siteTitle={data.site.siteMetadata.title} />
           <Main>{children}</Main>
           <Footer />
@@ -47,10 +47,6 @@ const DefaultLayout = ({ children }) => (
 
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  gray: PropTypes.bool,
 };
 
-DefaultLayout.defaultProps = {
-  gray: true,
-};
 export default DefaultLayout;

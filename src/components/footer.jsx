@@ -9,8 +9,13 @@ import Copyright from './copyright';
 
 const { colors, container, mediaQueries } = theme;
 
+const FooterBase = styled.p`
+  padding: 1em;
+  text-align: center;
+`;
+
 const Footer = () => (
-  <p>copyright Richard van 't Hof</p>
+  <FooterBase>copyright Richard van 't Hof</FooterBase>
 );
 
 export default Footer;

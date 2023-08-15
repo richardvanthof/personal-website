@@ -18,7 +18,7 @@ const buttonStyling = css`
     margin-top: 1em;
     &:hover {
       svg, img {
-          transform: ${props => ( props.isReversed ? 'rotate(180deg) scaleX(1.05) translateX(0.1em)' : 'scaleX(1.1) translateX(0.1em)')}
+          transform: ${props => (props.isReversed ? 'rotate(180deg) scaleX(1.05) translateX(0.1em)' : 'scaleX(1.1) translateX(0.1em)')}
       }
     }
 `;
@@ -49,26 +49,25 @@ const Button = ({
   back,
 }) => {
   reverseButton = back;
-  if (back){
+  if (back) {
     return (
       <ButtonBase isReversed={back} light={light} to={to}>
         <Arrow isReversed={back} />
         {title || children}
       </ButtonBase>
-    )
+    );
   }
-  else if (!external) {
+  if (!external) {
     return (
       <ButtonBase light={light} to={to}>
         {title || children}
-        <Arrow/>
+        <Arrow />
       </ButtonBase>
     );
-  } else 
-  return (
+  } return (
     <ExternalButtonBase target="_blanc" light={light} href={to}>
       {title}
-      <Arrow/>
+      <Arrow />
     </ExternalButtonBase>
   );
 };

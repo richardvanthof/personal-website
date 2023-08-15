@@ -4,11 +4,8 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
-import Button from './button';
 
-import ArrowRight from '../static/icons/UI/arrow_right.svg';
-
-const { colors, container, mediaQueries } = theme;
+const { colors, mediaQueries } = theme;
 
 const ThumbnailImage = styled.figure`
   height: 50vh;
@@ -62,39 +59,27 @@ const SmallThumbnailImageContent = styled(Img)`
   object-fit: cover;
 `;
 
-
-const CallToActionIcon = styled(ArrowRight)`
-  width: 1.33em;
-  transform: translateX(-0.33em);
-`;
-
 const Thumbnail = ({
-  title, client, img, alt, medium, year, type, url, to, right, small,
-}) => {
-  const textSubstring = (data, wordCountThreshold) => {
-    const getDots = () => ((data.length >= wordCountThreshold) ? '...' : '');
-    return `${data.substring(0, wordCountThreshold)}${getDots()}`;
-  };
-    return (
-      <>
-        <SmallThumbnailBase to={to}>
-          <SmallThumbnailImage className="thumbnail-image" right={right}>
-            <SmallThumbnailImageContent fluid={img} alt={alt || title} />
-          </SmallThumbnailImage>
-          <SmallThumbnailInfo className="information" right={right}>
-            <div className="information-container">
-              <h5>{title}</h5>
-              <small>
-                {client && ({client } + " &middot; ")}
-                {type}
-                {year}
-              </small>
-            </div>
-          </SmallThumbnailInfo>
-        </SmallThumbnailBase>
-      </>
-    );
-  };
+  title, client, img, alt, year, type, to, right, small,
+}) => (
+  <>
+    <SmallThumbnailBase to={to}>
+      <SmallThumbnailImage className="thumbnail-image" right={right}>
+        <SmallThumbnailImageContent fluid={img} alt={alt || title} />
+      </SmallThumbnailImage>
+      <SmallThumbnailInfo className="information" right={right}>
+        <div className="information-container">
+          <h5>{title}</h5>
+          <small>
+            {client && (`${{ client }} &middot; `)}
+            {type}
+            {year}
+          </small>
+        </div>
+      </SmallThumbnailInfo>
+    </SmallThumbnailBase>
+  </>
+);
 
 
 Thumbnail.propTypes = {
@@ -103,10 +88,8 @@ Thumbnail.propTypes = {
   img: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  medium: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   year: PropTypes.string,
-  url: PropTypes.string.isRequired,
   right: PropTypes.bool,
   small: PropTypes.bool,
 };

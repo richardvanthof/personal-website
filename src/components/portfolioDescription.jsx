@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from '../styles/theme';
-import Container from '../components/container';
+import Container from './container';
 
 const { colors, mediaQueries, container } = theme;
 
@@ -26,22 +26,31 @@ const Paragraph = styled.div`
   flex-basis: 66%;
 `;
 
-const PortfolioDescription = ({description, type, year, client, role}) => {
-  return (
-    <Container>
-      <Description>
-        <Paragraph className="big">{description}</Paragraph>
-        <div>
-          <p>
-            <small>Role: {role}</small>
-            <small>Work: {type}</small>
-            <small>Year: {year}</small>
-            <small>{client || 'Autonimous work'}</small>
-          </p>
-        </div>
-      </Description>
-    </Container>
-  )
-};
+const PortfolioDescription = ({
+  description, type, year, client, role,
+}) => (
+  <Container>
+    <Description>
+      <Paragraph className="big">{description}</Paragraph>
+      <div>
+        <p>
+          <small>
+Role:
+            {role}
+          </small>
+          <small>
+Work:
+            {type}
+          </small>
+          <small>
+Year:
+            {year}
+          </small>
+          <small>{client || 'Autonimous work'}</small>
+        </p>
+      </div>
+    </Description>
+  </Container>
+);
 
 export default PortfolioDescription;

@@ -14,8 +14,7 @@ import NeueHaasGroteskLight from '../static/fonts/Neue-haas-grotesk/NeueHaasUnic
 import NeueHaasGroteskLightItalic from '../static/fonts/Neue-haas-grotesk/NHaasGroteskDSPro-46LtIt.woff';
 import Biotif from '../static/fonts/biotif/Biotif-Regular.ttf';
 
-const { mediaQueries, colors } = theme;
-
+const { colors } = theme;
 
 
 const fonts = css`
@@ -139,7 +138,7 @@ const typography = css`
     font-weight: 400;
     margin: 0 0 0.1em 0;
     line-height: 1em;
-    margin: 0.1em 0;
+    margin: 0.1em 0 0.3em 0;
     
   }
 

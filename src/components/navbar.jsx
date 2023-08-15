@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
 // import AniLink from 'gatsby-plugin-transition-link/AniLink';
@@ -7,7 +8,7 @@ import { Link } from 'gatsby';
 import theme from '../styles/theme';
 
 import hamburger from '../static/animations/hamburgermenu.json';
-import { useEffect } from 'react';
+
 
 const { colors, mediaQueries } = theme;
 
@@ -48,7 +49,7 @@ const NavLinksDesktop = styled.ul`
     justify-content: space-evenly;
     li {
       line-height: 1.22em;
-      font-size: 1.44rem;s
+      font-size: 1.22rem;s
       font-weight: 300;
       color: transparent;
       position: relative;
@@ -59,21 +60,21 @@ const NavLinksDesktop = styled.ul`
 
 const NavLinkBase = styled.li`
   text-decoration: none;
-  transition: 0.5s ease;
+  transition: 0.1s ease;
   text-decoration: none;
   margin: 1em 1.33em;
   position: relative;
   &:before {
       content: '';
-      left: 0;
+      left: 0.2em;
       width: 100%;
-      height: 50%;
-      top: 25%;
-      background: ${colors.yellow};
+      height: 2px;
+      bottom: 0;
+      background: ${colors.black};
       position: absolute;
       z-index: -1;
-      transition: 0.2s ease-in-out;
-      transform: translate(-0.3em, 0.4em) scaleX(0);
+      transition: 0.1s ease-in-out;
+      transform: translate(0, 0.4em) scaleX(0);
       display: inline-block;
   }
   &:hover {
@@ -219,7 +220,7 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       isActive: false,
-      isHidden: false
+      isHidden: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -236,7 +237,7 @@ class Navbar extends React.Component {
     const { isActive } = this.state;
     return (
       <>
-        <Nav >
+        <Nav>
           <div>
             <Link to="/">
               <Logo>Richard van 't Hof</Logo>

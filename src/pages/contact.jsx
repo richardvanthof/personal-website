@@ -2,15 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Button from '../components/button';
 import MinimalLayout from '../layouts/minimalLayout';
 import Gallery from '../components/gallery';
 import Socials from '../components/socials';
 import theme from '../styles/theme';
-import generateDirectionsUrl from '../lib/generateDirectionsUrl';
-
-
-import PGP from '../components/pgp';
 
 const { colors, mediaQueries } = theme;
 
@@ -70,13 +65,12 @@ const ContactInfoItem = styled.li`
 
 const Contact = ({ data }) => {
   const {
-    email, repo, pgp, adress,
+    email, adress,
   } = data.site.siteMetadata;
   const {
-    street, number, zipCode, city, country,
+    city, country,
   } = adress;
 
-  const directions = generateDirectionsUrl(`${street} ${number}`);
   return (
     <Gallery>
       <ContactBase>
@@ -89,7 +83,7 @@ const Contact = ({ data }) => {
           </ContactInfoCluster>
 
           <ContactInfoCluster>
-           
+
             <li>
               <h5>
 
@@ -104,7 +98,7 @@ const Contact = ({ data }) => {
             <h6>Follow me!</h6>
             <Socials />
           </div>
-          
+
         </ContactDetails>
       </ContactBase>
     </Gallery>
@@ -138,6 +132,8 @@ Contact.propTypes = {
         adress: PropTypes.shape({
           city: PropTypes.string,
           country: PropTypes.string,
+          street: PropTypes.string,
+          number: PropTypes.number,
         }).isRequired,
       }).isRequired,
     }).isRequired,

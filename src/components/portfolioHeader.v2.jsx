@@ -5,7 +5,6 @@ import Img from 'gatsby-image';
 import Embed from './embed';
 import Button from './button';
 import theme from '../styles/theme';
-import { Subtitle } from './typography';
 
 const { colors, mediaQueries, container } = theme;
 
@@ -17,14 +16,14 @@ const HeaderBase = styled.header`
     text-decoration: none;
     color: ${colors.black} !important;
     padding: 0em;
-    padding-top: clamp(3rem, 7vh, 7rem);
+    padding-top: clamp(3rem, 7vh, 10rem);
     @media ${mediaQueries.sm} {
       padding: 0em;
       display: grid;
       align-items: end;
-      grid-gap: 2vh 1em ;
+      grid-gap: 10vh 1em ;
       grid-template-columns: ${container.md} 2fr 0fr 1fr ${container.md};
-      grid-template-rows: 25vh auto auto;
+      grid-template-rows: 30vh auto auto;
     }
     @media ${mediaQueries.md} {
       grid-template-columns: ${container.md} 2fr 4em 30ch ${container.md};
@@ -62,29 +61,6 @@ const HeaderFigure = styled.figure`
   }
 `;
 
-const HeaderVideo = styled(Embed)`
-  order: 0;
-  grid-row: 2;
-  grid-column: 1/6;
-  align-self: center;
-`;
-
-const HeaderVideoWrapper = styled.div`
-  width: 100%;
-
-  order: -1;
-  padding-bottom: 1em;
-  padding-top: 5.33em;
-  background: ${colors.bgLight};
-  @media ${mediaQueries.xs} {
-    order: 0;
-    grid-row: 3;
-    grid-column: 1/5;
-  }
-  @media ${mediaQueries.sm} {
-  }
-`;
-
 
 const HeaderVisual = ({
   video, img, fluid, alt,
@@ -115,6 +91,7 @@ const HeaderTitle = styled.div`
   @media ${mediaQueries.sm} {
     padding: 0;
     margin: 0;
+    max-width: 50ch;
   }
 `;
 
@@ -138,25 +115,25 @@ const HeaderMetaData = styled.div`
 
 
 const PortfolioHeader = ({
-  image, fluid, year, alt, length, video, website, repository, title, type, client, description,
+  image, fluid, alt, title, description, video
 }) => (
   <HeaderBase>
     <HeaderTitle>
-      <Button back >Back</Button>
+      <Button back>Back</Button>
       <h2>{title}</h2>
     </HeaderTitle>
     <HeaderMetaData>
-    {/* <p> 
+      {/* <p>
         <small>{client || 'Autonomous work'} &#8212;  {type}  &#8212;  {year}</small>
       </p> */}
       {description
         && <p>{description}</p>
       }
-      
-      
+
+
       {/* <span>
         {year && <h6>{year}</h6>}
-        
+
         {length && (
         <p>
           {length}
@@ -167,7 +144,7 @@ const PortfolioHeader = ({
       {/* {website && <Button external title="Website" to={website} />} */}
     </HeaderMetaData>
     <HeaderVisual fluid={fluid} video={video} img={image} alt={alt} />
-    
+
   </HeaderBase>
 );
 
@@ -176,12 +153,7 @@ PortfolioHeader.propTypes = {
   alt: PropTypes.string.isRequired,
   video: PropTypes.string,
   title: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  length: PropTypes.string,
-  client: PropTypes.string,
   description: PropTypes.string,
-  website: PropTypes.string,
-  repository: PropTypes.string,
   fluid: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

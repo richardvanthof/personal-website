@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import Linkedin from '../static/icons/Social/linkedin.svg';
 import Github from '../static/icons/Social/github.svg';
-import BNO from '../static/icons/Social/bno.svg';
 
 import theme from '../styles/theme';
 
@@ -62,7 +61,7 @@ const Socials = () => (
     }
     render={(data) => {
       const {
-        linkedin, github, bno,
+        linkedin, github,
       } = data.site.siteMetadata;
       return (
         <SocialMedia>
